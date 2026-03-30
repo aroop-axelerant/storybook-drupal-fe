@@ -1,0 +1,18 @@
+{#
+ * Chip / Tag component — Regent's University London
+ *
+ * Props:
+ * - label:       string   Tag text
+ * - variant:     string   green | violet | yellow | peach | white | grey | outline | foundation
+ * - dismissible: boolean  Show close button (default: false)
+ #}
+<span class="chip chip--{{ variant|default('green') }}">
+  {{ label }}
+  {% if dismissible %}
+    <button class="chip__close" aria-label="Remove {{ label }}" type="button">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+        <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  {% endif %}
+</span>

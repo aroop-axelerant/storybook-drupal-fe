@@ -1,0 +1,10 @@
+{#
+ * Container layout — Regent's University London
+ *
+ * Props:
+ * - variant: string  default | narrow | wide | full  (default: default)
+ * - content: string  (slot — inner HTML)
+ #}
+<div class="layout-container{% if variant and variant != 'default' %} layout-container--{{ variant }}{% endif %}">
+  {{ content }}
+</div>

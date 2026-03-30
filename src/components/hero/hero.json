@@ -1,0 +1,36 @@
+{
+  "default": {
+    "variant": "dark",
+    "eyebrow": "Regent's University London",
+    "title": "Where Ambition Meets Opportunity",
+    "subtitle": "A unique university in the heart of London's Regent's Park — inspiring the next generation of global leaders.",
+    "cta_primary": { "label": "Apply Now", "href": "/apply" },
+    "cta_secondary": { "label": "Explore Courses", "href": "/courses" },
+    "bg_gradient": "hero-dark"
+  },
+  "variants": {
+    "dark": {
+      "variant": "dark",
+      "title": "Where Ambition Meets Opportunity",
+      "bg_gradient": "hero-dark"
+    },
+    "editorial": {
+      "variant": "editorial",
+      "eyebrow": "School of Business",
+      "title": "Transforming Business Leaders of Tomorrow",
+      "subtitle": "Study business in one of the world's most dynamic cities.",
+      "bg_gradient": "editorial"
+    },
+    "course-details": {
+      "variant": "dark",
+      "eyebrow": "Undergraduate",
+      "title": "BA (Hons) Business Management",
+      "subtitle": "3 years · Full-time · London",
+      "stats": [
+        { "value": "94%", "label": "Graduate employment rate" },
+        { "value": "Top 10", "label": "London universities" },
+        { "value": "120+", "label": "Nationalities on campus" }
+      ]
+    }
+  }
+}

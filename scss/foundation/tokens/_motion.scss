@@ -1,0 +1,10 @@
+// =============================================================================
+// Foundation: Motion / Transition Tokens
+// Source: Regent's University London design-system/tokens.json
+// =============================================================================
+
+:root {
+  --ease-fast: 150ms ease;
+  --ease:      200ms ease;   // Default interaction transition
+  --ease-slow: 380ms ease;   // Deliberate / large-element transitions
+}

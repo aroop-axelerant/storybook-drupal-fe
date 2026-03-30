@@ -1,0 +1,15 @@
+{
+  "default": {
+    "variant": "equal",
+    "items": [
+      { "content": "Column 1" },
+      { "content": "Column 2" },
+      { "content": "Column 3" }
+    ]
+  },
+  "variants": {
+    "equal": { "variant": "equal" },
+    "quad":  { "variant": "quad",  "items": [{ "content": "Col 1" }, { "content": "Col 2" }, { "content": "Col 3" }, { "content": "Col 4" }] },
+    "auto":  { "variant": "auto" }
+  }
+}

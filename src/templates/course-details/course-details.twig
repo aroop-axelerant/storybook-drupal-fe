@@ -1,0 +1,84 @@
+{#
+ * Course Details page template — Regent's University London
+ *
+ * Slots:
+ * - header:          object  → header component props
+ * - hero:            object  → hero component props (course-details variant)
+ * - course_info:     object  → { overview, modules, entry_requirements, careers }
+ * - related_courses: array   → array of card component props
+ * - footer:          object  → footer component props
+ #}
+{% include "@components/header/header.twig" with header %}
+
+<main id="main-content">
+  {% include "@components/hero/hero.twig" with hero %}
+
+  <div class="layout-container">
+    <div class="layout-two-col layout-two-col--editorial">
+
+      {# Main content column #}
+      <div>
+        {% if course_info.overview %}
+          <section class="section" aria-labelledby="overview-heading">
+            <h2 id="overview-heading" class="section__heading">Programme Overview</h2>
+            <p class="section__body">{{ course_info.overview }}</p>
+          </section>
+        {% endif %}
+
+        {% if course_info.modules %}
+          <section class="section" aria-labelledby="modules-heading">
+            <h2 id="modules-heading" class="section__heading">Modules</h2>
+            {% for year in course_info.modules %}
+              <h3 class="section__subheading">{{ year.year }}</h3>
+              <ul class="section__list">
+                {% for item in year.items %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% endfor %}
+          </section>
+        {% endif %}
+
+        {% if course_info.entry_requirements %}
+          <section class="section" aria-labelledby="entry-heading">
+            <h2 id="entry-heading" class="section__heading">Entry Requirements</h2>
+            <p class="section__body">{{ course_info.entry_requirements }}</p>
+          </section>
+        {% endif %}
+
+        {% if course_info.careers %}
+          <section class="section" aria-labelledby="careers-heading">
+            <h2 id="careers-heading" class="section__heading">Career Pathways</h2>
+            <ul class="section__chips">
+              {% for career in course_info.careers %}
+                {% include "@components/chip/chip.twig" with { label: career, variant: "green" } %}
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+      </div>
+
+      {# Sidebar: apply CTA #}
+      <aside class="course-sidebar">
+        {% include "@components/button/button.twig" with { label: "Apply Now", href: "/apply", variant: "primary", size: "lg" } %}
+        {% include "@components/button/button.twig" with { label: "Download Prospectus", href: "/prospectus", variant: "outline-dark", size: "lg" } %}
+      </aside>
+
+    </div>
+  </div>
+
+  {% if related_courses %}
+    <section class="section section--related" aria-labelledby="related-heading">
+      <div class="layout-container">
+        <h2 id="related-heading" class="section__heading">Related Programmes</h2>
+        <div class="layout-three-col">
+          {% for card in related_courses %}
+            {% include "@components/card/card.twig" with card %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+</main>
+
+{% include "@components/footer/footer.twig" with footer %}

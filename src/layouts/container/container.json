@@ -1,0 +1,12 @@
+{
+  "default": {
+    "variant": "default",
+    "content": "<p>Container content goes here.</p>"
+  },
+  "variants": {
+    "default": { "variant": "default" },
+    "narrow":  { "variant": "narrow" },
+    "wide":    { "variant": "wide" },
+    "full":    { "variant": "full" }
+  }
+}

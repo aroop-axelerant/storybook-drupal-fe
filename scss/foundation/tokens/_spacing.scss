@@ -1,0 +1,33 @@
+// =============================================================================
+// Foundation: Spacing Tokens
+// Source: Regent's University London design-system/tokens.json
+// Base grid: 4px
+// =============================================================================
+
+:root {
+  --sp-0:   0px;
+  --sp-4:   0.25rem;   //  4px
+  --sp-8:   0.5rem;    //  8px
+  --sp-16:  1rem;      // 16px
+  --sp-24:  1.5rem;    // 24px
+  --sp-32:  2rem;      // 32px
+  --sp-48:  3rem;      // 48px
+  --sp-64:  4rem;      // 64px
+  --sp-96:  6rem;      // 96px
+
+  // Grid system
+  --grid-max:      1312px;    // Max content width (12 columns desktop)
+  --grid-gutter:   var(--sp-64); // Horizontal page gutter (desktop)
+  --grid-gap:      var(--sp-32); // Gap between grid columns (desktop)
+  --grid-gap-sm:   var(--sp-24); // Gap between grid columns (tablet)
+
+  @media (max-width: 1279px) {
+    --grid-gutter: var(--sp-32);
+    --grid-gap:    var(--sp-24);
+  }
+
+  @media (max-width: 767px) {
+    --grid-gutter: var(--sp-16);
+    --grid-gap:    var(--sp-16);
+  }
+}

@@ -1,0 +1,30 @@
+{#
+ * Home page template — Regent's University London
+ *
+ * Slots:
+ * - header:         object  → header component props
+ * - hero:           object  → hero component props
+ * - featured_cards: array   → array of card component props
+ * - newsletter:     object  → newsletter component props
+ * - footer:         object  → footer component props
+ #}
+{% include "@components/header/header.twig" with header %}
+
+<main id="main-content">
+  {% include "@components/hero/hero.twig" with hero %}
+
+  <section class="section section--cards" aria-labelledby="featured-heading">
+    <div class="layout-container">
+      <h2 id="featured-heading" class="section__heading">Featured Programmes</h2>
+      <div class="layout-three-col layout-three-col--auto">
+        {% for card in featured_cards %}
+          {% include "@components/card/card.twig" with card %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include "@components/newsletter/newsletter.twig" with newsletter %}
+</main>
+
+{% include "@components/footer/footer.twig" with footer %}

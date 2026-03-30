@@ -1,0 +1,59 @@
+{#
+ * Site Footer component — Regent's University London
+ *
+ * Props:
+ * - brand:     { logo: { src, alt }, tagline }
+ * - columns:   array of { heading, links: [{ label, href }] }
+ * - social:    array of { platform, href, label }
+ * - legal:     array of { label, href }
+ * - copyright: string
+ #}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__logo" aria-label="{{ brand.logo.alt|default("Regent's University London home") }}">
+        <img src="{{ brand.logo.src|default('/assets/full-logo-white.svg') }}" alt="{{ brand.logo.alt|default("Regent's University London") }}" />
+      </a>
+      {% if brand.tagline %}
+        <p class="site-footer__tagline">{{ brand.tagline }}</p>
+      {% endif %}
+      {% if social %}
+        <ul class="site-footer__social" aria-label="Social media links">
+          {% for item in social %}
+            <li>
+              <a href="{{ item.href }}" class="site-footer__social-link" aria-label="{{ item.label }}" target="_blank" rel="noopener noreferrer">
+                {% if item.platform == 'instagram' %}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                {% elseif item.platform == 'linkedin' %}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {% elseif item.platform == 'youtube' %}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      {% for col in columns %}
+        <div class="site-footer__col">
+          <h3 class="site-footer__col-heading">{{ col.heading }}</h3>
+          <ul class="site-footer__links">
+            {% for link in col.links %}
+              <li><a href="{{ link.href }}" class="site-footer__link">{{ link.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </nav>
+  </div>
+  <div class="site-footer__legal">
+    <p class="site-footer__copyright">{{ copyright }}</p>
+    <ul class="site-footer__legal-links" aria-label="Legal links">
+      {% for link in legal %}
+        <li><a href="{{ link.href }}" class="site-footer__legal-link">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>

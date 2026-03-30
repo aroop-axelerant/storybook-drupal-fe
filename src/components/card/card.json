@@ -1,0 +1,48 @@
+{
+  "default": {
+    "variant": "article",
+    "title": "How Regent's Prepares You for the Global Stage",
+    "desc": "Our unique location in the heart of London gives students unparalleled access to international business, culture, and creativity.",
+    "image": { "src": "/assets/who-we-are.png", "alt": "Students at Regent's University London" },
+    "chips": [{ "label": "Business", "variant": "green" }],
+    "cta": { "label": "Read More", "href": "#" }
+  },
+  "variants": {
+    "article": { "variant": "article" },
+    "course": {
+      "variant": "course",
+      "title": "BA Business Management",
+      "desc": "Build the commercial acumen and leadership skills to thrive in today's global marketplace.",
+      "chips": [{ "label": "Undergraduate", "variant": "violet" }, { "label": "3 Years", "variant": "grey" }],
+      "cta": { "label": "View Course", "href": "#" }
+    },
+    "event": {
+      "variant": "event",
+      "title": "Open Day — Spring 2025",
+      "desc": "Meet our faculty, tour the campus, and discover your future at Regent's.",
+      "date_badge": { "day": "15", "month": "Mar" },
+      "chips": [{ "label": "Open Day", "variant": "yellow" }],
+      "cta": { "label": "Register Now", "href": "#" }
+    },
+    "leader": {
+      "variant": "leader",
+      "title": "Prof. Sarah Mitchell",
+      "role": "Dean, School of Business",
+      "image": { "src": "/assets/who-we-are.png", "alt": "Prof. Sarah Mitchell" }
+    },
+    "journey-yellow": {
+      "variant": "journey",
+      "journey_colour": "yellow",
+      "title": "Postgraduate",
+      "desc": "Deepen your expertise with our world-class Master's programmes.",
+      "cta": { "label": "Explore", "href": "#" }
+    },
+    "journey-violet": {
+      "variant": "journey",
+      "journey_colour": "violet",
+      "title": "Undergraduate",
+      "desc": "Start your journey with a globally recognised Bachelor's degree.",
+      "cta": { "label": "Explore", "href": "#" }
+    }
+  }
+}

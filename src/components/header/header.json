@@ -1,0 +1,17 @@
+{
+  "default": {
+    "variant": "light",
+    "logo": { "src": "/assets/full-logo.svg", "alt": "Regent's University London" },
+    "nav": [
+      { "label": "Study",    "href": "/study",    "has_dropdown": true },
+      { "label": "Research", "href": "/research", "has_dropdown": false },
+      { "label": "About",    "href": "/about",    "has_dropdown": true }
+    ],
+    "cta": { "label": "Apply Now", "href": "/apply" }
+  },
+  "variants": {
+    "light":  { "variant": "light" },
+    "dark":   { "variant": "dark" },
+    "scrolled":{ "variant": "light", "scrolled": true }
+  }
+}

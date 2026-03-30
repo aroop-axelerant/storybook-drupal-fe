@@ -1,0 +1,140 @@
+// Hero component — Regent's University London
+// Variants: dark (gradient overlay), editorial (light bg), school (decorative)
+
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: flex-end;
+
+  // Background layer
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero-dark);
+    z-index: 0;
+
+    &--editorial { background: var(--gradient-editorial); }
+    &--warm      { background: var(--gradient-warm); }
+    &--ocean     { background: var(--gradient-ocean); }
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    // Dark overlay for image backgrounds
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(11, 25, 26, 0.75) 0%,
+        rgba(11, 25, 26, 0.30) 50%,
+        rgba(11, 25, 26, 0.0) 100%
+      );
+    }
+  }
+
+  // Content
+  &__inner {
+    position: relative;
+    z-index: var(--z-raised);
+    max-width: var(--grid-max);
+    width: 100%;
+    margin-inline: auto;
+    padding: var(--sp-64) var(--grid-gutter);
+    padding-block-start: var(--sp-96);
+  }
+
+  &__eyebrow {
+    display: block;
+    font-size: var(--text-overline);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-widest);
+    text-transform: uppercase;
+    color: var(--color-zingy-yellow);
+    margin-block-end: var(--sp-12);
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-display-m);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-display-m);
+    letter-spacing: var(--ls-snug);
+    color: var(--color-white);
+    margin: 0 0 var(--sp-16);
+    max-width: 800px;
+  }
+
+  &__subtitle {
+    font-size: var(--text-body-xl);
+    line-height: var(--lh-body-xl);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 var(--sp-32);
+    max-width: 600px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--sp-12);
+    flex-wrap: wrap;
+  }
+
+  // Stats strip (used on course-details hero)
+  &__stats {
+    display: flex;
+    gap: var(--sp-32);
+    margin-block-start: var(--sp-48);
+    padding-block-start: var(--sp-32);
+    border-block-start: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    &-value {
+      font-family: var(--font-serif);
+      font-size: var(--text-display-s);
+      font-weight: var(--fw-regular);
+      color: var(--color-zingy-yellow);
+      line-height: 1;
+      display: block;
+    }
+    &-label {
+      font-size: var(--text-small);
+      color: rgba(255, 255, 255, 0.75);
+      display: block;
+      margin-block-start: var(--sp-4);
+    }
+  }
+
+  // ── Variant: Editorial (light background, dark text) ──
+  &--editorial {
+    align-items: center;
+    min-height: 400px;
+
+    .hero__eyebrow  { color: var(--color-action); }
+    .hero__title    { color: var(--color-text); }
+    .hero__subtitle { color: var(--color-text-secondary); }
+
+    .hero__bg::after { display: none; } // No dark overlay
+  }
+
+  // ── Responsive ──────────────────────────────────────────────────────────────
+  @media (max-width: 1279px) {
+    min-height: 380px;
+    .hero__inner { padding: var(--sp-48) var(--grid-gutter); }
+  }
+
+  @media (max-width: 767px) {
+    min-height: 300px;
+    .hero__inner { padding: var(--sp-32) var(--grid-gutter); }
+    .hero__stats { gap: var(--sp-24); }
+  }
+}

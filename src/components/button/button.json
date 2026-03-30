@@ -1,0 +1,21 @@
+{
+  "default": {
+    "label": "Apply Now",
+    "variant": "primary",
+    "size": "md",
+    "type": "button",
+    "disabled": false,
+    "icon": null,
+    "href": null
+  },
+  "variants": {
+    "primary":           { "label": "Apply Now",       "variant": "primary" },
+    "primary-inverted":  { "label": "Explore Courses", "variant": "primary-inverted" },
+    "secondary-inverted":{ "label": "Learn More",      "variant": "secondary-inverted" },
+    "outline-dark":      { "label": "Find Out More",   "variant": "outline-dark" },
+    "outline-green":     { "label": "View Programme",  "variant": "outline-green" },
+    "ghost":             { "label": "Cancel",          "variant": "ghost" },
+    "small":             { "label": "Filter",          "variant": "primary", "size": "sm" },
+    "large":             { "label": "Get Started",     "variant": "primary", "size": "lg" }
+  }
+}

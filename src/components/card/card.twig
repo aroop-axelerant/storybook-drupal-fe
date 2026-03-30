@@ -1,0 +1,81 @@
+{#
+ * Card component — Regent's University London
+ *
+ * Props:
+ * - variant:        string   article | course | event | leader | journey (default: article)
+ * - title:          string
+ * - desc:           string   Description / excerpt
+ * - image:          { src, alt }  (optional)
+ * - chips:          array of { label, variant }  (optional)
+ * - cta:            { label, href }  (optional)
+ * - date_badge:     { day, month }  (event variant only)
+ * - role:           string   (leader variant only)
+ * - journey_colour: string   yellow | violet | peach  (journey variant only)
+ #}
+
+{% if variant == 'leader' %}
+  <div class="card card--leader">
+    <div class="card__image-wrap">
+      {% if image %}
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+      {% else %}
+        <div class="card__image-wrap--placeholder">
+          <span class="card__initials">{{ title|slice(0,2)|upper }}</span>
+        </div>
+      {% endif %}
+    </div>
+    <div class="card__body">
+      <h3 class="card__title">{{ title }}</h3>
+      {% if role %}<p class="card__role">{{ role }}</p>{% endif %}
+    </div>
+  </div>
+
+{% elseif variant == 'journey' %}
+  <div class="card card--journey card--journey-{{ journey_colour|default('yellow') }}">
+    {% if image %}
+      <div class="card__image-wrap">
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+      </div>
+    {% endif %}
+    <div class="card__body">
+      <h3 class="card__title">{{ title }}</h3>
+      {% if desc %}<p class="card__desc">{{ desc }}</p>{% endif %}
+      {% if cta %}
+        <div class="card__actions">
+          {% include "@components/button/button.twig" with { label: cta.label, href: cta.href, variant: "outline-dark", size: "sm" } %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% else %}
+  <div class="card card--{{ variant|default('article') }}">
+    <div class="card__image-wrap">
+      {% if variant == 'event' and date_badge %}
+        <div class="card__date-badge">
+          <span>{{ date_badge.day }}</span>
+          <span>{{ date_badge.month }}</span>
+        </div>
+      {% endif %}
+      {% if image %}
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+      {% endif %}
+    </div>
+    <div class="card__body">
+      {% if chips %}
+        <div class="card__chips">
+          {% for chip in chips %}
+            {% include "@components/chip/chip.twig" with { label: chip.label, variant: chip.variant } %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      <h3 class="card__title">{{ title }}</h3>
+      {% if desc %}<p class="card__desc">{{ desc }}</p>{% endif %}
+      {% if cta %}
+        <div class="card__actions">
+          {% include "@components/button/button.twig" with { label: cta.label, href: cta.href, variant: "outline-green", size: "sm" } %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

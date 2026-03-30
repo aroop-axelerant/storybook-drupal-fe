@@ -1,0 +1,46 @@
+{#
+ * Newsletter signup component — Regent's University London
+ *
+ * Props:
+ * - variant:           string  gradient | dark | light  (default: gradient)
+ * - eyebrow:           string  (optional)
+ * - heading:           string
+ * - body:              string  (optional)
+ * - input_placeholder: string
+ * - submit_label:      string
+ * - privacy_note:      string  (optional)
+ #}
+<section class="newsletter newsletter--{{ variant|default('gradient') }}">
+  <div class="newsletter__inner">
+    <div class="newsletter__copy">
+      {% if eyebrow %}
+        <span class="newsletter__eyebrow">{{ eyebrow }}</span>
+      {% endif %}
+      <h2 class="newsletter__heading">{{ heading }}</h2>
+      {% if body %}
+        <p class="newsletter__body">{{ body }}</p>
+      {% endif %}
+    </div>
+    <div class="newsletter__form-wrap">
+      <form class="newsletter__form" novalidate>
+        <div class="newsletter__input-group">
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input
+            id="newsletter-email"
+            type="email"
+            class="newsletter__input"
+            placeholder="{{ input_placeholder|default('Your email address') }}"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="newsletter__submit btn btn--primary btn--sm">
+            {{ submit_label|default('Subscribe') }}
+          </button>
+        </div>
+        {% if privacy_note %}
+          <p class="newsletter__privacy">{{ privacy_note }}</p>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</section>

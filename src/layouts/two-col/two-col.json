@@ -1,0 +1,13 @@
+{
+  "default": {
+    "variant": "equal",
+    "main_content": "<p>Main content area.</p>",
+    "aside_content": "<p>Aside content area.</p>"
+  },
+  "variants": {
+    "equal":        { "variant": "equal" },
+    "editorial":    { "variant": "editorial" },
+    "sidebar-left": { "variant": "sidebar-left" },
+    "spacious":     { "variant": "spacious" }
+  }
+}

@@ -1,0 +1,11 @@
+// =============================================================================
+// Foundation: Border Radius Tokens
+// Source: Regent's University London design-system/tokens.json
+// =============================================================================
+
+:root {
+  --radius-xs: 0.25rem;  //  4px — minimal rounding (inputs, small chips)
+  --radius-s:  0.5rem;   //  8px — subtle rounding (cards, panels)
+  --radius-m:  1rem;     // 16px — standard rounding (large cards, modals)
+  --radius-l:  999px;    //       — pill (chips, buttons with pill variant)
+}

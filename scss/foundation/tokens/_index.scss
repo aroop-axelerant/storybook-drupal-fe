@@ -1,0 +1,13 @@
+// =============================================================================
+// Foundation: Token Barrel
+// @forward all token partials — scss/main.scss only needs one import.
+// Order matters: colors first (other tokens may reference color vars).
+// =============================================================================
+
+@forward "colors";
+@forward "spacing";
+@forward "typography";
+@forward "radius";
+@forward "elevation";
+@forward "motion";
+@forward "zindex";

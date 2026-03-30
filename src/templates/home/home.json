@@ -1,0 +1,78 @@
+{
+  "default": {
+    "header": {
+      "variant": "light",
+      "logo": { "src": "/assets/full-logo.svg", "alt": "Regent's University London" },
+      "nav": [
+        { "label": "Study",    "href": "/study",    "has_dropdown": true },
+        { "label": "Research", "href": "/research", "has_dropdown": false },
+        { "label": "About",    "href": "/about",    "has_dropdown": true }
+      ],
+      "cta": { "label": "Apply Now", "href": "/apply" }
+    },
+    "hero": {
+      "variant": "dark",
+      "eyebrow": "Regent's University London",
+      "heading": "A world-class education in the heart of London",
+      "body": "Study in one of the world's most inspiring cities, surrounded by international peers in a truly unique campus.",
+      "cta_primary":   { "label": "Explore courses", "href": "/study" },
+      "cta_secondary": { "label": "Our story",       "href": "/about" },
+      "bg_image": "/assets/hero-campus.jpg"
+    },
+    "featured_cards": [
+      {
+        "variant": "course",
+        "tag": "Undergraduate",
+        "heading": "BA (Hons) Business Management",
+        "body": "Develop the skills to lead in a complex, globalised world.",
+        "image": { "src": "/assets/course-business.jpg", "alt": "Business students" },
+        "cta": { "label": "Learn more", "href": "/study/business" }
+      },
+      {
+        "variant": "course",
+        "tag": "Postgraduate",
+        "heading": "MA International Relations",
+        "body": "Examine global politics through a critical, interdisciplinary lens.",
+        "image": { "src": "/assets/course-ir.jpg", "alt": "International Relations" },
+        "cta": { "label": "Learn more", "href": "/study/ir" }
+      },
+      {
+        "variant": "course",
+        "tag": "Postgraduate",
+        "heading": "MSc Data Science & AI",
+        "body": "Gain the technical and analytical skills demanded by industry.",
+        "image": { "src": "/assets/course-ds.jpg", "alt": "Data Science lab" },
+        "cta": { "label": "Learn more", "href": "/study/data-science" }
+      }
+    ],
+    "newsletter": {
+      "variant": "gradient",
+      "eyebrow": "Stay Connected",
+      "heading": "Never miss a moment at Regent's",
+      "body": "Get the latest news, events, and stories from our campus delivered straight to your inbox.",
+      "input_placeholder": "Your email address",
+      "submit_label": "Subscribe",
+      "privacy_note": "We respect your privacy. Unsubscribe at any time."
+    },
+    "footer": {
+      "brand": {
+        "logo": { "src": "/assets/full-logo-white.svg", "alt": "Regent's University London" },
+        "tagline": "A unique university in the heart of London's Royal Regent's Park."
+      },
+      "columns": [
+        { "heading": "Study",    "links": [{ "label": "Undergraduate", "href": "/study/undergraduate" }, { "label": "Postgraduate", "href": "/study/postgraduate" }] },
+        { "heading": "Research", "links": [{ "label": "Research Centres", "href": "/research/centres" }, { "label": "PhD Programmes", "href": "/research/phd" }] },
+        { "heading": "About",    "links": [{ "label": "Our Story", "href": "/about/story" }, { "label": "Campus", "href": "/about/campus" }] }
+      ],
+      "social": [
+        { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
+        { "platform": "linkedin",  "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" }
+      ],
+      "legal": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Accessibility",  "href": "/accessibility" }
+      ],
+      "copyright": "© 2025 Regent's University London. All rights reserved."
+    }
+  }
+}

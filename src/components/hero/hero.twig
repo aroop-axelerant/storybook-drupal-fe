@@ -1,0 +1,59 @@
+{#
+ * Hero component — Regent's University London
+ *
+ * Props:
+ * - variant:      string   dark | editorial          (default: dark)
+ * - eyebrow:      string   Small label above title   (optional)
+ * - title:        string   Main heading (serif)
+ * - subtitle:     string   Supporting text           (optional)
+ * - cta_primary:  { label, href }                   (optional)
+ * - cta_secondary:{ label, href }                   (optional)
+ * - bg_gradient:  string   hero-dark | editorial | warm | ocean | neutral
+ * - stats:        array of { value, label }          (optional, course-details)
+ #}
+<section class="hero hero--{{ variant|default('dark') }}">
+  <div class="hero__bg hero__bg--{{ bg_gradient|default('hero-dark') }}"></div>
+  <div class="hero__inner">
+    {% if eyebrow %}
+      <span class="hero__eyebrow">{{ eyebrow }}</span>
+    {% endif %}
+
+    <h1 class="hero__title">{{ title }}</h1>
+
+    {% if subtitle %}
+      <p class="hero__subtitle">{{ subtitle }}</p>
+    {% endif %}
+
+    {% if cta_primary or cta_secondary %}
+      <div class="hero__actions">
+        {% if cta_primary %}
+          {% include "@components/button/button.twig" with {
+            label: cta_primary.label,
+            href:  cta_primary.href,
+            variant: "primary-inverted",
+            size: "lg"
+          } %}
+        {% endif %}
+        {% if cta_secondary %}
+          {% include "@components/button/button.twig" with {
+            label: cta_secondary.label,
+            href:  cta_secondary.href,
+            variant: "secondary-inverted",
+            size: "lg"
+          } %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if stats %}
+      <div class="hero__stats">
+        {% for stat in stats %}
+          <div class="hero__stat">
+            <span class="hero__stat-value">{{ stat.value }}</span>
+            <span class="hero__stat-label">{{ stat.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

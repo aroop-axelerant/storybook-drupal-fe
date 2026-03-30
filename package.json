@@ -1,0 +1,28 @@
+{
+  "name": "regents-storybook-drupal-fe",
+  "version": "1.0.0",
+  "description": "Regent's University London — Storybook design system with Drupal SDC-ready structure",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "preview": "npx serve preview -p 8080",
+    "scss:build": "sass scss/main.scss dist/design-system.css --style=compressed",
+    "scss:watch": "sass scss/main.scss dist/design-system.css --watch",
+    "drupal:sync": "bash scripts/sync-tokens.sh",
+    "drupal:export": "bash scripts/drupal-export.sh",
+    "new-component": "bash scripts/new-component.sh"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.0.0",
+    "@storybook/addon-controls": "^8.0.0",
+    "@storybook/addon-docs": "^8.0.0",
+    "@storybook/addon-viewport": "^8.0.0",
+    "@storybook/html-webpack5": "^8.0.0",
+    "css-loader": "^7.0.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^16.0.0",
+    "storybook": "^8.0.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.0.0"
+  }
+}

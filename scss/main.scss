@@ -1,0 +1,40 @@
+// =============================================================================
+// Design System Entry Point — Regent's University London
+// All @use rules must appear before any CSS rules (SCSS spec).
+// =============================================================================
+
+// 1. Foundation tokens
+@use "foundation/tokens/index" as *;
+
+// 2. Components (alphabetical)
+@use "components/button/button";
+@use "components/card/card";
+@use "components/chip/chip";
+@use "components/footer/footer";
+@use "components/header/header";
+@use "components/hero/hero";
+@use "components/newsletter/newsletter";
+
+// 3. Layouts (alphabetical)
+@use "layouts/container/container";
+@use "layouts/three-col/three-col";
+@use "layouts/two-col/two-col";
+
+// 4. Base reset (must come after all @use rules)
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }

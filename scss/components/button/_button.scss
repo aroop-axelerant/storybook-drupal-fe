@@ -1,0 +1,135 @@
+// Button component — Regent's University London
+// Variants: primary, primary-inverted, secondary-inverted, outline-dark, outline-green, ghost
+// Sizes: sm, md (default), lg
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  padding: var(--sp-12) var(--sp-24);
+  font-family: var(--font-sans);
+  font-size: var(--text-label-l);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-ui);
+  letter-spacing: var(--ls-wide);
+  border-radius: var(--radius-l);     // Pill shape — Regents brand
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--ease), color var(--ease), border-color var(--ease), transform var(--ease-fast), box-shadow var(--ease);
+  white-space: nowrap;
+
+  // Focus state — zingy yellow ring (Regents accessibility standard)
+  &:focus-visible {
+    outline: 3px solid var(--color-border-focus);
+    outline-offset: 3px;
+  }
+
+  // Active feedback — scale down
+  &:active { transform: scale(0.97); }
+
+  // Disabled
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // ── Variants ────────────────────────────────────────────────────────────────
+
+  // Primary: forest-green background, white text
+  &--primary {
+    background: var(--color-action);
+    color: var(--color-action-text);
+    border-color: var(--color-action);
+
+    &:hover:not(:disabled) {
+      background: var(--color-action-hover);
+      border-color: var(--color-action-hover);
+    }
+  }
+
+  // Primary Inverted: zingy-yellow background, charcoal text
+  &--primary-inverted {
+    background: var(--color-zingy-yellow);
+    color: var(--color-charcoal);
+    border-color: var(--color-zingy-yellow);
+
+    &:hover:not(:disabled) {
+      background: var(--color-zingy-yellow-50);
+      border-color: var(--color-zingy-yellow-50);
+    }
+  }
+
+  // Secondary Inverted: transparent, white border (for dark backgrounds)
+  &--secondary-inverted {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background: var(--color-light-40);
+    }
+  }
+
+  // Outline Dark: charcoal border on light backgrounds
+  &--outline-dark {
+    background: transparent;
+    color: var(--color-charcoal);
+    border-color: var(--color-charcoal);
+
+    &:hover:not(:disabled) {
+      background: var(--color-charcoal-10);
+    }
+  }
+
+  // Outline Green: forest-green border
+  &--outline-green {
+    background: transparent;
+    color: var(--color-action);
+    border-color: var(--color-action);
+
+    &:hover:not(:disabled) {
+      background: var(--color-action);
+      color: var(--color-white);
+    }
+  }
+
+  // Ghost: no border, text-only interactive
+  &--ghost {
+    background: transparent;
+    color: var(--color-action);
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: var(--color-charcoal-10);
+    }
+  }
+
+  // ── Sizes ───────────────────────────────────────────────────────────────────
+
+  &--sm {
+    padding: var(--sp-8) var(--sp-16);
+    font-size: var(--text-label-m);
+  }
+
+  &--md {
+    padding: var(--sp-12) var(--sp-24);
+    font-size: var(--text-label-l);
+  }
+
+  &--lg {
+    padding: var(--sp-16) var(--sp-32);
+    font-size: var(--text-label-xl);
+  }
+
+  // ── Icon support ────────────────────────────────────────────────────────────
+
+  &__icon {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+  }
+}

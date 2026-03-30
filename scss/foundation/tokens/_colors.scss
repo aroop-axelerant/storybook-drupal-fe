@@ -1,0 +1,110 @@
+// =============================================================================
+// Foundation: Color Tokens
+// Source: Regent's University London design-system/tokens.json + tokens.css
+// =============================================================================
+// RULE: Never use raw hex values in component SCSS. Always var(--color-*).
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Primitive palette — Neutrals
+  // ---------------------------------------------------------------------------
+  --color-white:      #ffffff;
+  --color-off-white:  #f9f2e8;  // Default page background
+  --color-charcoal:   #0b191a;  // Primary text / dark backgrounds
+
+  // Charcoal tint scale (percentage of charcoal mixed into white)
+  --color-charcoal-90: #233031;
+  --color-charcoal-80: #2e3d3e;
+  --color-charcoal-70: #3b4c4e;
+  --color-charcoal-60: #4f6162;
+  --color-charcoal-50: #667e80;
+  --color-charcoal-40: #8a9d9e;
+  --color-charcoal-30: #aabcbd;
+  --color-charcoal-20: #c9d5d5;
+  --color-charcoal-10: #e7e8e8;
+
+  // ---------------------------------------------------------------------------
+  // Primitive palette — Youthful Brights
+  // ---------------------------------------------------------------------------
+  --color-zingy-yellow:      #e0f94c;  // Focus rings, accent CTAs
+  --color-zingy-yellow-50:   #f0fcab;  // Subtle background tint
+  --color-violet:            #deccf3;  // Journey cards, gradients
+  --color-soft-peach:        #ffb38f;  // Accent, gradients
+  --color-soft-peach-50:     #ffd9c9;  // Subtle background tint
+
+  // ---------------------------------------------------------------------------
+  // Primitive palette — Legacy / Brand
+  // ---------------------------------------------------------------------------
+  --color-forest-green:      #005b4b;  // Primary action, brand
+  --color-forest-green-hover:#004a3c;  // Darker on hover
+  --color-powdered-blue:     #46adeb;  // Secondary action
+  --color-powdered-blue-50:  #abd6f5;  // Subtle variant
+  --color-deep-red:          #851811;  // Error / warning
+  --color-deep-red-50:       #caa4a4;  // Error background
+
+  // ---------------------------------------------------------------------------
+  // Primitive palette — Extra
+  // ---------------------------------------------------------------------------
+  --color-error-red:  #d63b3b;
+
+  // ---------------------------------------------------------------------------
+  // Transparent overlays
+  // ---------------------------------------------------------------------------
+  --color-dark-40:   rgba(11, 25, 26, 0.40);   // Charcoal at 40% (image overlays)
+  --color-light-40:  rgba(255, 255, 255, 0.40); // White at 40% (glassmorphism)
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — ACTION
+  // ---------------------------------------------------------------------------
+  --color-action:             var(--color-forest-green);
+  --color-action-hover:       var(--color-forest-green-hover);
+  --color-action-text:        var(--color-white);
+  --color-action-secondary:   var(--color-powdered-blue);
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — BACKGROUND
+  // ---------------------------------------------------------------------------
+  --color-bg:           var(--color-off-white);   // Default page bg
+  --color-bg-surface:   var(--color-white);        // Card / panel bg
+  --color-bg-dark:      var(--color-charcoal);     // Dark sections
+  --color-bg-accent:    var(--color-zingy-yellow); // Accent sections
+  --color-bg-brand:     var(--color-forest-green); // Brand/green sections
+  --color-bg-violet:    var(--color-violet);        // Violet sections
+  --color-bg-warm:      var(--color-soft-peach-50);// Warm sections
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — TEXT
+  // ---------------------------------------------------------------------------
+  --color-text:           var(--color-charcoal);        // Default body text
+  --color-text-secondary: var(--color-charcoal-60);     // Secondary / muted
+  --color-text-tertiary:  var(--color-charcoal-40);     // Disabled / hint
+  --color-text-inverted:  var(--color-white);            // On dark backgrounds
+  --color-text-brand:     var(--color-forest-green);    // Brand emphasis
+  --color-text-disabled:  var(--color-charcoal-40);
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — BORDER
+  // ---------------------------------------------------------------------------
+  --color-border:         var(--color-charcoal-20);  // Default border
+  --color-border-strong:  var(--color-charcoal-40);  // Emphasis border
+  --color-border-focus:   var(--color-zingy-yellow); // Focus ring
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — STATE
+  // ---------------------------------------------------------------------------
+  --color-error:    var(--color-error-red);
+  --color-success:  var(--color-forest-green);
+  --color-disabled: var(--color-charcoal-20);
+  --color-warning:  var(--color-soft-peach);
+
+  // ---------------------------------------------------------------------------
+  // Gradients (applied as background-image)
+  // ---------------------------------------------------------------------------
+  --gradient-editorial: linear-gradient(100deg, var(--color-violet), var(--color-soft-peach), var(--color-forest-green));
+  --gradient-hero-dark: linear-gradient(135deg, var(--color-charcoal-90), var(--color-charcoal-70));
+  --gradient-accent:    linear-gradient(180deg, var(--color-violet), var(--color-soft-peach-50));
+  --gradient-warm:      linear-gradient(135deg, var(--color-soft-peach-50), var(--color-soft-peach));
+  --gradient-ocean:     linear-gradient(135deg, var(--color-forest-green), var(--color-powdered-blue));
+  --gradient-neutral:   linear-gradient(135deg, var(--color-charcoal-10), var(--color-charcoal-20));
+}

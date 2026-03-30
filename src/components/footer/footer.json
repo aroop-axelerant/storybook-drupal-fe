@@ -1,0 +1,49 @@
+{
+  "default": {
+    "brand": {
+      "logo": { "src": "/assets/full-logo-white.svg", "alt": "Regent's University London" },
+      "tagline": "A unique university in the heart of London's Royal Regent's Park."
+    },
+    "columns": [
+      {
+        "heading": "Study",
+        "links": [
+          { "label": "Undergraduate", "href": "/study/undergraduate" },
+          { "label": "Postgraduate", "href": "/study/postgraduate" },
+          { "label": "Short Courses", "href": "/study/short-courses" },
+          { "label": "Online Learning", "href": "/study/online" }
+        ]
+      },
+      {
+        "heading": "Research",
+        "links": [
+          { "label": "Research Centres", "href": "/research/centres" },
+          { "label": "PhD Programmes", "href": "/research/phd" },
+          { "label": "Publications", "href": "/research/publications" },
+          { "label": "Partnerships", "href": "/research/partnerships" }
+        ]
+      },
+      {
+        "heading": "About",
+        "links": [
+          { "label": "Our Story", "href": "/about/story" },
+          { "label": "Leadership", "href": "/about/leadership" },
+          { "label": "Campus", "href": "/about/campus" },
+          { "label": "News", "href": "/about/news" }
+        ]
+      }
+    ],
+    "social": [
+      { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
+      { "platform": "linkedin", "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" },
+      { "platform": "youtube", "href": "https://youtube.com/regentsuniversitylondon", "label": "YouTube" }
+    ],
+    "legal": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Cookie Policy", "href": "/cookies" },
+      { "label": "Accessibility", "href": "/accessibility" },
+      { "label": "Terms of Use", "href": "/terms" }
+    ],
+    "copyright": "© 2025 Regent's University London. All rights reserved."
+  }
+}

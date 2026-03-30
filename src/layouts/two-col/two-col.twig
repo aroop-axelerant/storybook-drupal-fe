@@ -1,0 +1,12 @@
+{#
+ * Two-column layout — Regent's University London
+ *
+ * Props:
+ * - variant:       string  equal | editorial | sidebar-left | spacious  (default: equal)
+ * - main_content:  string  (slot — left/main column HTML)
+ * - aside_content: string  (slot — right/aside column HTML)
+ #}
+<div class="layout-two-col{% if variant and variant != 'equal' %} layout-two-col--{{ variant }}{% endif %}">
+  <div class="layout-two-col__main">{{ main_content }}</div>
+  <div class="layout-two-col__aside">{{ aside_content }}</div>
+</div>
