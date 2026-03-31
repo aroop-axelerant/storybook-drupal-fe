@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Regent's University London — Storybook design system with Drupal SDC-ready structure",
   "scripts": {
+    "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "preview": "npx serve preview -p 8080",
