@@ -1,0 +1,26 @@
+{
+  "default": {
+    "id":          "search-default",
+    "label":       "Search",
+    "placeholder": "Search courses, subjects, topics…",
+    "value":       "",
+    "button_label": "Submit search"
+  },
+  "variants": {
+    "filled": {
+      "id":          "search-filled",
+      "label":       "Search",
+      "placeholder": "Search courses, subjects, topics…",
+      "value":       "Undergraduate psychology",
+      "button_label": "Submit search"
+    },
+    "disabled": {
+      "id":          "search-disabled",
+      "label":       "Search",
+      "placeholder": "Search courses, subjects, topics…",
+      "value":       "",
+      "disabled":    true,
+      "button_label": "Submit search"
+    }
+  }
+}

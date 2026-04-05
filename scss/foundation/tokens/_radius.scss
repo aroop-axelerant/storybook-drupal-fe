@@ -1,11 +1,24 @@
 // =============================================================================
-// Foundation: Border Radius Tokens
+// Foundation: Border Tokens
 // Source: Regent's University London design-system/tokens.json
+// Border Radius: Rounding values for corners
+// Border Width: Stroke weights for borders and outlines
 // =============================================================================
 
 :root {
+  // ---------------------------------------------------------------------------
+  // Border Radius — Corner rounding
+  // ---------------------------------------------------------------------------
   --radius-xs: 0.25rem;  //  4px — minimal rounding (inputs, small chips)
   --radius-s:  0.5rem;   //  8px — subtle rounding (cards, panels)
   --radius-m:  1rem;     // 16px — standard rounding (large cards, modals)
   --radius-l:  999px;    //       — pill (chips, buttons with pill variant)
+
+  // ---------------------------------------------------------------------------
+  // Border Width — Stroke weights
+  // ---------------------------------------------------------------------------
+  --border-xs: 1px;      //  1px — hairline, focus rings
+  --border-s:  2px;      //  2px — subtle borders
+  --border-m:  4px;      //  4px — prominent borders
+  --border-l:  8px;      //  8px — strong borders, accent strokes
 }

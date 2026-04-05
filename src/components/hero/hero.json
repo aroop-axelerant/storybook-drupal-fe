@@ -1,36 +1,66 @@
 {
   "default": {
-    "variant": "dark",
-    "eyebrow": "Regent's University London",
-    "title": "Where Ambition Meets Opportunity",
-    "subtitle": "A unique university in the heart of London's Regent's Park — inspiring the next generation of global leaders.",
-    "cta_primary": { "label": "Apply Now", "href": "/apply" },
-    "cta_secondary": { "label": "Explore Courses", "href": "/courses" },
-    "bg_gradient": "hero-dark"
+    "overline":  "Welcome to Regent's",
+    "title":     "Pursue your passion in the heart of London.",
+    "subtitle":  "A private university unlike any other — where creative ambition meets academic excellence in one of the world's most inspiring cities.",
+    "image_src": "/images/Library.jpg",
+    "image_alt": "Students studying in Regent's University London library",
+    "video_src": "",
+    "actions": {
+      "type": "buttons",
+      "primary_label": "Book an Open Day",
+      "primary_href":  "#",
+      "secondary_label": "Explore courses",
+      "secondary_href":  "#"
+    }
   },
   "variants": {
-    "dark": {
-      "variant": "dark",
-      "title": "Where Ambition Meets Opportunity",
-      "bg_gradient": "hero-dark"
-    },
-    "editorial": {
-      "variant": "editorial",
-      "eyebrow": "School of Business",
-      "title": "Transforming Business Leaders of Tomorrow",
-      "subtitle": "Study business in one of the world's most dynamic cities.",
-      "bg_gradient": "editorial"
-    },
-    "course-details": {
-      "variant": "dark",
-      "eyebrow": "Undergraduate",
-      "title": "BA (Hons) Business Management",
-      "subtitle": "3 years · Full-time · London",
-      "stats": [
-        { "value": "94%", "label": "Graduate employment rate" },
-        { "value": "Top 10", "label": "London universities" },
-        { "value": "120+", "label": "Nationalities on campus" }
+    "course": {
+      "overline":  "Undergraduate",
+      "title":     "BA (Hons) Fashion Marketing",
+      "subtitle":  "Combine creative flair with business acumen on one of London's most distinctive fashion programmes — taught in the heart of the industry.",
+      "fg_image_src": "/images/Fashion studio.jpg",
+      "fg_image_alt": "Fashion students working in a studio at Regent's University London",
+      "highlights": [
+        { "icon": "calendar", "label": "Next Start Date", "value": "Sep 2026" },
+        { "icon": "book",     "label": "Study Mode",      "value": "Full Time" },
+        { "icon": "clock",    "label": "Duration",        "value": "3 Years"   },
+        { "icon": "ucas",     "label": "UCAS Code",       "value": "A006"      }
       ]
+    },
+    "split": {
+      "overline":  "Regent's University London",
+      "title":     "A place where ambition finds its home.",
+      "subtitle":  "Small classes, world-class connections, and a campus set in the heart of Regent's Park. Experience university life unlike anywhere else.",
+      "fg_image_src": "/images/Regent's University London(1).jpg",
+      "fg_image_alt": "The entrance gateway to Regent's University London campus",
+      "actions": {
+        "type": "buttons",
+        "primary_label": "Book an Open Day",
+        "primary_href":  "#",
+        "secondary_label": "Explore courses",
+        "secondary_href":  "#"
+      }
+    },
+    "landing": {
+      "title":     "International Students",
+      "summary":   "Join students from over 140 nationalities at Regent's University London. Everything you need to know about studying in London as an international student.",
+      "image_src": "/images/hero-landing-background.jpg",
+      "image_alt": ""
+    },
+    "home": {
+      "overline":  "Regent's University London",
+      "title":     "Study in the heart of London's most iconic park.",
+      "subtitle":  "Join over 4,000 students from 140 nationalities at a campus surrounded by Regent's Park — and a community that inspires you to think bigger.",
+      "image_src": "/images/Regent's University London (14).jpg",
+      "image_alt": "Regent's University London students on campus",
+      "video_src": "",
+      "youtube_id": "LKWowQ_d6Ic",
+      "actions": {
+        "type": "search",
+        "search_placeholder": "Search courses, subjects, topics…",
+        "search_button_label": "Submit search"
+      }
     }
   }
 }

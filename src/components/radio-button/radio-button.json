@@ -1,0 +1,9 @@
+{
+  "default": { "id": "sep-2025", "label": "September 2025", "name": "entry-year", "value": "sep-2025" },
+  "variants": {
+    "default":  { "id": "sep-2025", "label": "September 2025", "name": "entry-year", "value": "sep-2025" },
+    "selected": { "id": "jan-2026", "label": "January 2026",   "name": "entry-year", "value": "jan-2026", "checked": true },
+    "disabled": { "id": "sep-2026", "label": "September 2026", "name": "entry-year", "value": "sep-2026", "disabled": true },
+    "error":    { "id": "yr-err",   "label": "September 2025", "name": "entry-year-err", "error": true }
+  }
+}

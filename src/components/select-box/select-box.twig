@@ -1,0 +1,29 @@
+{#
+ * Select Box component — Regent's University London
+ *
+ * Props:
+ * - id:       string    Field id
+ * - label:    string    Visible label
+ * - options:  array     Array of option strings (first is placeholder)
+ * - required: boolean   Marks field required
+ * - disabled: boolean   Disabled state
+ * - hint:     string    Helper text
+ * - error:    string    Error message
+ #}
+<div class="form-group">
+  <label class="form-label{% if required %} form-label--required{% endif %}" for="{{ id }}">{{ label }}</label>
+  <div class="select-wrap">
+    <select
+      class="input{% if error %} input--error{% endif %}"
+      id="{{ id }}"
+      {% if required %}required{% endif %}
+      {% if disabled %}disabled{% endif %}
+      {% if error %}aria-invalid="true" aria-describedby="{{ id }}-error"{% endif %}>
+      {% for option in options %}
+        <option{% if loop.first %} value=""{% endif %}>{{ option }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% if hint and not error %}<span class="form-hint">{{ hint }}</span>{% endif %}
+  {% if error %}<span class="form-error-msg" id="{{ id }}-error" role="alert">{{ error }}</span>{% endif %}
+</div>

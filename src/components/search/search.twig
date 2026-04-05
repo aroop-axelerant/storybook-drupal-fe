@@ -1,0 +1,54 @@
+{#
+  Search component
+  @prop {string}  id            - Unique id linking label to input
+  @prop {string}  label         - Visible label text (visually hidden by default, shown on focus)
+  @prop {string}  placeholder   - Input placeholder text
+  @prop {string}  value         - Pre-filled value (optional)
+  @prop {boolean} disabled      - Disabled state (optional)
+  @prop {string}  button_label  - Accessible label for the submit button
+#}
+
+<div class="search">
+  <label class="search__label sr-only" for="{{ id }}">{{ label }}</label>
+  <div class="search__field{% if disabled %} search__field--disabled{% endif %}">
+
+    {# Search icon — left ─────────────────────────────────────────────────── #}
+    <span class="search__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+    </span>
+
+    {# Text input ─────────────────────────────────────────────────────────── #}
+    <input
+      class="search__input"
+      id="{{ id }}"
+      type="search"
+      name="search"
+      placeholder="{{ placeholder }}"
+      {% if value %}value="{{ value }}"{% endif %}
+      {% if disabled %}disabled{% endif %}
+      autocomplete="off"
+      spellcheck="false"
+    >
+
+    {# Submit button — right arrow icon ──────────────────────────────────── #}
+    <button
+      class="search__submit"
+      type="submit"
+      aria-label="{{ button_label }}"
+      {% if disabled %}disabled{% endif %}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </button>
+
+  </div>
+</div>

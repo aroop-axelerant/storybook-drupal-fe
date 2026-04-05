@@ -1,0 +1,9 @@
+{
+  "default": { "id": "email-updates", "label": "Email updates", "checked": false },
+  "variants": {
+    "off":      { "id": "email-updates", "label": "Email updates",     "checked": false },
+    "on":       { "id": "sms-alerts",    "label": "SMS alerts",        "checked": true  },
+    "disabled": { "id": "reduce-motion", "label": "Reduce motion",     "checked": true, "disabled": true },
+    "error":    { "id": "terms",         "label": "I accept the terms","checked": false, "error": "You must accept the terms to continue" }
+  }
+}

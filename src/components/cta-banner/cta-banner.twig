@@ -1,0 +1,45 @@
+{#
+  CTA Banner component
+  @prop {string} variant           - "full-bleed" | "boxed"
+  @prop {string} eyebrow           - Small uppercase label above heading
+  @prop {string} heading           - Main heading (serif font)
+  @prop {string} body              - Supporting body copy
+  @prop {string} input_placeholder - Placeholder text for email input
+  @prop {string} button_label      - Submit button label
+#}
+
+<section class="cta-banner cta-banner--{{ variant }}" aria-label="{{ eyebrow }}">
+  <div class="cta-banner__inner">
+
+    <div class="cta-banner__content">
+      {% if eyebrow %}
+        <p class="cta-banner__eyebrow">{{ eyebrow }}</p>
+      {% endif %}
+      <h2 class="cta-banner__heading">{{ heading }}</h2>
+      {% if body %}
+        <p class="cta-banner__body">{{ body }}</p>
+      {% endif %}
+    </div>
+
+    <div class="cta-banner__action">
+      <form class="cta-banner__form" novalidate>
+        <label class="cta-banner__label" for="cta-email">Email address</label>
+        <div class="cta-banner__field-row">
+          <input
+            class="cta-banner__input"
+            id="cta-email"
+            type="email"
+            name="email"
+            placeholder="{{ input_placeholder }}"
+            autocomplete="email"
+            aria-required="true"
+          >
+          <button class="cta-banner__submit" type="submit">
+            {{ button_label }}
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>

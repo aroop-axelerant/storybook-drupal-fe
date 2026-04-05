@@ -2,31 +2,46 @@
 // Variants: article, course, event, leader, journey-yellow, journey-violet, journey-peach
 
 .card {
-  background: var(--color-bg-surface);
-  border-radius: var(--radius-s);
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--ease), transform var(--ease);
+  transition: box-shadow var(--duration) var(--ease-out),
+              transform var(--duration) var(--ease-out);
 
-  &:hover { box-shadow: var(--shadow-md); }
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
 
   // ── Sub-elements ──────────────────────────────────────────────────────────
 
-  &__image-wrap {
+  &__media {
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform var(--ease-slow);
+      transition: transform var(--duration-slow) var(--ease-out);
     }
   }
 
-  &:hover &__image-wrap img { transform: scale(1.03); }
+  &:hover &__media img { transform: scale(1.04); }
+
+  &__image-link {
+    display: block;
+    outline: none;
+
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: -2px; }
+  }
 
   &__chips {
     display: flex;
@@ -40,7 +55,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--sp-8);
+    gap: var(--sp-12);
   }
 
   &__eyebrow {
@@ -150,6 +165,252 @@
       font-size: var(--text-small);
       color: var(--color-text-secondary);
     }
+  }
+
+  // ── Shared text + interactive elements ──────────────────────────────────────
+
+  &__heading {
+    font-family: var(--font-sans);
+    font-size: var(--text-h4);
+    font-weight: var(--fw-h4);
+    line-height: var(--lh-h4);
+    letter-spacing: var(--ls-h4);
+    color: var(--color-charcoal);
+    margin: 0;
+  }
+
+  &__heading-link {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+
+    // Stretched link — makes the whole card clickable
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    &:focus-visible::after {
+      outline: 2px solid var(--color-powdered-blue);
+      outline-offset: -2px;
+      border-radius: var(--radius-m);
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__excerpt {
+    font-size: var(--text-body-sm);
+    line-height: var(--lh-body-sm);
+    color: var(--color-charcoal-60);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  // Standout-link style CTA
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-8);
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--color-forest-green);
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: var(--sp-4);
+    position: relative;
+    z-index: 1;
+    border-radius: var(--radius-s);
+    outline: none;
+    transition: opacity var(--duration) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+
+    &:hover  { opacity: var(--opacity-hover, 0.8); }
+    &:active { transform: scale(0.98); }
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 4px; }
+
+    svg { flex-shrink: 0; transition: transform 200ms var(--ease-out); }
+    &:hover svg { transform: translateX(6px); }
+  }
+
+  // Pushes CTA to bottom of flex column
+  &__spacer { flex: 1; }
+
+  // ── Course card — dark forest-green card, inverse text ──────────────────────
+
+  &--course {
+    background: var(--color-bg-brand);
+
+    .card__body { gap: var(--sp-16); }
+
+    .card__heading { color: var(--color-white); }
+    .card__heading-link:hover { color: var(--color-white); }
+    .card__excerpt { color: rgba(255, 255, 255, 0.80); }
+  }
+
+  // Course highlights list
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0;
+  }
+
+  &__highlight {
+    display: grid;
+    grid-template-columns: minmax(var(--sp-96), 1fr) 2fr;
+    align-items: center;
+    gap: var(--sp-16);
+    padding: var(--sp-16) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__highlight-label {
+    font-size: var(--text-body-xs);
+    font-weight: var(--fw-regular);
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: var(--ls-body-xs);
+    text-transform: uppercase;
+  }
+
+  &__highlight-value {
+    font-size: var(--text-label-m);
+    font-weight: var(--fw-semibold);
+    color: var(--color-white);
+  }
+
+  // Course CTA — secondary button inverse
+  &__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    gap: var(--sp-8);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--color-white);
+    background: transparent;
+    border: 2px solid var(--color-white);
+    border-radius: var(--radius-l);
+    padding: var(--sp-12) var(--sp-24);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    outline: none;
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    transition: background var(--duration) var(--ease-out),
+                color var(--duration) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+
+    &:hover  { background: var(--color-white); color: var(--color-charcoal); }
+    &:active { transform: scale(0.98); }
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 4px; }
+  }
+
+  // ── Video card — portrait 9:16 with full-bleed video + overlay content ──────
+
+  &--video {
+    aspect-ratio: 9 / 16;
+    background: var(--color-charcoal);
+    max-width: 360px;
+    cursor: pointer;
+    position: relative;
+
+    // Full-bleed video fills the card
+    .card__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+
+    // Gradient scrim — stronger at bottom for legibility
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(20, 32, 28, 0.95) 0%,
+        rgba(20, 32, 28, 0.50) 45%,
+        rgba(20, 32, 28, 0.10) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    // Bottom content
+    .card__body {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: var(--sp-24) var(--sp-16);
+      gap: var(--sp-8);
+      background: none;
+      flex: none;
+    }
+
+    .card__heading { color: var(--color-white); }
+
+    .card__excerpt {
+      color: rgba(255, 255, 255, 0.80);
+      -webkit-line-clamp: unset;
+    }
+  }
+
+  // ── Video controls (tag + mute button) ──────────────────────────────────────
+
+  &__video-controls {
+    position: absolute;
+    top: var(--sp-16);
+    left: var(--sp-16);
+    right: var(--sp-16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  &__mute-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-4);
+    border-radius: 50%;
+    background: var(--color-white);
+    border: none;
+    cursor: pointer;
+    color: var(--color-charcoal);
+    flex-shrink: 0;
+    line-height: 0;
+    outline: none;
+    transition: background var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+
+    &:hover  { background: var(--color-off-white); }
+    &:active { transform: scale(0.96); }
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 2px; }
+
+    .icon-mute-off,
+    .icon-mute-on  { display: none; line-height: 0; }
+
+    &[data-muted="true"]  .icon-mute-off { display: block; }
+    &[data-muted="false"] .icon-mute-on  { display: block; }
   }
 
   // Journey cards — overlapping image + colored body

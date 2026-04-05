@@ -1,0 +1,7 @@
+{
+  "default": { "id": "country", "label": "Country of residence", "options": ["Select country…", "United Kingdom", "United States", "Germany"] },
+  "variants": {
+    "default": { "id": "country", "label": "Country of residence", "options": ["Select country…", "United Kingdom", "United States", "Germany"] },
+    "error":   { "id": "intake",  "label": "Entry year", "required": true, "error": "Please select an entry year", "options": ["Select entry year…", "September 2025", "January 2026"] }
+  }
+}

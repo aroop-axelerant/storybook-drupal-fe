@@ -25,19 +25,22 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      filter: blur(3px);
+      transform: scale(1.04); // Hides blur edge bleed
     }
 
-    // Dark overlay for image backgrounds
+    // Dark overlay — matches video component scrim for consistent legibility
     &::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(11, 25, 26, 0.75) 0%,
-        rgba(11, 25, 26, 0.30) 50%,
-        rgba(11, 25, 26, 0.0) 100%
+        rgba(11, 25, 26, 0.90) 0%,
+        rgba(11, 25, 26, 0.60) 30%,
+        rgba(11, 25, 26, 0.0)  65%
       );
+      pointer-events: none;
     }
   }
 

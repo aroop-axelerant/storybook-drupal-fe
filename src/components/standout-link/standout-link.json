@@ -1,0 +1,7 @@
+{
+  "default": { "label": "Download prospectus", "variant": "default", "url": "#" },
+  "variants": {
+    "default": { "label": "Download prospectus",      "variant": "default",  "url": "#" },
+    "inverse": { "label": "Explore Regent's Park campus", "variant": "inverse", "url": "#" }
+  }
+}

@@ -8,6 +8,7 @@ module.exports = {
     "../src/templates/**/*.stories.@(js|mdx)",
     "../src/pages/**/*.stories.@(js|mdx)",
   ],
+  staticDirs: ["../src/assets"],
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-controls",
@@ -16,11 +17,38 @@ module.exports = {
   ],
   framework: "@storybook/html-webpack5",
 
+  // Allow YouTube iframes inside the Storybook story iframe
+  viteFinal: undefined,
+  devServer: {
+    headers: {
+      "Permissions-Policy": "autoplay=*, fullscreen=*",
+      "Content-Security-Policy": "frame-src https://www.youtube-nocookie.com https://www.youtube.com 'self'",
+    },
+  },
+
   webpackFinal: async (config) => {
-    // SCSS loader
+    // Pass autoplay permission to nested iframes via devServer headers
+    config.devServer = {
+      ...config.devServer,
+      headers: {
+        ...(config.devServer && config.devServer.headers),
+        "Permissions-Policy": "autoplay=*, fullscreen=*",
+        "Content-Security-Policy": "frame-src https://www.youtube-nocookie.com https://www.youtube.com 'self'",
+      },
+    };
+    // SCSS loader with font handling
     config.module.rules.push({
       test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
+      use: [
+        "style-loader",
+        {
+          loader: "css-loader",
+          options: {
+            url: false, // Disable URL resolving for fonts - serve via staticDirs instead
+          },
+        },
+        "sass-loader",
+      ],
     });
 
     // Twig namespace aliases

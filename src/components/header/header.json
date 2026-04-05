@@ -1,17 +1,267 @@
 {
   "default": {
-    "variant": "light",
-    "logo": { "src": "/assets/full-logo.svg", "alt": "Regent's University London" },
-    "nav": [
-      { "label": "Study",    "href": "/study",    "has_dropdown": true },
-      { "label": "Research", "href": "/research", "has_dropdown": false },
-      { "label": "About",    "href": "/about",    "has_dropdown": true }
+    "logo_src": "/graphics/brand/logo-emblem.svg",
+    "logo_alt": "Regent's University London",
+    "logo_href": "/",
+    "apply_label": "Apply now",
+    "apply_href": "#",
+    "nav_links": [
+      { "label": "Study",         "href": "#", "panel": "panel-study" },
+      { "label": "International", "href": "#", "panel": "panel-international" },
+      { "label": "Why Regent's",  "href": "#", "panel": "panel-why" }
     ],
-    "cta": { "label": "Apply Now", "href": "/apply" }
+    "nav_sections": [
+      {
+        "id": "panel-study",
+        "label": "Study",
+        "title": "Study at Regent's",
+        "description": "Pursue your passions in the heart of London. Choose from a range of undergraduate, postgraduate and professional programmes designed for the ambitious and creative.",
+        "sub_links": [
+          { "label": "Undergraduate",            "href": "#", "detail": "detail-ug" },
+          { "label": "Postgraduate",             "href": "#", "detail": "detail-pg" },
+          { "label": "Foundation",               "href": "#", "detail": "" },
+          { "label": "Regent's School of English","href": "#", "detail": "" },
+          { "label": "Study Abroad",             "href": "#", "detail": "" }
+        ]
+      },
+      {
+        "id": "panel-why",
+        "label": "Why Regent's",
+        "title": "Why Regent's?",
+        "description": "Discover what makes Regent's unique — from our Regent's Park campus and global community to industry connections and personalised learning.",
+        "sub_links": [
+          { "label": "The Regent's Difference", "href": "#", "detail": "detail-why-diff"   },
+          { "label": "Our Campus",              "href": "#", "detail": "detail-why-campus" },
+          { "label": "Global Community",        "href": "#", "detail": "" },
+          { "label": "Industry Connections",    "href": "#", "detail": "" }
+        ]
+      },
+      {
+        "id": "panel-international",
+        "label": "International",
+        "title": "International Students",
+        "description": "Join students from over 140 nationalities at Regent's. Find everything you need to know about studying in London as an international student.",
+        "sub_links": [
+          { "label": "International Overview",        "href": "#", "detail": "detail-intl-overview" },
+          { "label": "Visa & Immigration",            "href": "#", "detail": "detail-intl-visa"     },
+          { "label": "Scholarships",                  "href": "#", "detail": "" },
+          { "label": "English Language Requirements", "href": "#", "detail": "" }
+        ]
+      },
+      {
+        "id": "panel-studentlife",
+        "label": "Student Life",
+        "title": "Student Life",
+        "description": "Life at Regent's extends far beyond the classroom. Explore everything from student societies and sports to wellbeing and accommodation.",
+        "sub_links": [
+          { "label": "Student Experience", "href": "#", "detail": "detail-sl-experience"    },
+          { "label": "Accommodation",      "href": "#", "detail": "detail-sl-accommodation" },
+          { "label": "Clubs & Societies",  "href": "#", "detail": "detail-sl-clubs"         },
+          { "label": "Wellbeing & Support","href": "#", "detail": "detail-sl-wellbeing"     }
+        ]
+      },
+      {
+        "id": "panel-admissions",
+        "label": "Admissions",
+        "title": "Admissions",
+        "description": "Find out how to apply, what we look for, and what support is available to help you through the application process.",
+        "sub_links": [
+          { "label": "How to Apply",       "href": "#", "detail": "detail-adm-apply"   },
+          { "label": "Entry Requirements", "href": "#", "detail": ""                   },
+          { "label": "Fees & Funding",     "href": "#", "detail": "detail-adm-fees"    },
+          { "label": "Open Days",          "href": "#", "detail": "detail-adm-opendays"}
+        ]
+      },
+      {
+        "id": "panel-schools",
+        "label": "Schools",
+        "title": "Our Schools",
+        "description": "Regent's is home to four specialist schools, each offering a focused academic environment where creative and professional ambition thrive.",
+        "sub_links": [
+          { "label": "School of Psychotherapy & Psychology", "href": "#", "detail": "detail-schools-psych"    },
+          { "label": "School of Business",                   "href": "#", "detail": "detail-schools-business" },
+          { "label": "School of Arts & Culture",             "href": "#", "detail": "detail-schools-arts"     },
+          { "label": "School of Law",                        "href": "#", "detail": "detail-schools-law"      }
+        ]
+      }
+    ],
+    "detail_panels": [
+      {
+        "id": "detail-ug",
+        "title": "Undergraduate",
+        "description": "Explore our broad range of creative, business and social science programmes — all taught in the heart of London.",
+        "links": [
+          { "label": "Acting",                        "href": "#" },
+          { "label": "Law",                           "href": "#" },
+          { "label": "Advertising, Marketing & Media","href": "#" },
+          { "label": "Architecture & Interior Design","href": "#" },
+          { "label": "Art History",                   "href": "#" },
+          { "label": "Business & Management",         "href": "#" },
+          { "label": "Fashion",                       "href": "#" },
+          { "label": "Film Production & Screenwriting","href": "#" },
+          { "label": "Hospitality Management",        "href": "#" },
+          { "label": "International Relations",       "href": "#" },
+          { "label": "Psychology",                    "href": "#" },
+          { "label": "Sports Management",             "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-pg",
+        "title": "Postgraduate",
+        "description": "Advance your career with a postgraduate degree from Regent's — where specialist knowledge meets professional ambition.",
+        "links": [
+          { "label": "Global Business",           "href": "#" },
+          { "label": "Luxury Brand Management",   "href": "#" },
+          { "label": "International Management",  "href": "#" },
+          { "label": "Film & Screen Studies",     "href": "#" },
+          { "label": "Psychology & Counselling",  "href": "#" },
+          { "label": "Fashion Marketing",         "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-why-diff",
+        "title": "The Regent's Difference",
+        "description": "Discover what sets Regent's apart — an education built around you, in one of the world's most inspiring cities.",
+        "links": [
+          { "label": "Unique Curriculum", "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-why-campus",
+        "title": "Our Campus",
+        "description": "Study in the heart of London — our Regent's Park campus is a place of beauty, creativity and possibility.",
+        "links": [
+          { "label": "Central London Location", "href": "#" },
+          { "label": "Campus Facilities",       "href": "#" },
+          { "label": "On-site Accommodation",   "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-intl-overview",
+        "title": "International Overview",
+        "description": "Everything you need to know about joining Regent's as an international student — wherever you are in the world.",
+        "links": [
+          { "label": "Meet Us in Your Country", "href": "#" },
+          { "label": "Working with Agents",     "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-intl-visa",
+        "title": "Visa & Immigration",
+        "description": "Get guidance on student visas, immigration requirements, and everything you need to study in the UK.",
+        "links": [
+          { "label": "Student Visa Guide",         "href": "#" },
+          { "label": "Immigration Advice",         "href": "#" },
+          { "label": "Pre-sessional English",      "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-sl-experience",
+        "title": "Student Experience",
+        "description": "Discover the full student experience at Regent's, from orientation to graduation.",
+        "links": [
+          { "label": "Student Union",    "href": "#" },
+          { "label": "Sports & Fitness", "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-sl-accommodation",
+        "title": "Accommodation",
+        "description": "Live on campus in the heart of Regent's Park — safe, convenient and inspiring.",
+        "links": [
+          { "label": "On-campus Rooms",   "href": "#" },
+          { "label": "Private Housing",   "href": "#" },
+          { "label": "Fees & Contracts",  "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-sl-clubs",
+        "title": "Clubs & Societies",
+        "description": "From debate to dance, there's a society for every interest at Regent's.",
+        "links": [
+          { "label": "View All Societies", "href": "#" },
+          { "label": "Start a Society",    "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-sl-wellbeing",
+        "title": "Wellbeing & Support",
+        "description": "Your wellbeing matters — we provide a full range of mental health and pastoral support services.",
+        "links": [
+          { "label": "Counselling Services", "href": "#" },
+          { "label": "Disability Support",   "href": "#" },
+          { "label": "Financial Support",    "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-adm-apply",
+        "title": "How to Apply",
+        "description": "Step-by-step guidance through the application process, from choosing your course to receiving your offer.",
+        "links": [
+          { "label": "Undergraduate Applications", "href": "#" },
+          { "label": "Postgraduate Applications",  "href": "#" },
+          { "label": "Clearing",                   "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-adm-fees",
+        "title": "Fees & Funding",
+        "description": "Find out about tuition fees, scholarships, bursaries and other funding options available to you.",
+        "links": [
+          { "label": "Tuition Fees",         "href": "#" },
+          { "label": "Scholarships",         "href": "#" },
+          { "label": "Government Loans",     "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-adm-opendays",
+        "title": "Open Days",
+        "description": "Visit us in person or online and experience Regent's for yourself.",
+        "links": [
+          { "label": "Book an Open Day",     "href": "#" },
+          { "label": "Campus Tours",         "href": "#" },
+          { "label": "Virtual Open Day",     "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-schools-psych",
+        "title": "School of Psychotherapy & Psychology",
+        "description": "World-class programmes in psychology, psychotherapy and counselling in central London.",
+        "links": [
+          { "label": "Undergraduate Psychology",  "href": "#" },
+          { "label": "Postgraduate Psychology",   "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-schools-business",
+        "title": "School of Business",
+        "description": "Develop real-world business skills through innovative, industry-led programmes at our London campus.",
+        "links": [
+          { "label": "Business & Management", "href": "#" },
+          { "label": "MBA & Executive Ed.",   "href": "#" },
+          { "label": "Finance & Accounting",  "href": "#" }
+        ]
+      },
+      {
+        "id": "detail-schools-arts",
+        "title": "School of Arts & Culture",
+        "description": "Creative programmes in film, fashion, acting, design and the arts at the heart of London's cultural scene.",
+        "links": [
+          { "label": "Film & Media",  "href": "#" },
+          { "label": "Fashion",       "href": "#" },
+          { "label": "Acting & Drama","href": "#" }
+        ]
+      },
+      {
+        "id": "detail-schools-law",
+        "title": "School of Law",
+        "description": "Study law at one of London's most distinctive universities — academic rigour meets practical experience.",
+        "links": [
+          { "label": "LLB Law",             "href": "#" },
+          { "label": "Graduate Diploma",    "href": "#" }
+        ]
+      }
+    ]
   },
-  "variants": {
-    "light":  { "variant": "light" },
-    "dark":   { "variant": "dark" },
-    "scrolled":{ "variant": "light", "scrolled": true }
-  }
+  "variants": {}
 }

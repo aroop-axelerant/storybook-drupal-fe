@@ -1,0 +1,32 @@
+{#
+  Featured Content with Highlights component
+  Props:
+    variant     — 'default' | 'inverse' | 'accent'
+    heading     — Display heading (serif, large)
+    body        — Supporting paragraph text
+    highlights  — Array of stat rows
+      .stat         — Large number/figure (e.g. '92%', '40+')
+      .description  — Short label for the stat
+#}
+
+{% set mod = variant != 'default' ? ' featured-content--' ~ variant : '' %}
+
+<section class="featured-content{{ mod }}">
+  <div class="featured-content__inner">
+
+    <div class="featured-content__lead">
+      <h2 class="featured-content__heading">{{ heading }}</h2>
+      <p class="featured-content__body">{{ body }}</p>
+    </div>
+
+    <ul class="featured-content__highlights" aria-label="Key statistics">
+      {% for item in highlights %}
+        <li class="featured-content__highlight">
+          <span class="featured-content__stat">{{ item.stat }}</span>
+          <span class="featured-content__desc">{{ item.description }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+</section>

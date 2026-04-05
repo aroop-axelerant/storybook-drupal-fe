@@ -74,8 +74,8 @@
     }
   }
 
-  // Outline Dark: charcoal border on light backgrounds
-  &--outline-dark {
+  // Secondary: charcoal border on light backgrounds
+  &--secondary {
     background: transparent;
     color: var(--color-charcoal);
     border-color: var(--color-charcoal);
@@ -85,7 +85,18 @@
     }
   }
 
-  // Outline Green: forest-green border
+  // Secondary Dark: white border on dark backgrounds
+  &--secondary-dark {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background: var(--color-light-40);
+    }
+  }
+
+  // Outline Green: forest-green border (kept for backwards compatibility)
   &--outline-green {
     background: transparent;
     color: var(--color-action);
@@ -131,5 +142,22 @@
     width: 1.25em;
     height: 1.25em;
     flex-shrink: 0;
+  }
+
+  // Icon-only button variant: circular with equal padding
+  &--icon {
+    width: auto;
+    height: auto;
+    padding: var(--sp-12);
+    border-radius: 50%;
+    gap: 0;
+
+    &.btn--sm {
+      padding: var(--sp-8);
+    }
+
+    &.btn--lg {
+      padding: var(--sp-16);
+    }
   }
 }

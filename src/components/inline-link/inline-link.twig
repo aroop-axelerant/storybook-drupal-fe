@@ -1,0 +1,11 @@
+{#
+ * Inline Link component — Regent's University London
+ *
+ * Props:
+ * - label:   string  Link text
+ * - url:     string  href value
+ * - variant: string  default | inverse
+ #}
+<a href="{{ url|default('#') }}" class="inline-link inline-link--{{ variant|default('default') }}">
+  {{ label }}
+</a>

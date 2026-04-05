@@ -1,0 +1,77 @@
+// Tag component — Regent's University London
+// Used in Card Video, filters, and other components
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-4);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: var(--sp-4) var(--sp-12);
+  border-radius: var(--radius-l);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+  cursor: default;
+  transition: background var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+
+  &--default {
+    background: var(--color-off-white);
+    color: var(--color-charcoal-90);
+    border-color: transparent;
+  }
+
+  &--brand {
+    background: var(--color-forest-green);
+    color: var(--color-white);
+    border-color: transparent;
+  }
+
+  &--interactive {
+    cursor: pointer;
+    outline: none;
+
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 3px; }
+    &:active { transform: scale(0.98); }
+  }
+
+  &--default#{&}--interactive:hover { background: var(--color-charcoal-10); }
+  &--brand#{&}--interactive:hover   { background: var(--color-action-primary-hover); }
+
+  &--disabled {
+    opacity: var(--opacity-disabled, 0.4);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--dismissible { padding-inline-end: var(--sp-8); }
+
+  &__dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.12);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    transition: background var(--duration-fast) var(--ease-out);
+    flex-shrink: 0;
+    line-height: 1;
+
+    &:hover { background: rgba(0, 0, 0, 0.24); }
+    &:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 2px; }
+  }
+
+  &--brand &__dismiss { background: rgba(255, 255, 255, 0.2); }
+  &--brand &__dismiss:hover { background: rgba(255, 255, 255, 0.35); }
+}

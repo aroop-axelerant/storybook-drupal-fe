@@ -1,0 +1,32 @@
+{#
+ * Input Field component — Regent's University London
+ *
+ * Props:
+ * - id:          string   Field id (links label)
+ * - label:       string   Visible label text
+ * - type:        string   text | email | tel | password (default: text)
+ * - placeholder: string   Placeholder text
+ * - value:       string   Pre-filled value
+ * - required:    boolean  Marks field required
+ * - disabled:    boolean  Disabled state
+ * - hint:        string   Helper text below field
+ * - error:       string   Error message (triggers error state)
+ #}
+<div class="form-group">
+  <label class="form-label{% if required %} form-label--required{% endif %}" for="{{ id }}">{{ label }}</label>
+  <input
+    class="input{% if error %} input--error{% endif %}"
+    id="{{ id }}"
+    type="{{ type|default('text') }}"
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if value %}value="{{ value }}"{% endif %}
+    {% if required %}required{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if error %}aria-invalid="true" aria-describedby="{{ id }}-error"{% endif %}>
+  {% if hint and not error %}
+    <span class="form-hint">{{ hint }}</span>
+  {% endif %}
+  {% if error %}
+    <span class="form-error-msg" id="{{ id }}-error" role="alert">{{ error }}</span>
+  {% endif %}
+</div>

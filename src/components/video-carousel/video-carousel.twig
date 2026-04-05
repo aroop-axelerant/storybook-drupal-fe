@@ -1,0 +1,89 @@
+{#
+  Video Carousel component
+  Props:
+    id     — Unique ID for the carousel (required, used for JS targeting)
+    cards[] — Array of video cards:
+      card.tag          — Category label
+      card.name         — Person's name
+      card.quote        — Short testimonial quote
+      card.video.src    — Video file path
+      card.video.poster — Poster image path
+#}
+
+{% set iconMuteOff %}
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+  <line x1="23" y1="9" x2="17" y2="15"/>
+  <line x1="17" y1="9" x2="23" y2="15"/>
+</svg>
+{% endset %}
+
+{% set iconMuteOn %}
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+</svg>
+{% endset %}
+
+{% set iconPrev %}
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="15 18 9 12 15 6"/>
+</svg>
+{% endset %}
+
+{% set iconNext %}
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <polyline points="9 18 15 12 9 6"/>
+</svg>
+{% endset %}
+
+<div class="video-carousel" id="{{ id }}">
+  <div class="carousel__track-wrap">
+    <div class="carousel__track" id="{{ id }}-track">
+      {% for card in cards %}
+        <div class="carousel__slide" data-index="{{ loop.index0 }}">
+          <article class="card card--video" id="{{ id }}-card-{{ loop.index0 }}">
+            <video class="card__video"
+              src="{{ card.video.src }}"
+              poster="{{ card.video.poster }}"
+              muted playsinline preload="none"
+              aria-label="{{ card.name }}"></video>
+            <div class="card__video-controls">
+              <span class="tag tag--default">{{ card.tag }}</span>
+              <button class="card__mute-btn"
+                aria-label="Muted — click to unmute"
+                aria-pressed="true"
+                data-muted="true">
+                <span class="icon-mute-off">{{ iconMuteOff }}</span>
+                <span class="icon-mute-on">{{ iconMuteOn }}</span>
+              </button>
+            </div>
+            <div class="card__body">
+              <h3 class="card__heading">{{ card.name }}</h3>
+              <p class="card__excerpt">{{ card.quote }}</p>
+            </div>
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="carousel__controls">
+    <div class="carousel__dots" role="tablist" aria-label="Carousel navigation">
+      {% for card in cards %}
+        <button class="carousel__dot{% if loop.first %} is-active{% endif %}"
+          data-index="{{ loop.index0 }}"
+          aria-label="Go to slide {{ loop.index }}"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel__controls-arrows">
+      <button class="carousel__btn" id="{{ id }}-prev" aria-label="Previous slide">{{ iconPrev }}</button>
+      <button class="carousel__btn" id="{{ id }}-next" aria-label="Next slide">{{ iconNext }}</button>
+    </div>
+  </div>
+</div>

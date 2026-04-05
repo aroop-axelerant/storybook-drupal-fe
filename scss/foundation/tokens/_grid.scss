@@ -1,0 +1,77 @@
+// =============================================================================
+// Foundation: Grid System Tokens
+// Source: Regent's University London design-system
+// 12-column responsive grid system with breakpoint-specific configurations
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Breakpoints — Responsive design breakpoints
+  // ---------------------------------------------------------------------------
+  --bp-mobile:       0px;      // Mobile (< 768px)
+  --bp-tablet:       768px;    // Tablet (768px - 1365px)
+  --bp-desktop:      1366px;   // Desktop (1366px - 1599px)
+  --bp-wide:         1600px;   // Wide Desktop (≥ 1600px)
+
+  // ---------------------------------------------------------------------------
+  // Grid Container — Canvas widths
+  // ---------------------------------------------------------------------------
+  --grid-mobile:      375px;   // Mobile canvas
+  --grid-tablet:      1024px;  // Tablet canvas
+  --grid-desktop:     1440px;  // Desktop canvas
+  --grid-wide:        1600px;  // Wide desktop canvas
+
+  // ---------------------------------------------------------------------------
+  // Grid Gutters & Gaps — Margins and spacing
+  // ---------------------------------------------------------------------------
+  --grid-gutter-mobile:   16px;   // Mobile outer margin
+  --grid-gutter-tablet:   32px;   // Tablet outer margin
+  --grid-gutter-desktop:  64px;   // Desktop outer margin
+  --grid-gutter-wide:     208px;  // Wide desktop outer margin
+
+  --grid-gap-mobile:      16px;   // Mobile column gap
+  --grid-gap-tablet:      24px;   // Tablet column gap
+  --grid-gap-desktop:     32px;   // Desktop/Wide column gap
+
+  // ---------------------------------------------------------------------------
+  // Column Width — Individual column calculations
+  // ---------------------------------------------------------------------------
+  --grid-col-mobile:      full;      // Mobile: full width (4 columns)
+  --grid-col-tablet:      61px;      // Tablet: 1 column width
+  --grid-col-desktop:     80px;      // Desktop: 1 column width
+  --grid-col-wide:        96px;      // Wide: 1 column width
+
+  // ---------------------------------------------------------------------------
+  // Common Grid Widths — Pre-calculated column spans
+  // ---------------------------------------------------------------------------
+  // Wide Desktop (1600px canvas)
+  --grid-12col-wide:      1504px;    // 12 columns full width
+  --grid-10col-wide:      1248px;    // 10 columns (content max)
+  --grid-8col-wide:       992px;     // 8 columns (editorial)
+  --grid-6col-wide:       736px;     // 6 columns (half)
+  --grid-4col-wide:       480px;     // 4 columns (card/sidebar)
+  --grid-3col-wide:       352px;     // 3 columns (narrow card)
+
+  // Desktop (1440px canvas)
+  --grid-12col-desktop:   1312px;    // 12 columns full width
+  --grid-10col-desktop:   1088px;    // 10 columns (content max)
+  --grid-8col-desktop:    864px;     // 8 columns (editorial)
+  --grid-6col-desktop:    640px;     // 6 columns (half)
+  --grid-4col-desktop:    416px;     // 4 columns (card/sidebar)
+  --grid-3col-desktop:    304px;     // 3 columns (narrow card)
+
+  // Tablet (1024px canvas)
+  --grid-12col-tablet:    1088px;    // 12 columns full width (with gutters)
+  --grid-10col-tablet:    904px;     // 10 columns
+  --grid-8col-tablet:     720px;     // 8 columns
+  --grid-6col-tablet:     536px;     // 6 columns
+  --grid-4col-tablet:     352px;     // 4 columns
+  --grid-3col-tablet:     246px;     // 3 columns
+
+  // Mobile (375px canvas)
+  --grid-12col-mobile:    361px;     // 12 columns full width (4 functional)
+  --grid-4col-mobile:     361px;     // 4 columns (full width)
+  --grid-3col-mobile:     255px;     // 3 columns (2 visible per row)
+  --grid-2col-mobile:     150px;     // 2 columns
+  --grid-1col-mobile:     full;      // 1 column (full width)
+}

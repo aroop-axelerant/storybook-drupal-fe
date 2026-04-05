@@ -2,7 +2,7 @@
   "default": {
     "header": {
       "variant": "light",
-      "logo": { "src": "/assets/full-logo.svg", "alt": "Regent's University London" },
+      "logo": { "src": "/graphics/brand/logo-emblem.svg", "alt": "Regent's University London" },
       "nav": [
         { "label": "Study",    "href": "/study",    "has_dropdown": true },
         { "label": "Research", "href": "/research", "has_dropdown": false },
@@ -17,7 +17,7 @@
       "body": "Develop the skills and mindset to lead in a complex, globalised world. With strong industry links and a diverse student body, this programme sets you apart.",
       "cta_primary":   { "label": "Apply Now",        "href": "/apply" },
       "cta_secondary": { "label": "Download Prospectus", "href": "/prospectus" },
-      "bg_image": "/assets/hero-business.jpg",
+      "bg_image": "/images/Regent's University London (10).jpg",
       "stats": [
         { "value": "Top 10%",   "label": "Graduate employability" },
         { "value": "£18,500",   "label": "Annual tuition fee" },
@@ -40,7 +40,7 @@
         "tag": "Postgraduate",
         "heading": "MSc International Business",
         "body": "Build on your undergraduate studies with an international perspective.",
-        "image": { "src": "/assets/course-ib.jpg", "alt": "International Business" },
+        "image": { "src": "/images/Regent's University London (13).jpg", "alt": "International Business" },
         "cta": { "label": "Learn more", "href": "/study/international-business" }
       },
       {
@@ -48,13 +48,13 @@
         "tag": "Undergraduate",
         "heading": "BA (Hons) Marketing",
         "body": "Develop creative and strategic marketing skills for a digital age.",
-        "image": { "src": "/assets/course-mkt.jpg", "alt": "Marketing" },
+        "image": { "src": "/images/Fashion studio.jpg", "alt": "Marketing" },
         "cta": { "label": "Learn more", "href": "/study/marketing" }
       }
     ],
     "footer": {
       "brand": {
-        "logo": { "src": "/assets/full-logo-white.svg", "alt": "Regent's University London" },
+        "logo": { "src": "/graphics/brand/logo-emblem-white.svg", "alt": "Regent's University London" },
         "tagline": "A unique university in the heart of London's Royal Regent's Park."
       },
       "columns": [

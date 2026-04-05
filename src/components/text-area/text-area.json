@@ -1,0 +1,7 @@
+{
+  "default": { "id": "statement", "label": "Personal statement", "placeholder": "Tell us about yourself…", "rows": 4, "hint": "Minimum 150 words" },
+  "variants": {
+    "default": { "id": "statement", "label": "Personal statement", "placeholder": "Tell us about yourself…", "rows": 4, "hint": "Minimum 150 words" },
+    "error":   { "id": "ps-err",   "label": "Personal statement", "required": true, "rows": 4, "error": "Personal statement must be at least 150 words" }
+  }
+}

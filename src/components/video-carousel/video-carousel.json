@@ -1,0 +1,37 @@
+{
+  "default": {
+    "id": "vc-demo",
+    "cards": [
+      {
+        "tag": "Alumni",
+        "name": "Jason Drew",
+        "quote": "Studying with classmates from around the world prepared me for every challenge of a global career.",
+        "video": { "src": "/images/Library.jpg", "poster": "/images/Regent's University London (1)(1).jpg" }
+      },
+      {
+        "tag": "Student Life",
+        "name": "Priya Sharma",
+        "quote": "The campus in Regent's Park is unlike anywhere else — it genuinely feels like home.",
+        "video": { "src": "/images/Tennis court.jpg", "poster": "/images/Regent's University London (2)(1).jpg" }
+      },
+      {
+        "tag": "Research",
+        "name": "Dr Emma Carlisle",
+        "quote": "Being surrounded by creative industries every day pushes my research in ways I never expected.",
+        "video": { "src": "/images/Fashion studio.jpg", "poster": "/images/Regent's University London (3).jpg" }
+      },
+      {
+        "tag": "Alumni",
+        "name": "Marcus Webb",
+        "quote": "My international network from Regent's has been invaluable — doors open because of who you meet here.",
+        "video": { "src": "/images/Marylebone.jpg", "poster": "/images/Regent's University London (10).jpg" }
+      },
+      {
+        "tag": "Student Life",
+        "name": "Sofia Reyes",
+        "quote": "The support from tutors was unlike anything I expected — they genuinely invest in your success.",
+        "video": { "src": "/images/Regent's University London (11).jpg", "poster": "/images/Regent's University London (6).jpg" }
+      }
+    ]
+  }
+}

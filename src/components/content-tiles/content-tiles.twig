@@ -1,0 +1,47 @@
+{#
+  Content Tiles component — tiles with header, dividers, and icon backgrounds
+  Props:
+    variant  — 'default'
+    overline — Optional eyebrow text (muted serif)
+    heading  — Main heading (serif display)
+    body     — Supporting paragraph text
+    tiles[]  — Array of tile objects
+      .icon     — SVG markup string
+      .heading  — Tile heading
+      .body     — Tile body text
+#}
+
+{% set ICON_BG_CYCLE = [
+  'var(--color-zingy-yellow-50)',
+  'var(--color-bg-peach)',
+  'var(--color-bg-violet)'
+] %}
+
+<section class="content-tiles">
+  <div class="content-tiles__inner">
+
+    <div class="content-tiles__header">
+      {% if overline %}
+        <span class="content-tiles__overline">{{ overline }}</span>
+      {% endif %}
+      <h2 class="content-tiles__heading">{{ heading }}</h2>
+      {% if body %}
+        <p class="content-tiles__body">{{ body }}</p>
+      {% endif %}
+    </div>
+
+    <div class="content-tiles__grid" data-tile-count="{{ tiles | length }}">
+      {% for tile in tiles %}
+        {% set icon_bg = ICON_BG_CYCLE[loop.index0 % 3] %}
+        <div class="content-tiles__tile">
+          <div class="content-tiles__icon-wrap" style="background: {{ icon_bg }};">
+            {{ tile.icon | raw }}
+          </div>
+          <h3 class="content-tiles__tile-heading">{{ tile.heading }}</h3>
+          <p class="content-tiles__tile-body">{{ tile.body }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

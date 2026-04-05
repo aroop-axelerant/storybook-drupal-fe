@@ -1,0 +1,54 @@
+{
+  "default": {
+    "items": [
+      {
+        "id": "acc-1",
+        "question": "How do I apply to Regent's University?",
+        "answer": "Applications are submitted through UCAS for undergraduate programmes. Visit our Apply page for step-by-step guidance, including personal statement tips and what to expect at interview.",
+        "open": true,
+        "disabled": false
+      },
+      {
+        "id": "acc-2",
+        "question": "What scholarships are available?",
+        "answer": "We offer a range of merit-based and need-based scholarships for both UK and international students. Visit the Scholarships page to explore eligibility criteria and application deadlines.",
+        "open": false,
+        "disabled": false
+      },
+      {
+        "id": "acc-3",
+        "question": "Can I visit the campus before applying?",
+        "answer": "Yes — we run Open Days throughout the year where you can tour the campus, meet academic staff, and get a feel for life at Regent's. Check our Events page for upcoming dates.",
+        "open": false,
+        "disabled": false
+      }
+    ]
+  },
+  "variants": {
+    "default": {
+      "items": [
+        {
+          "id": "acc-1",
+          "question": "How do I apply to Regent's University?",
+          "answer": "Applications are submitted through UCAS for undergraduate programmes. Visit our Apply page for step-by-step guidance, including personal statement tips and what to expect at interview.",
+          "open": true,
+          "disabled": false
+        },
+        {
+          "id": "acc-2",
+          "question": "What scholarships are available?",
+          "answer": "We offer a range of merit-based and need-based scholarships for both UK and international students. Visit the Scholarships page to explore eligibility criteria and application deadlines.",
+          "open": false,
+          "disabled": false
+        },
+        {
+          "id": "acc-3",
+          "question": "Can I visit the campus before applying?",
+          "answer": "Yes — we run Open Days throughout the year where you can tour the campus, meet academic staff, and get a feel for life at Regent's. Check our Events page for upcoming dates.",
+          "open": false,
+          "disabled": false
+        }
+      ]
+    }
+  }
+}

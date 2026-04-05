@@ -1,0 +1,22 @@
+// =============================================================================
+// Foundation: Icon Size Tokens
+// Source: Regent's University London design-system
+// Icon sizing scale for consistent iconography across the design system
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Icon Sizes — Consistent sizing for all icon usage
+  // ---------------------------------------------------------------------------
+  --icon-caption:  0.75rem;   // 12px — captions, very small UI elements
+  --icon-small:    1rem;      // 16px — small UI, labels, secondary actions
+  --icon-body:     1.25rem;   // 20px — body text icons, inline usage
+  --icon-default:  1.5rem;    // 24px — default icon size, most common usage
+  --icon-feature:  2rem;      // 32px — featured icons, prominent actions
+  --icon-hero:     3rem;      // 48px — hero icons, large focal points
+
+  // ---------------------------------------------------------------------------
+  // Icon Stroke Weight
+  // ---------------------------------------------------------------------------
+  --icon-stroke: 2px;         // Standard stroke weight for line icons
+}

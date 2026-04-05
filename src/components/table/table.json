@@ -1,0 +1,13 @@
+{
+  "default": {
+    "columns": [
+      "Sep 2025 / Jan 2026",
+      "Sep 2026 / Jan 2027"
+    ],
+    "rows": [
+      { "cells": ["UK students: £1,000",     "UK students: £1,500"] },
+      { "cells": ["Non-UK students: £4,000", "Non-UK students: £5,000"] }
+    ]
+  },
+  "variants": {}
+}

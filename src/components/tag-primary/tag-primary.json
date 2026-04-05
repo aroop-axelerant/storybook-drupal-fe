@@ -1,0 +1,8 @@
+{
+  "default": { "label": "Undergraduate", "variant": "default" },
+  "variants": {
+    "default":     { "label": "Undergraduate", "variant": "default" },
+    "brand":       { "label": "Postgraduate",  "variant": "brand" },
+    "dismissible": { "label": "September 2025","variant": "default", "dismissible": true }
+  }
+}

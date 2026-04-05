@@ -1,49 +1,51 @@
 {
   "default": {
-    "brand": {
-      "logo": { "src": "/assets/full-logo-white.svg", "alt": "Regent's University London" },
-      "tagline": "A unique university in the heart of London's Royal Regent's Park."
-    },
-    "columns": [
+    "description": "At Regent's, we empower students through exceptional teaching and impactful experiences, shaping them into conscious graduates dedicated to making a positive difference.",
+    "social_links": [
+      { "label": "Facebook",  "href": "#", "icon": "facebook"  },
+      { "label": "LinkedIn",  "href": "#", "icon": "linkedin"  },
+      { "label": "Instagram", "href": "#", "icon": "instagram" },
+      { "label": "X",         "href": "#", "icon": "x"         },
+      { "label": "YouTube",   "href": "#", "icon": "youtube"   }
+    ],
+    "nav_columns": [
       {
-        "heading": "Study",
+        "heading": "Quick Links",
         "links": [
-          { "label": "Undergraduate", "href": "/study/undergraduate" },
-          { "label": "Postgraduate", "href": "/study/postgraduate" },
-          { "label": "Short Courses", "href": "/study/short-courses" },
-          { "label": "Online Learning", "href": "/study/online" }
+          { "label": "Visit Our Campus",    "href": "#" },
+          { "label": "Download a Brochure", "href": "#" },
+          { "label": "Apply Now",           "href": "#" },
+          { "label": "Contact Us",          "href": "#" }
         ]
       },
       {
-        "heading": "Research",
+        "heading": "Popular Links",
         "links": [
-          { "label": "Research Centres", "href": "/research/centres" },
-          { "label": "PhD Programmes", "href": "/research/phd" },
-          { "label": "Publications", "href": "/research/publications" },
-          { "label": "Partnerships", "href": "/research/partnerships" }
+          { "label": "About Us",           "href": "#" },
+          { "label": "Student Intranet",   "href": "#" },
+          { "label": "Blackboard",         "href": "#" },
+          { "label": "How to Find Us",     "href": "#" },
+          { "label": "University Policies","href": "#" },
+          { "label": "Pay Tuition Fees",   "href": "#" },
+          { "label": "Staff Resources",    "href": "#" }
         ]
       },
       {
-        "heading": "About",
-        "links": [
-          { "label": "Our Story", "href": "/about/story" },
-          { "label": "Leadership", "href": "/about/leadership" },
-          { "label": "Campus", "href": "/about/campus" },
-          { "label": "News", "href": "/about/news" }
+        "heading": "Contact Us",
+        "contact_items": [
+          { "label": "+44 (0) 20 7487 7700", "href": "tel:+442074877700", "icon": "phone" },
+          { "label": "admit@regents.ac.uk",  "href": "mailto:admit@regents.ac.uk", "icon": "mail" }
         ]
       }
     ],
-    "social": [
-      { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
-      { "platform": "linkedin", "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" },
-      { "platform": "youtube", "href": "https://youtube.com/regentsuniversitylondon", "label": "YouTube" }
-    ],
-    "legal": [
-      { "label": "Privacy Policy", "href": "/privacy" },
-      { "label": "Cookie Policy", "href": "/cookies" },
-      { "label": "Accessibility", "href": "/accessibility" },
-      { "label": "Terms of Use", "href": "/terms" }
-    ],
-    "copyright": "© 2025 Regent's University London. All rights reserved."
-  }
+    "copyright": "© 2026 Regent's University London. All rights reserved.",
+    "legal_links": [
+      { "label": "Copyright",               "href": "#" },
+      { "label": "Privacy and Cookies",     "href": "#" },
+      { "label": "Accessibility",           "href": "#" },
+      { "label": "Modern Slavery Statement","href": "#" },
+      { "label": "B Corp Certification",    "href": "#" }
+    ]
+  },
+  "variants": {}
 }

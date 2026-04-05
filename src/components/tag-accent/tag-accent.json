@@ -1,0 +1,8 @@
+{
+  "default": { "label": "New 2025", "variant": "yellow" },
+  "variants": {
+    "yellow": { "label": "New 2025",       "variant": "yellow" },
+    "violet": { "label": "Arts & Humanities","variant": "violet" },
+    "peach":  { "label": "Wellbeing",       "variant": "peach" }
+  }
+}

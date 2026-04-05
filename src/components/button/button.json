@@ -1,21 +1,14 @@
 {
-  "default": {
-    "label": "Apply Now",
-    "variant": "primary",
-    "size": "md",
-    "type": "button",
-    "disabled": false,
-    "icon": null,
-    "href": null
-  },
+  "default": { "label": "Book Open Day", "variant": "primary" },
   "variants": {
-    "primary":           { "label": "Apply Now",       "variant": "primary" },
-    "primary-inverted":  { "label": "Explore Courses", "variant": "primary-inverted" },
-    "secondary-inverted":{ "label": "Learn More",      "variant": "secondary-inverted" },
-    "outline-dark":      { "label": "Find Out More",   "variant": "outline-dark" },
-    "outline-green":     { "label": "View Programme",  "variant": "outline-green" },
-    "ghost":             { "label": "Cancel",          "variant": "ghost" },
-    "small":             { "label": "Filter",          "variant": "primary", "size": "sm" },
-    "large":             { "label": "Get Started",     "variant": "primary", "size": "lg" }
+    "primary":          { "label": "Book Open Day",  "variant": "primary" },
+    "primary-inverse":  { "label": "Apply Now",      "variant": "primary-inverse" },
+    "secondary":        { "label": "Learn More",     "variant": "secondary" },
+    "secondary-inverse":{ "label": "View Course",    "variant": "secondary-inverse" },
+    "ghost":            { "label": "Cancel",         "variant": "ghost" },
+    "ghost-inverse":    { "label": "Skip for now",   "variant": "ghost-inverse" },
+    "icon-fill":        { "icon": "arrow",           "variant": "icon-fill",    "aria_label": "Next" },
+    "icon-outline":     { "icon": "search",          "variant": "icon-outline", "aria_label": "Search" },
+    "icon-ghost":       { "icon": "plus",            "variant": "icon-ghost",   "aria_label": "Add" }
   }
 }

@@ -1,0 +1,30 @@
+{#
+  Tile component
+  Props:
+    variant  — "default" | "inverse"
+    items[]  — array of tile items
+      .icon    — SVG markup string
+      .heading — tile heading text
+      .body    — tile body text
+#}
+
+{% set is_inverse = variant == "inverse" %}
+{% set icon_bg_cycle = [
+  "var(--color-zingy-yellow-50)",
+  "var(--color-bg-peach)",
+  "var(--color-bg-violet)",
+  "var(--color-charcoal-20)"
+] %}
+
+<div class="tile-group{% if is_inverse %} tile-group--inverse{% endif %}" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0; overflow: hidden;">
+  {% for item in items %}
+    {% set icon_bg = icon_bg_cycle[loop.index0 % 4] %}
+    <div class="tile{% if is_inverse %} tile--inverse{% endif %}">
+      <div class="tile__icon-wrap" style="background: {{ icon_bg }};">
+        {{ item.icon | raw }}
+      </div>
+      <h3 class="tile__heading">{{ item.heading }}</h3>
+      <p class="tile__body">{{ item.body }}</p>
+    </div>
+  {% endfor %}
+</div>

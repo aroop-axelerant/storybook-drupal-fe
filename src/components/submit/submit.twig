@@ -1,0 +1,19 @@
+{#
+ * Submit component — Regent's University London
+ *
+ * Props:
+ * - label:    string   Button label text
+ * - type:     string   submit | button (default: submit)
+ * - loading:  boolean  Loading/submitting state
+ * - disabled: boolean  Disabled state
+ #}
+<button
+  class="btn btn--primary{% if loading %} btn--loading{% endif %}"
+  type="{{ type|default('submit') }}"
+  {% if disabled or loading %}disabled{% endif %}
+  {% if loading %}aria-busy="true" aria-label="Submitting…"{% endif %}>
+  {% if loading %}
+    <span class="spinner" aria-hidden="true"></span>
+  {% endif %}
+  {{ label }}
+</button>

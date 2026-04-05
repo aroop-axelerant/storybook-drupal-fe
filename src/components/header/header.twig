@@ -1,54 +1,216 @@
 {#
- * Site Header component — Regent's University London
- * Glassmorphic two-pill fixed navigation.
- *
- * Props:
- * - variant:  string   light | dark    (default: light)
- * - scrolled: boolean  Adds shadow on scroll
- * - logo:     { src, alt }
- * - nav:      array of { label, href, has_dropdown }
- * - cta:      { label, href }          (optional)
- #}
-<header
-  class="site-header site-header--{{ variant|default('light') }}{% if scrolled %} site-header--scrolled{% endif %}"
-  role="banner"
->
-  <!-- Left pill: logo + primary navigation -->
-  <div class="site-header__pill">
-    <a href="/" class="site-header__logo" aria-label="{{ logo.alt|default('Regent\\'s University London home') }}">
-      <img src="{{ logo.src|default('/assets/full-logo.svg') }}" alt="{{ logo.alt|default('Regent\\'s University London') }}" />
+  Header component
+  @prop {string} logo_svg      - Inline SVG markup for the logo emblem (src/assets/graphics/brand/logo-emblem.svg)
+  @prop {string} logo_alt      - Logo accessible label
+  @prop {string} logo_href     - Logo link destination
+  @prop {string} apply_label   - CTA button label
+  @prop {string} apply_href    - CTA button destination
+  @prop {array}  nav_links     - Top-bar nav items: label, href, panel
+  @prop {array}  nav_sections  - Mega menu primary sections: id, label, title, description, sub_links[]
+  @prop {array}  detail_panels - Mega menu detail panels: id, title, description, links[]
+#}
+
+{# ── Site header ──────────────────────────────────────────────────────────── #}
+<header class="site-header" aria-label="Site header">
+
+  {# Left pill: logo + desktop nav #}
+  <div class="header__pill header__left">
+    <a href="{{ logo_href }}" class="header__logo" aria-label="{{ logo_alt }}">
+      {{ logo_svg }}
     </a>
-    <div class="site-header__pill-divider" aria-hidden="true"></div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-header__nav">
-        {% for item in nav %}
-          <li>
-            <a
-              href="{{ item.href }}"
-              class="site-header__nav-link"
-              {% if item.has_dropdown %}aria-haspopup="true" aria-expanded="false"{% endif %}
-            >{{ item.label }}</a>
-          </li>
+
+    {% if nav_links %}
+      <nav class="header__nav" aria-label="Primary navigation">
+        {% for link in nav_links %}
+          <div class="header__nav-item">
+            <button class="header__nav-link"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    data-dropdown="{{ link.panel }}">
+              {{ link.label }}
+              <svg class="header__nav-chevron" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            {% for section in nav_sections %}
+              {% if section.id == link.panel %}
+                <div class="header__dropdown" role="region" aria-label="{{ link.label }} menu">
+                  {% for slink in section.sub_links %}
+                    <a href="{{ slink.href }}" class="header__dropdown-link">{{ slink.label }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         {% endfor %}
-      </ul>
-    </nav>
+      </nav>
+    {% endif %}
   </div>
 
-  <!-- Right pill: CTA + utilities -->
-  <div class="site-header__pill">
-    {% if cta %}
-      {% include "@components/button/button.twig" with { label: cta.label, href: cta.href, variant: "primary", size: "sm" } %}
-    {% endif %}
-    <button class="site-header__icon-btn" aria-label="Search" type="button">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-        <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  {# Right pill: apply + search + hamburger #}
+  <div class="header__pill header__right">
+    <a href="{{ apply_href }}" class="header__apply">{{ apply_label }}</a>
+
+    <div class="header__pill-divider" aria-hidden="true"></div>
+
+    <button class="header__icon-btn header__search-btn" aria-label="Search" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
       </svg>
     </button>
-    <button class="site-header__icon-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mega-menu" type="button">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-        <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+
+    <div class="header__pill-divider" aria-hidden="true"></div>
+
+    <button id="mega-menu-open"
+            class="header__icon-btn"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mega-menu"
+            type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
   </div>
+
 </header>
+
+{# ── Mega menu overlay ─────────────────────────────────────────────────────── #}
+<div id="mega-menu"
+     class="mega-menu"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Navigation menu"
+     aria-hidden="true">
+
+  {# Sticky top bar #}
+  <div class="mega-menu__bar">
+    <div class="header__pill header__left">
+      <a href="{{ logo_href }}" class="header__logo" aria-label="{{ logo_alt }}">
+        <img src="{{ logo_src }}" alt="{{ logo_alt }}" width="32" height="32">
+      </a>
+    </div>
+    <div class="header__pill header__right">
+      <a href="{{ apply_href }}" class="header__apply">{{ apply_label }}</a>
+      <div class="header__pill-divider" aria-hidden="true"></div>
+      <button class="header__icon-btn header__search-btn" aria-label="Search" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+      <div class="header__pill-divider" aria-hidden="true"></div>
+      <button id="mega-menu-close"
+              class="header__icon-btn"
+              aria-label="Close navigation menu"
+              type="button">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  {# Menu body #}
+  <div class="mega-menu__body">
+
+    {# Back button — mobile detail view only #}
+    <button class="mega-menu__back" aria-label="Back to main menu" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to main menu
+    </button>
+
+    {# Col 1: Primary nav links #}
+    {% if nav_sections %}
+      <nav class="mega-menu__primary" aria-label="Main navigation sections">
+        {% for section in nav_sections %}
+          <a href="#"
+             class="mega-menu__plink"
+             data-target="{{ section.id }}">
+            {{ section.label }}
+          </a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+
+    {# Col 2: Sub-nav panels #}
+    <div class="mega-menu__panels">
+      {% for section in nav_sections %}
+        <div id="{{ section.id }}" class="mega-menu__panel">
+          <div class="mega-menu__panel-intro">
+            <h3 class="mega-menu__panel-title">{{ section.title }}</h3>
+            <p class="mega-menu__panel-desc">{{ section.description }}</p>
+          </div>
+          {% if section.sub_links %}
+            <nav class="mega-menu__subnav" aria-label="{{ section.label }}">
+              {% for slink in section.sub_links %}
+                <a href="{{ slink.href }}"
+                   class="mega-menu__slink"
+                   {% if slink.detail %}data-detail="{{ slink.detail }}"{% endif %}>
+                  {{ slink.label }}
+                  {% if slink.detail %}
+                    <svg class="mega-menu__slink-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <polyline points="9 18 15 12 9 6" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% endif %}
+                </a>
+              {% endfor %}
+            </nav>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {# Col 3: Detail panels #}
+    <div class="mega-menu__details">
+      {% for detail in detail_panels %}
+        <div id="{{ detail.id }}" class="mega-menu__detail">
+          <div class="mega-menu__panel-intro">
+            <h3 class="mega-menu__panel-title">{{ detail.title }}</h3>
+            <p class="mega-menu__panel-desc">{{ detail.description }}</p>
+            <a href="#" class="mega-menu__detail-cta">
+              View more details
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+          {% if detail.links %}
+            <nav class="mega-menu__courselist" aria-label="{{ detail.title }}">
+              {% for link in detail.links %}
+                <a href="{{ link.href }}" class="mega-menu__clink">
+                  {{ link.label }}
+                  <svg class="mega-menu__clink-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              {% endfor %}
+            </nav>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>{# /.mega-menu__body #}
+</div>{# /#mega-menu #}

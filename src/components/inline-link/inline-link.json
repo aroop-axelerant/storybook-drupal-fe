@@ -1,0 +1,7 @@
+{
+  "default": { "label": "our academic programmes", "variant": "default", "url": "#" },
+  "variants": {
+    "default": { "label": "our academic programmes", "variant": "default", "url": "#" },
+    "inverse": { "label": "our academic programmes", "variant": "inverse", "url": "#" }
+  }
+}

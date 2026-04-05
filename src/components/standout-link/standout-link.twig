@@ -1,0 +1,17 @@
+{#
+ * Standout Link component — Regent's University London
+ *
+ * Props:
+ * - label:   string  Link text
+ * - url:     string  href value
+ * - variant: string  default | inverse
+ #}
+{% set color = variant == 'inverse' ? 'var(--color-zingy-yellow)' : 'var(--color-forest-green)' %}
+<a href="{{ url|default('#') }}" class="standout-link standout-link--{{ variant|default('default') }}">
+  {{ label }}
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"
+       style="stroke:{{ color }};stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+</a>

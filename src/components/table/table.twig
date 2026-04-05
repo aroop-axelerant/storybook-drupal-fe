@@ -1,0 +1,26 @@
+{#
+  Price Table component
+  @prop {array}  columns - Column header labels: string[]
+  @prop {array}  rows    - Table rows: { cells: string[] }[]
+#}
+
+<div class="price-table">
+  <table class="price-table__table">
+    <thead class="price-table__head">
+      <tr>
+        {% for col in columns %}
+          <th class="price-table__th" scope="col">{{ col }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody class="price-table__body">
+      {% for row in rows %}
+        <tr class="price-table__row">
+          {% for cell in row.cells %}
+            <td class="price-table__td">{{ cell }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

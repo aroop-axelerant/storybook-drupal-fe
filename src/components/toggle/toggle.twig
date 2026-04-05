@@ -1,0 +1,25 @@
+{#
+ * Toggle component — Regent's University London
+ *
+ * Props:
+ * - id:       string   Unique id (links to label)
+ * - label:    string   Visible label text
+ * - checked:  boolean  On state (default: false)
+ * - disabled: boolean  Disabled state
+ * - error:    string   Error message (triggers error border)
+ #}
+<div class="toggle-group">
+  <button
+    class="toggle{% if error %} toggle--error{% endif %}"
+    role="switch"
+    id="{{ id }}"
+    aria-checked="{{ checked ? 'true' : 'false' }}"
+    {% if error %}aria-invalid="true" aria-describedby="{{ id }}-error"{% endif %}
+    {% if disabled %}disabled{% endif %}>
+    <span class="toggle__thumb"{% if checked %} style="transform:translateX(20px)"{% endif %}></span>
+  </button>
+  <span class="toggle-label{% if disabled %} toggle-label--disabled{% endif %}">{{ label }}</span>
+</div>
+{% if error %}
+  <span class="form-error-msg" id="{{ id }}-error" role="alert">{{ error }}</span>
+{% endif %}

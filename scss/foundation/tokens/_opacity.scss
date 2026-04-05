@@ -1,0 +1,21 @@
+// =============================================================================
+// Foundation: Opacity Tokens
+// Semantic opacity scale for interactive states and overlays
+// WCAG 2.1 AA compliance: ensure sufficient contrast when applied to text/icons
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Interactive State Opacity
+  // ---------------------------------------------------------------------------
+  --opacity-hover:    0.80;  // Hover — maintains WCAG AA (≥4.5:1) on brand colours
+  --opacity-active:   0.60;  // Active/pressed — brief tactile feedback
+  --opacity-disabled: 0.40;  // Disabled — clearly inoperable, below WCAG threshold (intentional)
+
+  // ---------------------------------------------------------------------------
+  // Overlay / Decorative Opacity
+  // ---------------------------------------------------------------------------
+  --opacity-subtle:   0.08;  // Surface tints (e.g. hover backgrounds)
+  --opacity-medium:   0.40;  // Image overlays, scrim layers
+  --opacity-strong:   0.72;  // Dark overlays for modal backdrops
+}

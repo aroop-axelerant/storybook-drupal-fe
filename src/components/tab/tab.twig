@@ -1,0 +1,22 @@
+{#
+  Tab component
+  @prop {string}  variant  - "underline" | "pill"
+  @prop {array}   tabs     - Array of tab items:
+                               label    {string}  - Tab label text
+                               active   {bool}    - Whether this tab is selected
+                               disabled {bool}    - Whether this tab is disabled
+#}
+
+<div class="tab tab--{{ variant }}" role="tablist" aria-label="Tab navigation">
+  {% for tab in tabs %}
+    <button
+      class="tab__item{% if tab.active %} is-active{% endif %}{% if tab.disabled %} is-disabled{% endif %}"
+      role="tab"
+      aria-selected="{{ tab.active ? 'true' : 'false' }}"
+      tabindex="{{ tab.active ? '0' : '-1' }}"
+      {% if tab.disabled %}disabled aria-disabled="true"{% endif %}
+    >
+      {{ tab.label }}
+    </button>
+  {% endfor %}
+</div>

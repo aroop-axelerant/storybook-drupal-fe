@@ -1,59 +1,91 @@
 {#
- * Site Footer component — Regent's University London
- *
- * Props:
- * - brand:     { logo: { src, alt }, tagline }
- * - columns:   array of { heading, links: [{ label, href }] }
- * - social:    array of { platform, href, label }
- * - legal:     array of { label, href }
- * - copyright: string
- #}
-<footer class="site-footer" role="contentinfo">
-  <div class="site-footer__inner">
-    <div class="site-footer__brand">
-      <a href="/" class="site-footer__logo" aria-label="{{ brand.logo.alt|default("Regent's University London home") }}">
-        <img src="{{ brand.logo.src|default('/assets/full-logo-white.svg') }}" alt="{{ brand.logo.alt|default("Regent's University London") }}" />
-      </a>
-      {% if brand.tagline %}
-        <p class="site-footer__tagline">{{ brand.tagline }}</p>
+  Footer component
+  @prop {string} description   - Brand tagline shown below the logo
+  @prop {array}  social_links  - Social icon links: label, href, icon
+  @prop {array}  nav_columns   - Navigation column groups: heading, links[], contact_items[]
+  @prop {string} copyright     - Copyright notice string
+  @prop {array}  legal_links   - Bottom legal link items: label, href
+#}
+
+<footer class="site-footer" aria-label="Site footer">
+
+  {# ── Main content ──────────────────────────────────────────────────────── #}
+  <div class="site-footer__main">
+    <div class="site-footer__inner">
+
+      {# Brand column #}
+      <div class="site-footer__brand">
+        <a href="/" class="site-footer__logo-link" aria-label="Regent's University London home">
+          <svg class="site-footer__logo" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="30" r="16" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="18" cy="30" r="10" stroke="currentColor" stroke-width="1" fill="none"/>
+            <path d="M12 24 L18 18 L24 24 M12 36 L18 42 L24 36 M10 30 H26" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <text x="42" y="25" font-family="Avenir Next, sans-serif" font-weight="700" font-size="16" fill="currentColor" letter-spacing="3">REGENT'S</text>
+            <text x="42" y="42" font-family="Avenir Next, sans-serif" font-weight="400" font-size="9" fill="currentColor" letter-spacing="4">UNIVERSITY LONDON</text>
+          </svg>
+        </a>
+
+        {% if description %}
+          <p class="site-footer__description">{{ description }}</p>
+        {% endif %}
+
+        {% if social_links %}
+          <ul class="site-footer__social" aria-label="Social media links">
+            {% for item in social_links %}
+              <li>
+                <a href="{{ item.href }}" class="site-footer__social-link" aria-label="{{ item.label }}" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    {# Icon paths injected per icon name via JS/Twig logic #}
+                  </svg>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      {# Navigation columns #}
+      {% if nav_columns %}
+        {% for col in nav_columns %}
+          <nav class="site-footer__nav-col" aria-label="{{ col.heading }}">
+            <h3 class="site-footer__nav-heading">{{ col.heading }}</h3>
+
+            {% if col.links %}
+              <ul class="site-footer__nav-list">
+                {% for link in col.links %}
+                  <li><a href="{{ link.href }}" class="site-footer__nav-link">{{ link.label }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if col.contact_items %}
+              <ul class="site-footer__contact-list">
+                {% for item in col.contact_items %}
+                  <li class="site-footer__contact-item">
+                    <a href="{{ item.href }}" class="site-footer__contact-link">{{ item.label }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </nav>
+        {% endfor %}
       {% endif %}
-      {% if social %}
-        <ul class="site-footer__social" aria-label="Social media links">
-          {% for item in social %}
-            <li>
-              <a href="{{ item.href }}" class="site-footer__social-link" aria-label="{{ item.label }}" target="_blank" rel="noopener noreferrer">
-                {% if item.platform == 'instagram' %}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-                {% elseif item.platform == 'linkedin' %}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                {% elseif item.platform == 'youtube' %}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>
-                {% endif %}
-              </a>
-            </li>
+
+    </div>
+  </div>
+
+  {# ── Legal bar ─────────────────────────────────────────────────────────── #}
+  <div class="site-footer__legal-bar">
+    <div class="site-footer__inner">
+      <p class="site-footer__copyright">{{ copyright }}</p>
+      {% if legal_links %}
+        <ul class="site-footer__legal-links" aria-label="Legal links">
+          {% for link in legal_links %}
+            <li><a href="{{ link.href }}" class="site-footer__legal-link">{{ link.label }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
     </div>
-    <nav class="site-footer__nav" aria-label="Footer navigation">
-      {% for col in columns %}
-        <div class="site-footer__col">
-          <h3 class="site-footer__col-heading">{{ col.heading }}</h3>
-          <ul class="site-footer__links">
-            {% for link in col.links %}
-              <li><a href="{{ link.href }}" class="site-footer__link">{{ link.label }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    </nav>
   </div>
-  <div class="site-footer__legal">
-    <p class="site-footer__copyright">{{ copyright }}</p>
-    <ul class="site-footer__legal-links" aria-label="Legal links">
-      {% for link in legal %}
-        <li><a href="{{ link.href }}" class="site-footer__legal-link">{{ link.label }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
+
 </footer>

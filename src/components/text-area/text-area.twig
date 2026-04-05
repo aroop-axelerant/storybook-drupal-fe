@@ -1,0 +1,27 @@
+{#
+ * Text Area component — Regent's University London
+ *
+ * Props:
+ * - id:          string   Field id
+ * - label:       string   Visible label
+ * - placeholder: string   Placeholder text
+ * - value:       string   Pre-filled content
+ * - rows:        integer  Visible rows (default: 4)
+ * - required:    boolean  Marks field required
+ * - disabled:    boolean  Disabled state
+ * - hint:        string   Helper text
+ * - error:       string   Error message
+ #}
+<div class="form-group">
+  <label class="form-label{% if required %} form-label--required{% endif %}" for="{{ id }}">{{ label }}</label>
+  <textarea
+    class="input{% if error %} input--error{% endif %}"
+    id="{{ id }}"
+    rows="{{ rows|default(4) }}"
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if required %}required{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if error %}aria-invalid="true" aria-describedby="{{ id }}-error"{% endif %}>{{ value }}</textarea>
+  {% if hint and not error %}<span class="form-hint">{{ hint }}</span>{% endif %}
+  {% if error %}<span class="form-error-msg" id="{{ id }}-error" role="alert">{{ error }}</span>{% endif %}
+</div>

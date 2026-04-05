@@ -1,0 +1,36 @@
+{#
+  Accordion component
+  @prop {array} items - Array of accordion items:
+                          id       {string}  - Unique ID used for aria-controls linkage
+                          question {string}  - Visible trigger label
+                          answer   {string}  - Body content shown when expanded
+                          open     {bool}    - Whether the item starts expanded
+                          disabled {bool}    - Whether the item is non-interactive
+#}
+
+<div class="accordion">
+  {% for item in items %}
+    <div class="accordion__item{% if item.disabled %} accordion__item--disabled{% endif %}">
+      <button
+        class="accordion__trigger"
+        id="trigger-{{ item.id }}"
+        aria-expanded="{{ item.open ? 'true' : 'false' }}"
+        aria-controls="panel-{{ item.id }}"
+        {% if item.disabled %}disabled aria-disabled="true"{% endif %}
+      >
+        <span class="accordion__question">{{ item.question }}</span>
+        <span class="accordion__icon" aria-hidden="true"></span>
+      </button>
+
+      <div
+        class="accordion__panel"
+        id="panel-{{ item.id }}"
+        role="region"
+        aria-labelledby="trigger-{{ item.id }}"
+        {% if not item.open %}hidden{% endif %}
+      >
+        <p class="accordion__answer">{{ item.answer }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>

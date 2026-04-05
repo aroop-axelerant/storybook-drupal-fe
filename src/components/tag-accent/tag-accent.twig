@@ -1,0 +1,20 @@
+{#
+ * Tag — Accent component — Regent's University London
+ *
+ * Props:
+ * - label:       string   Tag text
+ * - variant:     string   yellow | violet | peach
+ * - dismissible: boolean  Show dismiss button (default: false)
+ * - interactive: boolean  Clickable/button style (default: false)
+ #}
+{% if interactive %}
+  <button class="tag tag--{{ variant|default('yellow') }} tag--interactive" type="button">
+    {{ label }}
+    {% if dismissible %}<button class="tag__dismiss" aria-label="Remove {{ label }}">×</button>{% endif %}
+  </button>
+{% else %}
+  <span class="tag tag--{{ variant|default('yellow') }}{% if dismissible %} tag--dismissible{% endif %}">
+    {{ label }}
+    {% if dismissible %}<button class="tag__dismiss" aria-label="Remove {{ label }}">×</button>{% endif %}
+  </span>
+{% endif %}

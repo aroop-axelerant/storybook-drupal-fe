@@ -1,0 +1,28 @@
+{
+  "default": {
+    "variant": "full-bleed",
+    "eyebrow": "Stay Connected",
+    "heading": "For the latest from Regent's, sign up to our newsletter.",
+    "body": "Get open day invites, course updates, and student life news straight to your inbox.",
+    "input_placeholder": "Enter email …",
+    "button_label": "Subscribe"
+  },
+  "variants": {
+    "full-bleed": {
+      "variant": "full-bleed",
+      "eyebrow": "Stay Connected",
+      "heading": "For the latest from Regent's, sign up to our newsletter.",
+      "body": "Get open day invites, course updates, and student life news straight to your inbox.",
+      "input_placeholder": "Enter email …",
+      "button_label": "Subscribe"
+    },
+    "boxed": {
+      "variant": "boxed",
+      "eyebrow": "Stay Connected",
+      "heading": "For the latest from Regent's, sign up to our newsletter.",
+      "body": "Get open day invites, course updates, and student life news straight to your inbox.",
+      "input_placeholder": "Enter email …",
+      "button_label": "Subscribe"
+    }
+  }
+}

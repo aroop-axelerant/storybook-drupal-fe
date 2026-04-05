@@ -1,0 +1,66 @@
+{#
+  Breadcrumb component
+  @prop {array}   items   - Crumb items: { label: string, href?: string }[]
+                            The last item is the current page — omit href to render as text.
+  @prop {boolean} inverse - Light text for use on dark/coloured backgrounds (optional)
+#}
+
+<nav class="breadcrumb{% if inverse %} breadcrumb--inverse{% endif %}"
+     aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    {% for item in items %}
+      {% set isFirst = loop.first %}
+      {% set isLast  = loop.last %}
+
+      <li class="breadcrumb__item{% if not isFirst and not isLast %} breadcrumb__item--hidden{% endif %}">
+        {% if item.href and not isLast %}
+          <a href="{{ item.href }}" class="breadcrumb__link">{{ item.label }}</a>
+        {% else %}
+          <span class="breadcrumb__current" aria-current="page">{{ item.label }}</span>
+        {% endif %}
+        {% if not isLast %}
+          <span class="breadcrumb__sep" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </span>
+        {% endif %}
+      </li>
+
+      {# After first item: inject ellipsis trigger for hidden intermediate items #}
+      {% if isFirst and items|length > 2 %}
+        <li class="breadcrumb__ellipsis-item" data-breadcrumb-ellipsis>
+          <span class="breadcrumb__sep" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </span>
+          <button class="breadcrumb__ellipsis-btn"
+                  aria-label="Show more breadcrumbs"
+                  aria-expanded="false"
+                  aria-haspopup="true">
+            &hellip;
+          </button>
+          <div class="breadcrumb__dropdown" role="menu">
+            {% for item in items %}
+              {% if not loop.first and not loop.last %}
+                <a href="{{ item.href }}" class="breadcrumb__dropdown-link">{{ item.label }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="breadcrumb__sep" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

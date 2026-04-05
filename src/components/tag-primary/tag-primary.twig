@@ -1,0 +1,26 @@
+{#
+ * Tag — Primary component — Regent's University London
+ *
+ * Props:
+ * - label:       string   Tag text
+ * - variant:     string   default | brand
+ * - dismissible: boolean  Show dismiss button (default: false)
+ * - interactive: boolean  Clickable/button style (default: false)
+ * - url:         string   If set, renders as <a>
+ #}
+{% if url %}
+  <a href="{{ url }}" class="tag tag--{{ variant|default('default') }}{% if interactive %} tag--interactive{% endif %}">
+    {{ label }}
+    {% if dismissible %}<button class="tag__dismiss" aria-label="Remove {{ label }}">×</button>{% endif %}
+  </a>
+{% elseif interactive %}
+  <button class="tag tag--{{ variant|default('default') }} tag--interactive" type="button">
+    {{ label }}
+    {% if dismissible %}<button class="tag__dismiss" aria-label="Remove {{ label }}">×</button>{% endif %}
+  </button>
+{% else %}
+  <span class="tag tag--{{ variant|default('default') }}{% if dismissible %} tag--dismissible{% endif %}">
+    {{ label }}
+    {% if dismissible %}<button class="tag__dismiss" aria-label="Remove {{ label }}">×</button>{% endif %}
+  </span>
+{% endif %}

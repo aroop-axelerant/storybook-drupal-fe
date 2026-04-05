@@ -1,0 +1,8 @@
+{
+  "default": { "id": "name", "label": "Full name", "type": "text", "placeholder": "e.g. Sarah Mackenzie", "required": true, "hint": "As it appears on your passport" },
+  "variants": {
+    "default":  { "id": "name",  "label": "Full name",   "type": "text",  "placeholder": "e.g. Sarah Mackenzie", "required": true,  "hint": "As it appears on your passport" },
+    "error":    { "id": "ucas",  "label": "UCAS code",   "type": "text",  "value": "BA89X1", "required": true,  "error": "Invalid UCAS code format" },
+    "disabled": { "id": "ref",   "label": "Reference",   "type": "text",  "value": "REF-2025-00421", "disabled": true, "hint": "Auto-generated" }
+  }
+}

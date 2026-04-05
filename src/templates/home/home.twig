@@ -1,30 +1,266 @@
 {#
- * Home page template — Regent's University London
- *
- * Slots:
- * - header:         object  → header component props
- * - hero:           object  → hero component props
- * - featured_cards: array   → array of card component props
- * - newsletter:     object  → newsletter component props
- * - footer:         object  → footer component props
- #}
-{% include "@components/header/header.twig" with header %}
+  Home template
+  Props:
+    header        — Site header (variant, logo, nav, cta)
+    hero          — Hero search (overline, title, subtitle, image_src, youtube_id, actions)
+    content_tiles — Content Tiles (overline, heading, body, tiles[])
+    who_we_are    — Who We Are (overline, heading, video{}, highlights{heading,body,items[]})
+    study_pathways — Overlay cards (heading, overline, cards[]) — 4 cards
+    alumni        — Video carousel (heading, overline, cards[]) — 5 cards
+    new_courses   — Course cards (heading, overline, cards[])
+    open_days     — Boxed CTA banner (eyebrow, heading, body, cta_primary, cta_secondary)
+    insights      — Article cards 4-up (heading, overline, cards[])
+    apply_journey — Step count cards (heading, overline, body, cards[])
+    cta_banner    — Full-bleed newsletter banner
+    footer        — Site footer
+#}
 
-<main id="main-content">
-  {% include "@components/hero/hero.twig" with hero %}
+<div class="t-home">
 
-  <section class="section section--cards" aria-labelledby="featured-heading">
-    <div class="layout-container">
-      <h2 id="featured-heading" class="section__heading">Featured Programmes</h2>
-      <div class="layout-three-col layout-three-col--auto">
-        {% for card in featured_cards %}
-          {% include "@components/card/card.twig" with card %}
-        {% endfor %}
+  {# ── Header ──────────────────────────────────────────────────────────── #}
+  {% include '@components/header/header.twig' with {
+    variant: header.variant,
+    logo:    header.logo,
+    nav:     header.nav,
+    cta:     header.cta
+  } only %}
+
+  <main id="main-content">
+
+    {# ── Hero — search variant ────────────────────────────────────────────── #}
+    {% include '@components/hero/hero.twig' with {
+      overline:   hero.overline,
+      title:      hero.title,
+      subtitle:   hero.subtitle,
+      image_src:  hero.image_src,
+      image_alt:  hero.image_alt,
+      youtube_id: hero.youtube_id,
+      actions:    hero.actions
+    } only %}
+
+    {# ── Who We Are — Video + Highlights ─────────────────────────────────── #}
+    <section class="who-we-are" aria-label="{{ who_we_are.heading }}">
+      <div class="who-we-are__inner">
+        <div class="who-we-are__video">
+          {% include '@components/video/video.twig' with {
+            variant:     'compact',
+            youtube_id:  who_we_are.video.youtube_id,
+            thumbnail_src: who_we_are.video.poster,
+            thumbnail_alt: ''
+          } only %}
+        </div>
+        <div class="who-we-are__grid">
+          <div>
+            {% if who_we_are.overline %}
+              <span class="section-header__overline">{{ who_we_are.overline }}</span>
+            {% endif %}
+            <h2 class="section-header__heading" style="margin-top:var(--sp-8);margin-bottom:var(--sp-32);">{{ who_we_are.heading }}</h2>
+            {% for paragraph in who_we_are.highlights.body %}
+              <p class="who-we-are__body"{% if not loop.first %} style="margin-top:var(--sp-32);"{% endif %}>{{ paragraph }}</p>
+            {% endfor %}
+            {% if who_we_are.cta %}
+              <div style="margin-top:var(--sp-32);">
+              {% include '@components/standout-link/standout-link.twig' with {
+                label:   who_we_are.cta.label,
+                url:     who_we_are.cta.href,
+                variant: 'default'
+              } only %}
+              </div>
+            {% endif %}
+          </div>
+          <ul class="who-we-are__highlights" aria-label="Key statistics">
+            {% for item in who_we_are.highlights.items %}
+              <li class="who-we-are__stat-row">
+                <span class="who-we-are__stat">{{ item.stat }}</span>
+                <span class="who-we-are__desc">{{ item.description }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  {% include "@components/newsletter/newsletter.twig" with newsletter %}
-</main>
+    {# ── Why Regent's — Content Tiles ────────────────────────────────────── #}
+    {% include '@components/content-tiles/content-tiles.twig' with {
+      overline: content_tiles.overline,
+      heading:  content_tiles.heading,
+      body:     content_tiles.body,
+      tiles:    content_tiles.tiles
+    } only %}
 
-{% include "@components/footer/footer.twig" with footer %}
+    {# ── Study Pathways — Overlay Cards (4 cards) ─────────────────────────── #}
+    <section class="t-section" aria-label="{{ study_pathways.heading }}">
+      <div class="t-section__inner">
+        <div class="section-header">
+          {% if study_pathways.overline %}
+            <span class="section-header__overline">{{ study_pathways.overline }}</span>
+          {% endif %}
+          <h2 class="section-header__heading">{{ study_pathways.heading }}</h2>
+        </div>
+        <div class="cards-grid--4up">
+          {% for card in study_pathways.cards %}
+            {% include '@components/card/card.twig' with {
+              variant: 'overlay',
+              heading: card.heading,
+              summary: card.summary,
+              image:   card.image,
+              cta:     card.cta
+            } only %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {# ── Alumni Stories — Video Carousel (5 cards) ────────────────────────── #}
+    <section class="t-section" aria-label="{{ alumni.heading }}">
+      <div class="t-section__inner">
+        <div class="section-header">
+          {% if alumni.overline %}
+            <span class="section-header__overline">{{ alumni.overline }}</span>
+          {% endif %}
+          <h2 class="section-header__heading">{{ alumni.heading }}</h2>
+        </div>
+        <div class="carousel" id="alumni-carousel">
+          <div class="carousel__track-wrap">
+            <div class="carousel__track" id="alumni-track">
+              {% for card in alumni.cards %}
+                <div class="carousel__slide">
+                  {% include '@components/card/card.twig' with {
+                    variant: 'video',
+                    tag:     card.tag,
+                    name:    card.name,
+                    quote:   card.quote,
+                    video:   card.video
+                  } only %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="carousel__controls">
+            <button class="carousel__btn" id="alumni-prev" aria-label="Previous slide" disabled>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="carousel__dots" role="tablist" aria-label="Carousel navigation">
+              {% for card in alumni.cards %}
+                <button class="carousel__dot{% if loop.first %} is-active{% endif %}"
+                  data-index="{{ loop.index0 }}"
+                  aria-label="Go to slide {{ loop.index }}"></button>
+              {% endfor %}
+            </div>
+            <button class="carousel__btn" id="alumni-next" aria-label="Next slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {# ── New Courses — Course Cards ───────────────────────────────────────── #}
+    <section class="t-section" aria-label="{{ new_courses.heading }}">
+      <div class="t-section__inner">
+        <div class="section-header">
+          {% if new_courses.overline %}
+            <span class="section-header__overline">{{ new_courses.overline }}</span>
+          {% endif %}
+          <h2 class="section-header__heading">{{ new_courses.heading }}</h2>
+        </div>
+        <div class="cards-grid">
+          {% for card in new_courses.cards %}
+            {% include '@components/card/card.twig' with {
+              variant:      'course',
+              qualification: card.qualification,
+              heading:       card.heading,
+              description:   card.description,
+              highlights:    card.highlights,
+              cta:           card.cta
+            } only %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {# ── Open Days — Boxed CTA Banner ─────────────────────────────────────── #}
+    {% include '@components/cta-banner/cta-banner.twig' with {
+      variant:       'boxed',
+      eyebrow:       open_days.eyebrow,
+      heading:       open_days.heading,
+      body:          open_days.body,
+      cta_primary:   open_days.cta_primary,
+      cta_secondary: open_days.cta_secondary
+    } only %}
+
+    {# ── Insights & Stories — Article Cards (4-up) ───────────────────────── #}
+    <section class="t-section" aria-label="{{ insights.heading }}">
+      <div class="t-section__inner">
+        <div class="section-header">
+          {% if insights.overline %}
+            <span class="section-header__overline">{{ insights.overline }}</span>
+          {% endif %}
+          <h2 class="section-header__heading">{{ insights.heading }}</h2>
+        </div>
+        <div class="cards-grid--4">
+          {% for card in insights.cards %}
+            {% include '@components/card/card.twig' with {
+              variant: 'article',
+              overline: card.overline,
+              heading:  card.heading,
+              excerpt:  card.excerpt,
+              image:    card.image,
+              date:     card.date,
+              cta:      card.cta
+            } only %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {# ── How to Apply — Step Count Cards ─────────────────────────────────── #}
+    <section class="t-section" aria-label="{{ apply_journey.heading }}">
+      <div class="t-section__inner">
+        <div class="section-header">
+          {% if apply_journey.overline %}
+            <span class="section-header__overline">{{ apply_journey.overline }}</span>
+          {% endif %}
+          <h2 class="section-header__heading">{{ apply_journey.heading }}</h2>
+          {% if apply_journey.body %}
+            <p class="section-header__body">{{ apply_journey.body }}</p>
+          {% endif %}
+        </div>
+        <div class="cards-grid">
+          {% for card in apply_journey.cards %}
+            {% include '@components/card/card.twig' with {
+              variant: 'step-count',
+              step:    card.step,
+              heading: card.heading,
+              summary: card.summary,
+              image:   card.image,
+              cta:     card.cta,
+              bodyBg:  card.bodyBg
+            } only %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {# ── Newsletter — Full-bleed CTA Banner ──────────────────────────────── #}
+    {% include '@components/cta-banner/cta-banner.twig' with {
+      variant:           'full-bleed',
+      eyebrow:           cta_banner.eyebrow,
+      heading:           cta_banner.heading,
+      body:              cta_banner.body,
+      input_placeholder: cta_banner.input_placeholder,
+      submit_label:      cta_banner.submit_label
+    } only %}
+
+  </main>
+
+  {# ── Footer ──────────────────────────────────────────────────────────── #}
+  {% include '@components/footer/footer.twig' with {
+    brand:     footer.brand,
+    columns:   footer.columns,
+    social:    footer.social,
+    legal:     footer.legal,
+    copyright: footer.copyright
+  } only %}
+
+</div>

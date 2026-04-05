@@ -1,0 +1,22 @@
+{
+  "default": {
+    "title": "A Message From Our Vice-Chancellor",
+    "attribution": "Prof. Geoff Smith · Regent's University London",
+    "youtube_id": "DOp8mIYrgw8",
+    "thumbnail_alt": "Vice-Chancellor speaking at Regent's University London"
+  },
+  "variants": {
+    "default": {
+      "title": "A Message From Our Vice-Chancellor",
+      "attribution": "Prof. Geoff Smith · Regent's University London",
+      "youtube_id": "DOp8mIYrgw8",
+      "thumbnail_alt": "Vice-Chancellor speaking at Regent's University London"
+    },
+    "compact": {
+      "variant": "compact",
+      "youtube_id": "DOp8mIYrgw8",
+      "thumbnail_src": "/images/TV%20studio.jpg",
+      "thumbnail_alt": ""
+    }
+  }
+}

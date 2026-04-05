@@ -1,48 +1,220 @@
 {
   "default": {
-    "variant": "article",
-    "title": "How Regent's Prepares You for the Global Stage",
-    "desc": "Our unique location in the heart of London gives students unparalleled access to international business, culture, and creativity.",
-    "image": { "src": "/assets/who-we-are.png", "alt": "Students at Regent's University London" },
-    "chips": [{ "label": "Business", "variant": "green" }],
-    "cta": { "label": "Read More", "href": "#" }
+    "overline": "Featured",
+    "heading": "Discover Your Path at Regent's University London",
+    "excerpt": "Set in the heart of one of London's most beautiful parks, Regent's offers a truly unique environment to study, connect and grow.",
+    "image": { "src": "/images/Library.jpg", "alt": "Regent's University library reading room" },
+    "cta": { "label": "Learn more", "href": "#" }
   },
   "variants": {
-    "article": { "variant": "article" },
-    "course": {
-      "variant": "course",
-      "title": "BA Business Management",
-      "desc": "Build the commercial acumen and leadership skills to thrive in today's global marketplace.",
-      "chips": [{ "label": "Undergraduate", "variant": "violet" }, { "label": "3 Years", "variant": "grey" }],
-      "cta": { "label": "View Course", "href": "#" }
-    },
-    "event": {
-      "variant": "event",
-      "title": "Open Day — Spring 2025",
-      "desc": "Meet our faculty, tour the campus, and discover your future at Regent's.",
-      "date_badge": { "day": "15", "month": "Mar" },
-      "chips": [{ "label": "Open Day", "variant": "yellow" }],
-      "cta": { "label": "Register Now", "href": "#" }
-    },
-    "leader": {
-      "variant": "leader",
-      "title": "Prof. Sarah Mitchell",
-      "role": "Dean, School of Business",
-      "image": { "src": "/assets/who-we-are.png", "alt": "Prof. Sarah Mitchell" }
-    },
-    "journey-yellow": {
-      "variant": "journey",
-      "journey_colour": "yellow",
-      "title": "Postgraduate",
-      "desc": "Deepen your expertise with our world-class Master's programmes.",
-      "cta": { "label": "Explore", "href": "#" }
-    },
-    "journey-violet": {
-      "variant": "journey",
-      "journey_colour": "violet",
-      "title": "Undergraduate",
-      "desc": "Start your journey with a globally recognised Bachelor's degree.",
-      "cta": { "label": "Explore", "href": "#" }
-    }
+    "simple": [
+      {
+        "overline": "Featured",
+        "heading": "Discover Your Path at Regent's University London",
+        "excerpt": "Set in the heart of one of London's most beautiful parks, Regent's offers a truly unique environment to study, connect and grow.",
+        "image": { "src": "/images/Library.jpg", "alt": "Regent's University library reading room" },
+        "cta": { "label": "Learn more", "href": "#" }
+      },
+      {
+        "overline": "Student Life",
+        "heading": "A Campus Experience Like No Other in the Capital",
+        "excerpt": "From world-class facilities to vibrant student societies, life at Regent's extends well beyond the lecture hall.",
+        "image": { "src": "/images/Tennis court.jpg", "alt": "Students on the Regent's tennis courts" },
+        "cta": { "label": "Explore campus life", "href": "#" }
+      },
+      {
+        "overline": "Research",
+        "heading": "Fashion, Media and the Arts: A Hub for Creative Minds",
+        "excerpt": "Our specialist schools bring together practitioners, researchers and students to push the boundaries of creative industries.",
+        "image": { "src": "/images/Fashion studio.jpg", "alt": "Students working in the fashion studio" },
+        "cta": { "label": "Meet our schools", "href": "#" }
+      }
+    ],
+    "course": [
+      {
+        "qualification": "BA Hons",
+        "heading": "Fashion Marketing",
+        "description": "Build the skills to lead campaigns, shape brand strategy and drive growth across global fashion markets.",
+        "highlights": [
+          { "label": "UCAS",     "value": "W235" },
+          { "label": "Intake",   "value": "September 2025" },
+          { "label": "Duration", "value": "3 years full-time" }
+        ],
+        "cta": { "label": "Find out more", "href": "#" }
+      },
+      {
+        "qualification": "BA Hons",
+        "heading": "International Business BA (Hons)",
+        "description": "Develop the skills to lead and innovate in international business with a global perspective.",
+        "highlights": [
+          { "label": "UCAS",     "value": "N120" },
+          { "label": "Intake",   "value": "September 2025" },
+          { "label": "Duration", "value": "3 years full-time" }
+        ],
+        "cta": { "label": "Find out more", "href": "#" }
+      },
+      {
+        "qualification": "MA",
+        "heading": "Film Production & Cinematography",
+        "description": "A practice-led programme developing advanced creative and technical skills for careers in film and screen industries.",
+        "highlights": [
+          { "label": "UCAS",     "value": "W610" },
+          { "label": "Intake",   "value": "January 2026" },
+          { "label": "Duration", "value": "1 year full-time" }
+        ],
+        "cta": { "label": "Find out more", "href": "#" }
+      }
+    ],
+    "profile": [
+      {
+        "image": { "src": "/images/Regent's University London (1)(1).jpg", "alt": "Dr Sarah Mitchell" },
+        "name": "Dr Sarah Mitchell",
+        "role": "Senior Lecturer in Fashion Design",
+        "department": "School of Fashion",
+        "email": "s.mitchell@regents.ac.uk"
+      },
+      {
+        "image": { "src": "/images/Regent's University London (2)(1).jpg", "alt": "Prof James Okafor" },
+        "name": "Prof James Okafor",
+        "role": "Professor of International Business",
+        "department": "Regent's Business School",
+        "email": "j.okafor@regents.ac.uk"
+      },
+      {
+        "image": { "src": "/images/Regent's University London (3).jpg", "alt": "Dr Emma Carlisle" },
+        "name": "Dr Emma Carlisle",
+        "role": "Programme Director, Film & Media",
+        "department": "School of Media & Communication",
+        "email": "e.carlisle@regents.ac.uk"
+      }
+    ],
+    "article": [
+      {
+        "overline": "Student Life",
+        "heading": "Five Reasons to Study in the Heart of London",
+        "excerpt": "From world-class museums on your doorstep to an unrivalled professional network, London is more than a backdrop — it's part of your education.",
+        "image": { "src": "/images/Marylebone.jpg", "alt": "Marylebone neighbourhood near Regent's" },
+        "author": "Content Team",
+        "date": "18 March 2025"
+      },
+      {
+        "overline": "Alumni",
+        "heading": "How Regent's Shaped My Career in Global Finance",
+        "excerpt": "MBA graduate Priya Sharma reflects on the networks, skills and confidence she built during her time at Regent's Business School.",
+        "image": { "src": "/images/Regent's University London (10).jpg", "alt": "Regent's University London campus" },
+        "author": "Priya Sharma",
+        "date": "5 February 2025"
+      },
+      {
+        "overline": "Research",
+        "heading": "Sustainability in Fashion: What the Industry Must Do Next",
+        "excerpt": "Researchers from our School of Fashion examine the pressing environmental challenges facing the global fashion industry and propose a path forward.",
+        "author": "Dr Sarah Mitchell",
+        "date": "22 January 2025"
+      }
+    ],
+    "event": [
+      {
+        "day": "17",
+        "month": "May",
+        "year": "2025",
+        "heading": "Undergraduate Open Day",
+        "description": "Come and explore the campus, meet academics and current students, and find out everything you need to know about studying at Regent's.",
+        "time": "10:00 – 16:00",
+        "location": "Regent's University London, Inner Circle, Regent's Park",
+        "image": { "src": "/images/Regent's University London (11).jpg", "alt": "Students on Regent's University campus" },
+        "cta": { "label": "Register now", "href": "#" }
+      },
+      {
+        "day": "3",
+        "month": "Jun",
+        "year": "2025",
+        "heading": "Postgraduate Information Evening",
+        "description": "Attend our online information evening to discover our full range of postgraduate programmes and speak directly with programme directors.",
+        "time": "18:00 – 20:00",
+        "location": "Online — Zoom",
+        "cta": { "label": "Register now", "href": "#" }
+      },
+      {
+        "day": "12",
+        "month": "Jul",
+        "year": "2025",
+        "heading": "Summer Fashion Showcase 2025",
+        "description": "Celebrate the creative talent of graduating students from the School of Fashion at our annual end-of-year showcase.",
+        "time": "14:00 – 19:00",
+        "location": "Regent's University London, Inner Circle, Regent's Park",
+        "image": { "src": "/images/Fashion studio(1).jpg", "alt": "Fashion students showcasing their work" },
+        "cta": { "label": "Book tickets", "href": "#" }
+      }
+    ],
+    "video": [
+      {
+        "tag": "Alumni",
+        "name": "Jason Drew",
+        "quote": "Studying with classmates worldwide prepared me for a global workplace.",
+        "video": { "src": "/images/Library.jpg", "poster": "/images/Regent's University London (1)(1).jpg" },
+        "cta": { "label": "Read Jason's story", "href": "#" }
+      },
+      {
+        "tag": "Student Life",
+        "name": "Priya Sharma",
+        "quote": "The campus in Regent's Park is unlike anywhere else — it genuinely feels like home.",
+        "video": { "src": "/images/Tennis court.jpg", "poster": "/images/Regent's University London (2)(1).jpg" },
+        "cta": { "label": "Explore student life", "href": "#" }
+      },
+      {
+        "tag": "Research",
+        "name": "Dr Emma Carlisle",
+        "quote": "Being surrounded by creative industries every day pushes my research in ways I never expected.",
+        "video": { "src": "/images/Fashion studio.jpg", "poster": "/images/Regent's University London (3).jpg" },
+        "cta": { "label": "Discover our research", "href": "#" }
+      }
+    ],
+    "overlay": [
+      {
+        "heading": "Discover Your Path",
+        "summary": "Set in the heart of one of London's most beautiful parks, Regent's offers a truly unique environment to study, connect and grow.",
+        "image": { "src": "/images/Library.jpg", "alt": "Regent's University library reading room" },
+        "cta": { "label": "Learn more", "href": "#" }
+      },
+      {
+        "heading": "Life on Campus",
+        "summary": "From world-class facilities to vibrant student societies, life at Regent's extends well beyond the lecture hall.",
+        "image": { "src": "/images/Tennis court.jpg", "alt": "Students on the Regent's tennis courts" },
+        "cta": { "label": "Explore campus life", "href": "#" }
+      },
+      {
+        "heading": "Creative Arts & Fashion",
+        "summary": "Our specialist schools bring together practitioners, researchers and students to push the boundaries of creative industries.",
+        "image": { "src": "/images/Fashion studio.jpg", "alt": "Students working in the fashion studio" },
+        "cta": { "label": "Meet our schools", "href": "#" }
+      }
+    ],
+    "step-count": [
+      {
+        "step": "Step 1",
+        "heading": "Find Your Course",
+        "summary": "Browse over 60 undergraduate and postgraduate programmes across business, arts, law, and social sciences.",
+        "image": { "src": "/images/Library.jpg", "alt": "Regent's University library" },
+        "cta": { "label": "Explore courses", "href": "#" },
+        "bodyBg": "zingy-light"
+      },
+      {
+        "step": "Step 2",
+        "heading": "Prepare Your Application",
+        "summary": "Gather your personal statement, academic references and supporting documents — we'll guide you through every requirement.",
+        "image": { "src": "/images/Regent's University London (6).jpg", "alt": "Student preparing their application" },
+        "cta": { "label": "Application guide", "href": "#" },
+        "bodyBg": "violet"
+      },
+      {
+        "step": "Step 3",
+        "heading": "Visit Us at an Open Day",
+        "summary": "Meet academics, explore the campus and get a real feel for life at Regent's before you make your decision.",
+        "image": { "src": "/images/Regent's University London (11).jpg", "alt": "Students at a Regent's open day" },
+        "cta": { "label": "Book your place", "href": "#" },
+        "bodyBg": "peach"
+      }
+    ]
   }
 }

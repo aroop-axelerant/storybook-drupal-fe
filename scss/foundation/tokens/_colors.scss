@@ -55,48 +55,41 @@
   --color-light-40:  rgba(255, 255, 255, 0.40); // White at 40% (glassmorphism)
 
   // ---------------------------------------------------------------------------
-  // Semantic aliases — ACTION
-  // ---------------------------------------------------------------------------
-  --color-action:             var(--color-forest-green);
-  --color-action-hover:       var(--color-forest-green-hover);
-  --color-action-text:        var(--color-white);
-  --color-action-secondary:   var(--color-powdered-blue);
-
-  // ---------------------------------------------------------------------------
   // Semantic aliases — BACKGROUND
   // ---------------------------------------------------------------------------
-  --color-bg:           var(--color-off-white);   // Default page bg
-  --color-bg-surface:   var(--color-white);        // Card / panel bg
-  --color-bg-dark:      var(--color-charcoal);     // Dark sections
-  --color-bg-accent:    var(--color-zingy-yellow); // Accent sections
-  --color-bg-brand:     var(--color-forest-green); // Brand/green sections
-  --color-bg-violet:    var(--color-violet);        // Violet sections
-  --color-bg-warm:      var(--color-soft-peach-50);// Warm sections
+  --color-bg:               var(--color-off-white);       // Page background
+  --color-bg-surface:       var(--color-white);           // Card / panel surfaces
+  --color-bg-dark:          var(--color-charcoal);        // Dark section backgrounds
+  --color-bg-accent:        var(--color-zingy-yellow);    // Accent / highlight bg
+  --color-bg-brand:         var(--color-forest-green);    // Brand section bg
+  --color-bg-zingy-light:   var(--color-zingy-yellow-50); // Subtle highlight, journey cards, feature panels
+  --color-bg-violet:        var(--color-violet);          // Violet accent, journey cards, chips
+  --color-bg-peach:         var(--color-soft-peach-50);   // Warm peach accent, journey cards
 
   // ---------------------------------------------------------------------------
   // Semantic aliases — TEXT
   // ---------------------------------------------------------------------------
-  --color-text:           var(--color-charcoal);        // Default body text
-  --color-text-secondary: var(--color-charcoal-60);     // Secondary / muted
-  --color-text-tertiary:  var(--color-charcoal-40);     // Disabled / hint
-  --color-text-inverted:  var(--color-white);            // On dark backgrounds
-  --color-text-brand:     var(--color-forest-green);    // Brand emphasis
-  --color-text-disabled:  var(--color-charcoal-40);
+  --color-text:           var(--color-charcoal);        // Primary body text
+  --color-text-secondary: var(--color-charcoal-60);     // Secondary / metadata text
+  --color-text-inverted:  var(--color-white);           // Text on dark backgrounds
+  --color-text-brand:     var(--color-forest-green);    // Brand accent text / links
+
+  // ---------------------------------------------------------------------------
+  // Semantic aliases — ACTION
+  // ---------------------------------------------------------------------------
+  --color-action-primary:       var(--color-forest-green); // Primary buttons, checked inputs, active tabs
+  --color-action-primary-hover: #004a3c;                   // Primary action hover state
 
   // ---------------------------------------------------------------------------
   // Semantic aliases — BORDER
   // ---------------------------------------------------------------------------
-  --color-border:         var(--color-charcoal-20);  // Default border
-  --color-border-strong:  var(--color-charcoal-40);  // Emphasis border
-  --color-border-focus:   var(--color-zingy-yellow); // Focus ring
+  --color-border:         var(--color-charcoal-20);  // Default borders / dividers
+  --color-border-focus:   var(--color-powdered-blue); // Focus ring / outline (standard focus state)
 
   // ---------------------------------------------------------------------------
   // Semantic aliases — STATE
   // ---------------------------------------------------------------------------
-  --color-error:    var(--color-error-red);
-  --color-success:  var(--color-forest-green);
-  --color-disabled: var(--color-charcoal-20);
-  --color-warning:  var(--color-soft-peach);
+  --color-error: var(--color-error-red); // Error states
 
   // ---------------------------------------------------------------------------
   // Gradients (applied as background-image)

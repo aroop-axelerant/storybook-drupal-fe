@@ -1,0 +1,26 @@
+{
+  "default": {
+    "items": [
+      { "label": "Home",          "href": "/" },
+      { "label": "Study",         "href": "/study" },
+      { "label": "Undergraduate", "href": "/study/undergraduate" },
+      { "label": "Fashion Marketing" }
+    ]
+  },
+  "variants": {
+    "short": {
+      "items": [
+        { "label": "Home",  "href": "/" },
+        { "label": "Study"  }
+      ]
+    },
+    "inverse": {
+      "items": [
+        { "label": "Home",          "href": "/" },
+        { "label": "Study",         "href": "/study" },
+        { "label": "Undergraduate", "href": "/study/undergraduate" },
+        { "label": "Fashion Marketing" }
+      ]
+    }
+  }
+}

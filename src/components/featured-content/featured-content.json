@@ -1,0 +1,20 @@
+{
+  "default": {
+    "variant": "default",
+    "heading": "Where Regent's Takes You",
+    "body": "Regent's graduates progress into global careers, entrepreneurial ventures, and postgraduate study — supported by personalised career guidance and an international alumni network.",
+    "highlights": [
+      { "stat": "92%", "description": "of graduates employed or in further study within 6 months" },
+      { "stat": "40+", "description": "nationalities represented across our recent graduating cohort" },
+      { "stat": "60%", "description": "of graduates working internationally" }
+    ]
+  },
+  "variants": {
+    "inverse": {
+      "variant": "inverse"
+    },
+    "accent": {
+      "variant": "accent"
+    }
+  }
+}

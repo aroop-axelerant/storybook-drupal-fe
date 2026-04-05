@@ -1,0 +1,31 @@
+{
+  "default": {
+    "variant": "underline",
+    "tabs": [
+      { "label": "Overview",           "active": true,  "disabled": false },
+      { "label": "Entry Requirements", "active": false, "disabled": false },
+      { "label": "Fees & Funding",     "active": false, "disabled": false },
+      { "label": "How to Apply",       "active": false, "disabled": false }
+    ]
+  },
+  "variants": {
+    "underline": {
+      "variant": "underline",
+      "tabs": [
+        { "label": "Overview",           "active": true,  "disabled": false },
+        { "label": "Entry Requirements", "active": false, "disabled": false },
+        { "label": "Fees & Funding",     "active": false, "disabled": false },
+        { "label": "How to Apply",       "active": false, "disabled": true  }
+      ]
+    },
+    "pill": {
+      "variant": "pill",
+      "tabs": [
+        { "label": "All Courses",    "active": true,  "disabled": false },
+        { "label": "Undergraduate",  "active": false, "disabled": false },
+        { "label": "Postgraduate",   "active": false, "disabled": false },
+        { "label": "Short Courses",  "active": false, "disabled": true  }
+      ]
+    }
+  }
+}

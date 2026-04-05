@@ -1,0 +1,53 @@
+// =============================================================================
+// Foundation: Font Faces
+// Self-hosted fonts — files live in src/assets/fonts/
+// Storybook staticDirs serves src/assets/ at root, so paths start with /fonts/
+// =============================================================================
+
+// ── Magnole Serif (Display / Heading font) ────────────────────────────────
+
+@font-face {
+  font-family: 'Magnole Serif';
+  src: url('/fonts/magnole-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// ── Avenir Next (Body / UI font) ─────────────────────────────────────────
+
+// Regular — weight 400
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/avenir-next-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Regular Italic — weight 400
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/avenir-next-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Demi — weight 600
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/avenir-next-demi.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Bold — weight 700
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/avenir-next-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,8 @@
+{
+  "default": { "label": "Submit Application", "type": "submit" },
+  "variants": {
+    "default":  { "label": "Submit Application", "type": "submit" },
+    "loading":  { "label": "Submitting…",        "type": "submit", "loading": true },
+    "disabled": { "label": "Submit Application", "type": "submit", "disabled": true }
+  }
+}

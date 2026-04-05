@@ -1,0 +1,9 @@
+{
+  "default": { "id": "business", "label": "Business & Management", "name": "courses", "variant": "default" },
+  "variants": {
+    "default":  { "id": "business", "label": "Business & Management", "name": "courses", "checked": false },
+    "checked":  { "id": "arts",     "label": "Arts & Humanities",     "name": "courses", "checked": true  },
+    "disabled": { "id": "law",      "label": "Law & Politics",        "name": "courses", "disabled": true },
+    "error":    { "id": "pref-err", "label": "Business & Management", "name": "courses", "error": true    }
+  }
+}

@@ -1,10 +1,137 @@
 // =============================================================================
 // Foundation: Motion / Transition Tokens
 // Source: Regent's University London design-system/tokens.json
+// Comprehensive motion system for transitions and animations
 // =============================================================================
 
 :root {
-  --ease-fast: 150ms ease;
-  --ease:      200ms ease;   // Default interaction transition
-  --ease-slow: 380ms ease;   // Deliberate / large-element transitions
+  // ---------------------------------------------------------------------------
+  // Duration Tiers — Timing for different interaction types
+  // ---------------------------------------------------------------------------
+  --duration-micro:  100ms;  // Micro-interactions (icon changes, focus)
+  --duration-fast:   150ms;  // Quick feedback (button press, hover)
+  --duration:        200ms;  // Default interaction transition
+  --duration-slow:   380ms;  // Deliberate / large-element transitions
+  --duration-slower: 500ms;  // Complex animations (modals, page transitions)
+
+  // ---------------------------------------------------------------------------
+  // Easing Functions — Motion curves for natural feel
+  // ---------------------------------------------------------------------------
+  --ease-linear:     linear;
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);        // Elements exiting (decelerating)
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);        // Elements entering (accelerating)
+  --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);      // Continuous motion
+  --ease-bounce:     cubic-bezier(0.68, -0.55, 0.265, 1.55); // Playful bounce
+  --ease-elastic:    cubic-bezier(0.175, 0.885, 0.32, 1.275); // Spring-like
+
+  // ---------------------------------------------------------------------------
+  // Shorthand Transitions — Common duration + easing combinations
+  // ---------------------------------------------------------------------------
+  --transition-micro:  var(--duration-micro)   var(--ease-out);
+  --transition-fast:   var(--duration-fast)    var(--ease-out);
+  --transition:        var(--duration)         var(--ease-out);
+  --transition-slow:   var(--duration-slow)    var(--ease-in-out);
+  --transition-slower: var(--duration-slower)  var(--ease-in-out);
+
+  // ---------------------------------------------------------------------------
+  // Property-Specific Transitions — For common use cases
+  // ---------------------------------------------------------------------------
+  --transition-color:      color         var(--transition);
+  --transition-background: background    var(--transition);
+  --transition-border:     border-color  var(--transition);
+  --transition-shadow:     box-shadow    var(--transition);
+  --transition-transform:  transform     var(--transition);
+  --transition-opacity:    opacity       var(--transition);
+  --transition-all:        all           var(--transition);
+
+  // ---------------------------------------------------------------------------
+  // Keyframe Animation Definitions
+  // ---------------------------------------------------------------------------
+
+  // Entrance animations
+  --animation-fade-in:     fade-in      var(--duration)      var(--ease-out)  forwards;
+  --animation-slide-up:    slide-up     var(--duration)      var(--ease-out)  forwards;
+  --animation-slide-down:  slide-down   var(--duration)      var(--ease-out)  forwards;
+  --animation-slide-left:  slide-left   var(--duration)      var(--ease-out)  forwards;
+  --animation-slide-right: slide-right  var(--duration)      var(--ease-out)  forwards;
+  --animation-scale-in:    scale-in     var(--duration-fast) var(--ease-out)  forwards;
+  --animation-bounce-in:   bounce-in    var(--duration-slow) var(--ease-bounce) forwards;
+
+  // Exit animations
+  --animation-fade-out:     fade-out     var(--duration)      var(--ease-in)   forwards;
+  --animation-slide-up-out: slide-up-out var(--duration)      var(--ease-in)   forwards;
+  --animation-scale-out:    scale-out    var(--duration-fast) var(--ease-in)   forwards;
+
+  // Loading & continuous animations
+  --animation-spin:        spin         var(--duration-slower) linear           infinite;
+  --animation-pulse:       pulse        var(--duration-slow)   var(--ease-in-out) infinite;
+  --animation-shimmer:     shimmer      var(--duration-slower) linear           infinite;
+}
+
+// Keyframe definitions
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-up-out {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-16px); opacity: 0; }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(-16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-left {
+  0% { transform: translateX(16px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-right {
+  0% { transform: translateX(-16px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes scale-out {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { opacity: 1; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
 }

@@ -1,0 +1,102 @@
+// Inline Link component documentation
+import "../../../scss/main.scss";
+
+export default {
+  title: "Components/Link/Inline Link",
+};
+
+// ── Default Variant ────────────────────────────────────────────────────────────
+const focusStyle = `<style>a:focus-visible{outline:2px solid var(--color-powdered-blue)!important;outline-offset:4px!important}</style>`;
+
+export const Default = () => `
+${focusStyle}
+<div style="padding:var(--sp-48);font-family:var(--font-sans);background:var(--color-off-white);min-height:100vh">
+  <h1 style="font-size:var(--text-h3);margin-block-end:var(--sp-8)">Inline Link — Default</h1>
+  <p style="color:var(--color-text-secondary);margin-block-end:var(--sp-48)">Forest green on light backgrounds. Underline visible by default, fades out on hover to reduce visual noise on interaction.</p>
+
+  <!-- Live component -->
+  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);padding:var(--sp-24);margin-block-end:var(--sp-48);display:flex;align-items:center;justify-content:center;min-height:80px">
+    <p style="font-size:var(--text-body);margin:0;line-height:1.6;color:var(--color-text)">
+      Discover more about
+      <a href="#"
+        style="color:var(--color-forest-green);font-weight:600;text-decoration:underline;text-decoration-color:var(--color-forest-green);text-underline-offset:3px;text-decoration-thickness:1px;cursor:pointer;border-radius:var(--radius-s);transition:text-decoration-color 200ms ease-out,opacity 200ms ease-out,transform var(--duration-fast) var(--ease-out)"
+        onmouseover="this.style.textDecorationColor='transparent';this.style.opacity='var(--opacity-hover, 0.8)'"
+        onmouseout="this.style.textDecorationColor='var(--color-forest-green)';this.style.opacity='1';this.style.transform=''"
+        onmousedown="this.style.transform='scale(0.98)'"
+        onmouseup="this.style.transform=''">our academic programmes</a>
+      at Regent's University London.
+    </p>
+  </div>
+
+  <!-- States table -->
+  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">
+    <div style="display:grid;grid-template-columns:140px 1fr 1fr;padding:var(--sp-12) var(--sp-32);background:var(--color-charcoal-10);border-bottom:1px solid var(--color-border)">
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">State</p>
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Color</p>
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Properties</p>
+    </div>
+    ${[
+      ['Default',        'var(--color-forest-green)', '--color-forest-green', 'font-weight: 600 · underline visible · text-underline-offset: 3px · thickness: 1px'],
+      ['Hover',          'var(--color-forest-green)', '--color-forest-green', 'underline fades out · opacity: var(--opacity-hover, 0.8) · transition: 200ms ease-out'],
+      ['Focus',          'var(--color-powdered-blue)', '--color-powdered-blue', 'outline: 2px solid --color-powdered-blue · outline-offset: 4px · underline retained'],
+      ['Active/Pressed', 'var(--color-forest-green)', '--color-forest-green', 'transform: scale(0.98) · var(--duration-fast) var(--ease-out) · tactile press feedback'],
+      ['Disabled',       'var(--color-charcoal-50)',  '--color-charcoal-50',  'opacity: 1 · cursor: not-allowed · pointer-events: none · contrast: 4.6:1 (WCAG AA)'],
+    ].map(([state, swatch, token, props]) => `
+      <div style="display:grid;grid-template-columns:140px 1fr 1fr;padding:var(--sp-12) var(--sp-32);border-bottom:1px solid var(--color-border);align-items:center">
+        <p style="font-size:var(--text-label-s);font-weight:600;color:var(--color-text-secondary);margin:0">${state}</p>
+        <div style="display:flex;align-items:center;gap:var(--sp-8)">
+          <div style="width:14px;height:14px;border-radius:var(--radius-s);background:${swatch};flex-shrink:0;border:1px solid rgba(0,0,0,0.1)"></div>
+          <code style="font-size:11px;color:var(--color-text-secondary)">${token}</code>
+        </div>
+        <p style="font-size:11px;color:var(--color-text-tertiary);margin:0;line-height:1.5">${props}</p>
+      </div>`).join('')}
+  </div>
+</div>
+`;
+
+// ── Inverse Variant ────────────────────────────────────────────────────────────
+export const Inverse = () => `
+${focusStyle}
+<div style="padding:var(--sp-48);font-family:var(--font-sans);background:var(--color-charcoal);min-height:100vh">
+  <h1 style="font-size:var(--text-h3);margin-block-end:var(--sp-8);color:var(--color-white)">Inline Link — Inverse</h1>
+  <p style="color:var(--color-charcoal-30);margin-block-end:var(--sp-48)">White on dark backgrounds. Underline visible by default, fades out on hover. Use on hero sections, dark panels, and image overlays.</p>
+
+  <!-- Live component -->
+  <div style="background:var(--color-charcoal-90);border-radius:var(--radius-m);border:1px solid var(--color-charcoal-80);padding:var(--sp-24);margin-block-end:var(--sp-48);display:flex;align-items:center;justify-content:center;min-height:80px">
+    <p style="font-size:var(--text-body);margin:0;line-height:1.6;color:var(--color-white)">
+      Discover more about
+      <a href="#"
+        style="color:var(--color-zingy-yellow);font-weight:600;text-decoration:underline;text-decoration-color:var(--color-zingy-yellow);text-underline-offset:3px;text-decoration-thickness:1px;cursor:pointer;border-radius:var(--radius-s);transition:text-decoration-color 200ms ease-out,opacity 200ms ease-out,transform var(--duration-fast) var(--ease-out)"
+        onmouseover="this.style.textDecorationColor='transparent';this.style.opacity='var(--opacity-hover, 0.8)'"
+        onmouseout="this.style.textDecorationColor='var(--color-zingy-yellow)';this.style.opacity='1';this.style.transform=''"
+        onmousedown="this.style.transform='scale(0.98)'"
+        onmouseup="this.style.transform=''">our academic programmes</a>
+      at Regent's University London.
+    </p>
+  </div>
+
+  <!-- States table -->
+  <div style="background:var(--color-charcoal-90);border-radius:var(--radius-m);border:1px solid var(--color-charcoal-80);overflow:hidden">
+    <div style="display:grid;grid-template-columns:140px 1fr 1fr;padding:var(--sp-12) var(--sp-32);background:var(--color-charcoal-80);border-bottom:1px solid var(--color-charcoal-70)">
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-charcoal-30);margin:0">State</p>
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-charcoal-30);margin:0">Color</p>
+      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-charcoal-30);margin:0">Properties</p>
+    </div>
+    ${[
+      ['Default',        'var(--color-zingy-yellow)', '--color-zingy-yellow', 'font-weight: 600 · underline visible · text-underline-offset: 3px · thickness: 1px'],
+      ['Hover',          'var(--color-zingy-yellow)', '--color-zingy-yellow', 'underline fades out · opacity: var(--opacity-hover, 0.8) · transition: 200ms ease-out'],
+      ['Focus',          'var(--color-powdered-blue)', '--color-powdered-blue', 'outline: 2px solid --color-powdered-blue · outline-offset: 4px · underline retained'],
+      ['Active/Pressed', 'var(--color-zingy-yellow)', '--color-zingy-yellow', 'transform: scale(0.98) · var(--duration-fast) var(--ease-out) · tactile press feedback'],
+      ['Disabled',       'var(--color-charcoal-40)',  '--color-charcoal-40',  'opacity: 1 · cursor: not-allowed · pointer-events: none · contrast: 5.1:1 (WCAG AA)'],
+    ].map(([state, swatch, token, props]) => `
+      <div style="display:grid;grid-template-columns:140px 1fr 1fr;padding:var(--sp-12) var(--sp-32);border-bottom:1px solid var(--color-charcoal-80);align-items:center">
+        <p style="font-size:var(--text-label-s);font-weight:600;color:var(--color-charcoal-30);margin:0">${state}</p>
+        <div style="display:flex;align-items:center;gap:var(--sp-8)">
+          <div style="width:14px;height:14px;border-radius:var(--radius-s);background:${swatch};flex-shrink:0;border:1px solid rgba(255,255,255,0.1)"></div>
+          <code style="font-size:11px;color:var(--color-charcoal-40)">${token}</code>
+        </div>
+        <p style="font-size:11px;color:var(--color-charcoal-50);margin:0;line-height:1.5">${props}</p>
+      </div>`).join('')}
+  </div>
+</div>
+`;

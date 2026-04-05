@@ -1,81 +1,291 @@
 {#
- * Card component — Regent's University London
- *
- * Props:
- * - variant:        string   article | course | event | leader | journey (default: article)
- * - title:          string
- * - desc:           string   Description / excerpt
- * - image:          { src, alt }  (optional)
- * - chips:          array of { label, variant }  (optional)
- * - cta:            { label, href }  (optional)
- * - date_badge:     { day, month }  (event variant only)
- * - role:           string   (leader variant only)
- * - journey_colour: string   yellow | violet | peach  (journey variant only)
- #}
+  Card component — card__heading uses heading scale (--font-sans, --text-h4) across all variants.
+  @prop {string} variant        - 'simple' | 'course' | 'profile' | 'article' | 'event' | 'step-count' | 'overlay' | 'video'
+  Overlay note: heading should be 3–4 words max to work with the larger --text-h2 type scale.
 
-{% if variant == 'leader' %}
-  <div class="card card--leader">
-    <div class="card__image-wrap">
-      {% if image %}
-        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
-      {% else %}
-        <div class="card__image-wrap--placeholder">
-          <span class="card__initials">{{ title|slice(0,2)|upper }}</span>
-        </div>
-      {% endif %}
+  Video props:
+  @prop {string} tag            - Category label (e.g. 'Alumni')
+  @prop {string} name           - Person's name
+  @prop {string} quote          - Short testimonial quote
+  @prop {object} video          - { src: string, poster: string }
+  @prop {object} cta            - { label: string, href: string }
+
+  Simple / Article / Event shared props:
+  @prop {string} overline       - Category label (simple, article)
+  @prop {string} heading        - Card title
+  @prop {string} excerpt        - Short description text
+  @prop {object} image          - { src: string, alt: string } — optional for article, event
+  @prop {object} cta            - { label: string, href: string }
+
+  Step Count props:
+  @prop {string} step           - e.g. 'Step 1'
+  @prop {string} summary        - Short description paragraph
+  @prop {object} image          - { src: string, alt: string }
+  @prop {object} cta            - { label: string, href: string }
+
+  Course props:
+  @prop {string} qualification  - e.g. 'BA Hons'
+  @prop {string} description    - Short course description
+  @prop {array}  highlights     - [{ label: string, value: string }] — e.g. UCAS, Intake, Duration
+
+  Profile props:
+  @prop {object} image          - { src: string, alt: string }
+  @prop {string} name           - Full name
+  @prop {string} role           - Job title / role
+  @prop {string} department     - School or department name
+  @prop {string} email          - Email address
+
+  Event props:
+  @prop {string} day            - Day number
+  @prop {string} month          - Abbreviated month
+  @prop {string} year           - Full year
+  @prop {string} time           - Event time range
+  @prop {string} location       - Venue or platform
+#}
+
+{% set isSimple     = variant == 'simple' %}
+{% set isCourse     = variant == 'course' %}
+{% set isProfile    = variant == 'profile' %}
+{% set isArticle    = variant == 'article' %}
+{% set isEvent      = variant == 'event' %}
+{% set isStepCount  = variant == 'step-count' %}
+{% set isOverlay    = variant == 'overlay' %}
+{% set isVideo      = variant == 'video' %}
+
+{% if isOverlay %}
+<a href="{{ cta.href }}" class="card card--overlay">
+{% else %}
+<article class="card card--{{ variant }}{% if isArticle and not image %} card--no-image{% endif %}">
+{% endif %}
+
+  {# ── Video ── #}
+  {% if isVideo %}
+    <video class="card__video" src="{{ video.src }}" poster="{{ video.poster }}"
+      muted playsinline preload="none" aria-label="{{ name }}"></video>
+    <div class="card__video-controls">
+      <span class="tag tag--default">{{ tag }}</span>
+      <button class="card__mute-btn" aria-label="Muted — click to unmute" aria-pressed="true" data-muted="true">
+        <span class="icon-mute-off">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+        </span>
+        <span class="icon-mute-on">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+        </span>
+      </button>
     </div>
     <div class="card__body">
-      <h3 class="card__title">{{ title }}</h3>
-      {% if role %}<p class="card__role">{{ role }}</p>{% endif %}
+      <h3 class="card__heading">{{ name }}</h3>
+      <p class="card__excerpt">{{ quote }}</p>
     </div>
-  </div>
+  {% endif %}
 
-{% elseif variant == 'journey' %}
-  <div class="card card--journey card--journey-{{ journey_colour|default('yellow') }}">
-    {% if image %}
-      <div class="card__image-wrap">
-        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
+  {# ── Overlay ── #}
+  {% if isOverlay %}
+    <div class="card__media">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+    <div class="card__body">
+      <h3 class="card__heading">{{ heading }}</h3>
+      <div class="card__overlay-reveal">
+        <p class="card__excerpt">{{ summary }}</p>
+        <span class="card__cta" aria-hidden="true">
+          {{ cta.label }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Step Count ── #}
+  {% if isStepCount %}
+    <div class="card__step-image">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+    <div class="card__body card__body--{{ bodyBg }}">
+      <span class="card__step-label">{{ step }}</span>
+      <h3 class="card__heading">
+        <a href="{{ cta.href }}" class="card__heading-link">{{ heading }}</a>
+      </h3>
+      <p class="card__excerpt">{{ summary }}</p>
+      <a href="{{ cta.href }}" class="card__step-cta" tabindex="-1" aria-hidden="true">
+        {{ cta.label }}
+      </a>
+    </div>
+  {% endif %}
+
+  {# ── Simple & Article image ── #}
+  {% if (isSimple or isArticle) and image %}
+    <a href="{{ cta.href }}" class="card__image-link" tabindex="-1" aria-hidden="true">
+      <div class="card__media">
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+      </div>
+    </a>
+  {% endif %}
+
+  {# ── Profile image ── #}
+  {% if isProfile %}
+    <div class="card__media card__media--profile">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+  {% endif %}
+
+  {# ── Event image with overlaid date badge ── #}
+  {% if isEvent and image %}
+    <div class="card__media-wrap">
+      <a href="{{ cta.href }}" class="card__image-link" tabindex="-1" aria-hidden="true">
+        <div class="card__media">
+          <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+        </div>
+      </a>
+      <div class="card__date-badge" aria-label="{{ day }} {{ month }} {{ year }}">
+        <span class="card__date-day">{{ day }}</span>
+        <span class="card__date-month">{{ month }}</span>
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Event: inline date badge (position: relative, height: auto) outside body when no image ── #}
+  {% if isEvent and not image %}
+    <div class="card__event-date-wrap">
+      <div class="card__date-badge--inline" aria-label="{{ day }} {{ month }} {{ year }}">
+        <span class="card__date-day">{{ day }}</span>
+        <span class="card__date-month">{{ month }}</span>
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Card body (skipped for variants that render their own body above) ── #}
+  {% if not isStepCount and not isOverlay and not isVideo %}
+  <div class="card__body">
+
+    {# Simple #}
+    {% if isSimple %}
+      <span class="tag tag--brand">{{ overline }}</span>
+      <h3 class="card__heading">
+        <a href="{{ cta.href }}" class="card__heading-link">{{ heading }}</a>
+      </h3>
+      <p class="card__excerpt">{{ excerpt }}</p>
+      <div class="card__spacer"></div>
+      <a href="{{ cta.href }}" class="card__cta" tabindex="-1" aria-hidden="true">
+        {{ cta.label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    {# Course #}
+    {% if isCourse %}
+      <span class="tag tag--default">{{ qualification }}</span>
+      <h3 class="card__heading">
+        <a href="{{ cta.href }}" class="card__heading-link">{{ heading }}</a>
+      </h3>
+      <p class="card__excerpt">{{ description }}</p>
+      <ul class="card__highlights" aria-label="Course details">
+        {% for h in highlights %}
+          <li class="card__highlight">
+            <span class="card__highlight-label">{{ h.label }}</span>
+            <span class="card__highlight-value">{{ h.value }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="card__spacer"></div>
+      <a href="{{ cta.href }}" class="card__cta-btn" tabindex="-1" aria-hidden="true">
+        {{ cta.label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    {# Profile #}
+    {% if isProfile %}
+      <span class="card__department">{{ department }}</span>
+      <h3 class="card__heading">{{ name }}</h3>
+      <p class="card__role">{{ role }}</p>
+      <a href="mailto:{{ email }}" class="card__contact">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+        {{ email }}
+      </a>
+    {% endif %}
+
+    {# Article #}
+    {% if isArticle %}
+      <span class="tag tag--violet">{{ overline }}</span>
+      <h3 class="card__heading">
+        <a href="{{ cta.href }}" class="card__heading-link">{{ heading }}</a>
+      </h3>
+      <div class="card__meta">
+        <time class="card__date">{{ date }}</time>
       </div>
     {% endif %}
-    <div class="card__body">
-      <h3 class="card__title">{{ title }}</h3>
-      {% if desc %}<p class="card__desc">{{ desc }}</p>{% endif %}
-      {% if cta %}
-        <div class="card__actions">
-          {% include "@components/button/button.twig" with { label: cta.label, href: cta.href, variant: "outline-dark", size: "sm" } %}
-        </div>
-      {% endif %}
-    </div>
-  </div>
 
-{% else %}
-  <div class="card card--{{ variant|default('article') }}">
-    <div class="card__image-wrap">
-      {% if variant == 'event' and date_badge %}
-        <div class="card__date-badge">
-          <span>{{ date_badge.day }}</span>
-          <span>{{ date_badge.month }}</span>
+    {# Event #}
+    {% if isEvent %}
+      <h3 class="card__heading">
+        <a href="{{ cta.href }}" class="card__heading-link">{{ heading }}</a>
+      </h3>
+      <div class="card__event-meta">
+        <div class="card__event-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          {{ time }}
         </div>
-      {% endif %}
-      {% if image %}
-        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" />
-      {% endif %}
-    </div>
-    <div class="card__body">
-      {% if chips %}
-        <div class="card__chips">
-          {% for chip in chips %}
-            {% include "@components/chip/chip.twig" with { label: chip.label, variant: chip.variant } %}
-          {% endfor %}
+        <div class="card__event-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          {{ location }}
         </div>
-      {% endif %}
-      <h3 class="card__title">{{ title }}</h3>
-      {% if desc %}<p class="card__desc">{{ desc }}</p>{% endif %}
-      {% if cta %}
-        <div class="card__actions">
-          {% include "@components/button/button.twig" with { label: cta.label, href: cta.href, variant: "outline-green", size: "sm" } %}
-        </div>
-      {% endif %}
-    </div>
+      </div>
+      <div class="card__spacer"></div>
+      <a href="{{ cta.href }}" class="card__cta-btn" tabindex="-1" aria-hidden="true">
+        {{ cta.label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    {% endif %}
+
   </div>
-{% endif %}
+  {% endif %}
+
+{% if isOverlay %}</a>{% else %}</article>{% endif %}

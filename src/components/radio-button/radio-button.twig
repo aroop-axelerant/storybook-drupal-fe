@@ -1,0 +1,24 @@
+{#
+ * Radio Button component — Regent's University London
+ *
+ * Props:
+ * - id:       string   Input id
+ * - label:    string   Visible label
+ * - name:     string   Radio group name
+ * - value:    string   Input value
+ * - checked:  boolean  Pre-selected state
+ * - disabled: boolean  Disabled state
+ * - error:    boolean  Error state
+ #}
+<label class="check-group">
+  <input
+    class="check-input{% if error %} check-input--error{% endif %}"
+    type="radio"
+    id="{{ id }}"
+    name="{{ name }}"
+    {% if value %}value="{{ value }}"{% endif %}
+    {% if checked %}checked{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if error %}aria-invalid="true"{% endif %}>
+  <span class="check-label{% if disabled %} check-label--disabled{% endif %}">{{ label }}</span>
+</label>

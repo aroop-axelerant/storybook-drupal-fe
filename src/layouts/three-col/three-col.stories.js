@@ -1,17 +1,23 @@
 import data from "./three-col.json";
 
 const col = (label) =>
-  `<div style="background:rgba(0,91,75,.1);border:1px dashed #005b4b;padding:var(--sp-6);text-align:center;font-family:var(--font-sans);color:#005b4b;border-radius:var(--radius-s);min-height:140px;display:flex;align-items:center;justify-content:center">${label}</div>`;
+  `<div style="background:rgba(0,91,75,.1);border:1px dashed var(--color-forest-green);padding:var(--sp-16);text-align:center;font-family:var(--font-sans);font-size:var(--text-body-sm);color:var(--color-forest-green);border-radius:var(--radius-s);min-height:140px;display:flex;align-items:center;justify-content:center">${label}</div>`;
 
 const render = ({ variant = "equal", items = [] }) => {
   const mod = variant !== "equal" ? ` layout-three-col--${variant}` : "";
-  const cols = items.length
-    ? items.map((it) => col(it.content)).join("")
-    : `${col("Column 1")}${col("Column 2")}${col("Column 3")}`;
+  const defaultItems =
+    variant === "quad"
+      ? ["Column 1", "Column 2", "Column 3", "Column 4"]
+      : ["Column 1", "Column 2", "Column 3"];
+  const cols = (items.length ? items.map((it) => it.content) : defaultItems)
+    .map(col)
+    .join("");
   return `
-<div class="layout-container">
-  <div class="layout-three-col${mod}">
-    ${cols}
+<div style="background:var(--color-off-white);padding:var(--sp-32) 0;font-family:var(--font-sans)">
+  <div class="layout-container">
+    <div class="layout-three-col${mod}">
+      ${cols}
+    </div>
   </div>
 </div>`;
 };
