@@ -113,24 +113,22 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-  </style>
-    <style>
-      /* Simulated hover via .is-hover class for Storybook pseudo-states */
-      .tab--underline .tab__item.is-hover:not(.is-active):not(:disabled) {
-        color: var(--color-charcoal-90);
-      }
-      .tab--underline .tab__item.is-focus {
-        outline: 2px solid var(--color-powdered-blue);
-        outline-offset: 4px;
-        border-radius: 2px;
-      }
-    </style>
-    <style>
-      .tab--pill .tab__item.is-hover:not(.is-active):not(:disabled) {
-        background: var(--color-charcoal-20);
-        color: var(--color-charcoal-90);
-      }
-      .tab--pill .tab__item.is-focus {
-        outline: 2px solid var(--color-powdered-blue);
-        outline-offset: 4px;
-      }
+
+  /* Simulated hover via .is-hover class for Storybook pseudo-states */
+  .tab--underline .tab__item.is-hover:not(.is-active):not(:disabled) {
+    color: var(--color-charcoal-90);
+  }
+  .tab--underline .tab__item.is-focus {
+    outline: 2px solid var(--color-powdered-blue);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .tab--pill .tab__item.is-hover:not(.is-active):not(:disabled) {
+    background: var(--color-charcoal-20);
+    color: var(--color-charcoal-90);
+  }
+  .tab--pill .tab__item.is-focus {
+    outline: 2px solid var(--color-powdered-blue);
+    outline-offset: 4px;
+  }
