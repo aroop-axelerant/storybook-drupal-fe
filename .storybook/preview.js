@@ -2,6 +2,11 @@
 import "../src/main.scss";
 
 export const parameters = {
+  options: {
+    storySort: {
+      order: ["Getting Started", "Foundation", "Components", "Layouts", "Templates", "Pages"],
+    },
+  },
   layout: "fullscreen",
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
