@@ -1,0 +1,15 @@
+{#
+ * Listing layout — Regent's University London
+ *
+ * Props:
+ * - sidebar_content: string  (slot — filter sidebar HTML)
+ * - main_content:    string  (slot — search bar + results HTML)
+ #}
+<div class="layout-listing">
+  <aside class="layout-listing__sidebar">
+    {{ sidebar_content }}
+  </aside>
+  <div class="layout-listing__main">
+    {{ main_content }}
+  </div>
+</div>

@@ -1,0 +1,106 @@
+{
+  "default": {
+    "header": {
+      "variant": "light",
+      "logo": { "src": "/graphics/brand/logo-emblem.svg", "alt": "Regent's University London" },
+      "nav": [
+        { "label": "Study",            "href": "/study",            "has_dropdown": true },
+        { "label": "International",    "href": "/international",    "has_dropdown": false },
+        { "label": "Why Regent's",     "href": "/why-regents",      "has_dropdown": true }
+      ],
+      "cta": { "label": "Apply Now", "href": "/apply" }
+    },
+    "hero": {
+      "title":    "Undergraduate Courses",
+      "subtitle": "Discover over 60 undergraduate programmes designed around the individual — with direct access to faculty and a truly international classroom."
+    },
+    "breadcrumb": [
+      { "label": "Home",            "href": "/" },
+      { "label": "Study",           "href": "/study" },
+      { "label": "Undergraduate",   "href": null }
+    ],
+    "filters": {
+      "year_options": [
+        { "label": "September 2026", "value": "sep-2026", "checked": true },
+        { "label": "January 2027",   "value": "jan-2027", "checked": false }
+      ],
+      "field_options": [
+        { "label": "Business & Management", "value": "business",     "checked": false },
+        { "label": "Arts & Humanities",     "value": "arts",         "checked": false },
+        { "label": "Law & Politics",        "value": "law",          "checked": false },
+        { "label": "Psychology",            "value": "psychology",   "checked": false },
+        { "label": "Fashion & Design",      "value": "fashion",      "checked": false },
+        { "label": "Media & Film",          "value": "media",        "checked": false },
+        { "label": "Hospitality & Tourism", "value": "hospitality",  "checked": false }
+      ]
+    },
+    "courses": [
+      { "title": "Business Administration",                    "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Business and Psychology",                    "qualification": "BA (Hons)", "badge": "New 2025",    "href": "#" },
+      { "title": "Fashion Business & Retail Management",       "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Film Production",                            "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Global Business Management",                 "qualification": "BA (Hons)", "badge": "Foundation",  "href": "#" },
+      { "title": "International Relations",                    "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Law",                                        "qualification": "LLB (Hons)","badge": null,          "href": "#" },
+      { "title": "Luxury Hospitality Management",              "qualification": "BA (Hons)", "badge": "New 2025",    "href": "#" },
+      { "title": "Media Studies & Communications",             "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Photography",                                "qualification": "BA (Hons)", "badge": null,          "href": "#" },
+      { "title": "Psychology",                                 "qualification": "BSc (Hons)", "badge": null,         "href": "#" },
+      { "title": "Screenwriting & Producing",                  "qualification": "BA (Hons)", "badge": null,          "href": "#" }
+    ],
+    "journey": {
+      "heading":  "Your Journey Starts Here",
+      "overline": "How to Apply",
+      "cards": [
+        {
+          "color":   "zingy-yellow",
+          "image":   { "src": "/images/Library.jpg", "alt": "Students in the library" },
+          "heading": "Find Your Course",
+          "body":    "Browse over 60 undergraduate programmes across business, arts, law, and social sciences."
+        },
+        {
+          "color":   "violet",
+          "image":   { "src": "/images/Regent's University London (6).jpg", "alt": "Student at a desk" },
+          "heading": "Prepare Your Application",
+          "body":    "Gather your personal statement, academic references and supporting documents."
+        },
+        {
+          "color":   "peach",
+          "image":   { "src": "/images/Regent's University London (11).jpg", "alt": "Open day" },
+          "heading": "Visit at an Open Day",
+          "body":    "Meet academics, explore the campus and get a feel for life at Regent's."
+        }
+      ]
+    },
+    "newsletter": {
+      "eyebrow":     "Stay Connected",
+      "heading":     "Get the Latest from Regent's",
+      "body":        "Receive course updates, open day invitations and news from Regent's University London directly to your inbox.",
+      "placeholder": "Enter your email address",
+      "submit":      "Subscribe"
+    },
+    "footer": {
+      "brand": {
+        "logo": { "src": "/graphics/brand/logo-emblem-white.svg", "alt": "Regent's University London" },
+        "tagline": "A unique university in the heart of London's Royal Regent's Park."
+      },
+      "columns": [
+        { "heading": "Study",    "links": [ { "label": "Undergraduate", "href": "/study/undergraduate" }, { "label": "Postgraduate", "href": "/study/postgraduate" }, { "label": "Short Courses", "href": "/study/short-courses" } ] },
+        { "heading": "Research", "links": [ { "label": "Research Centres", "href": "/research/centres" }, { "label": "PhD Programmes", "href": "/research/phd" } ] },
+        { "heading": "About",    "links": [ { "label": "Our Story", "href": "/about/story" }, { "label": "Leadership", "href": "/about/leadership" }, { "label": "Campus", "href": "/about/campus" } ] }
+      ],
+      "social": [
+        { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
+        { "platform": "linkedin",  "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" },
+        { "platform": "youtube",   "href": "https://youtube.com/regentsuniversitylondon", "label": "YouTube" }
+      ],
+      "legal": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Cookie Policy",  "href": "/cookies" },
+        { "label": "Accessibility",  "href": "/accessibility" },
+        { "label": "Terms of Use",   "href": "/terms" }
+      ],
+      "copyright": "© 2025 Regent's University London. All rights reserved."
+    }
+  }
+}

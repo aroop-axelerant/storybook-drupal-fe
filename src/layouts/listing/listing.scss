@@ -1,0 +1,39 @@
+/* ══════════════════════════════════════════════════════════════════
+   LISTING LAYOUT
+   Sticky sidebar (filters) + scrollable main content column.
+   Sidebar is hidden on mobile — replaced by a drawer trigger.
+   ══════════════════════════════════════════════════════════════════ */
+
+.layout-listing {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-48);
+  align-items: start;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+.layout-listing__sidebar {
+  position: sticky;
+  top: calc(80px + var(--sp-32)); /* below fixed header */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.layout-listing__sidebar::-webkit-scrollbar { display: none; }
+
+/* ── Main content ────────────────────────────────────────────── */
+.layout-listing__main {
+  min-width: 0; /* prevent overflow in grid */
+}
+
+/* ── Tablet: collapse sidebar below content ──────────────────── */
+@media (max-width: 1023px) {
+  .layout-listing {
+    grid-template-columns: 1fr;
+    gap: var(--sp-32);
+  }
+
+  .layout-listing__sidebar {
+    display: none;
+  }
+}

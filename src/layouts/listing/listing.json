@@ -1,0 +1,6 @@
+{
+  "default": {
+    "sidebar_content": "<p style='font-family:var(--font-sans);color:var(--color-charcoal-60);font-size:0.875rem;padding:var(--sp-16);background:rgba(0,91,75,.06);border:1px dashed var(--color-forest-green);border-radius:var(--radius-s);text-align:center'>Sidebar slot</p>",
+    "main_content":    "<p style='font-family:var(--font-sans);color:var(--color-charcoal-60);font-size:0.875rem;padding:var(--sp-16);background:rgba(0,91,75,.06);border:1px dashed var(--color-forest-green);border-radius:var(--radius-s);text-align:center;min-height:320px'>Main content slot</p>"
+  }
+}

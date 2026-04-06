@@ -1,0 +1,161 @@
+{#
+  Undergraduate Courses template — Regent's University London
+
+  Props:
+    header       — Site header (variant, logo, nav, cta)
+    hero         — Editorial hero (title, subtitle)
+    breadcrumb   — Array of { label, href } (href null = current page)
+    filters      — { year_options[], field_options[] }
+    courses      — Array of { title, qualification, badge, href }
+    journey      — { heading, overline, cards[] { color, image, heading, body } }
+    newsletter   — { eyebrow, heading, body, placeholder, submit }
+    footer       — Site footer
+#}
+
+<div class="t-ug-courses">
+
+  {# ── Header ───────────────────────────────────────────────────────── #}
+  {% include "@components/header/header.twig" with { variant: header.variant, logo: header.logo, nav: header.nav, cta: header.cta } %}
+
+  {# ── Hero ─────────────────────────────────────────────────────────── #}
+  <section class="ug-hero">
+    <div class="layout-container">
+      <h1 class="ug-hero__title">{{ hero.title }}</h1>
+      <p class="ug-hero__subtitle">{{ hero.subtitle }}</p>
+    </div>
+  </section>
+
+  {# ── Breadcrumb ───────────────────────────────────────────────────── #}
+  <nav class="ug-breadcrumb" aria-label="Breadcrumb">
+    <div class="layout-container">
+      <ol class="ug-breadcrumb__list">
+        {% for crumb in breadcrumb %}
+          <li class="ug-breadcrumb__item">
+            {% if crumb.href %}
+              <a class="ug-breadcrumb__link" href="{{ crumb.href }}">{{ crumb.label }}</a>
+              <span class="ug-breadcrumb__sep" aria-hidden="true">/</span>
+            {% else %}
+              <span class="ug-breadcrumb__current" aria-current="page">{{ crumb.label }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </nav>
+
+  {# ── Listing section ──────────────────────────────────────────────── #}
+  <section class="ug-listing">
+    <div class="layout-container">
+
+      {# Mobile: filter trigger row #}
+      <div class="ug-listing__mobile-bar">
+        <div class="ug-search">
+          <svg class="ug-search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="ug-search__input" type="search" placeholder="Search courses…" aria-label="Search courses">
+        </div>
+        <button class="ug-filter-btn" aria-controls="ug-drawer" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          Filters
+        </button>
+      </div>
+
+      <div class="layout-listing">
+
+        {# ── Sidebar ──────────────────────────────────────────────── #}
+        <aside class="layout-listing__sidebar">
+          {% include "@templates/undergraduate-courses/partials/_filters.twig" with { filters: filters } %}
+        </aside>
+
+        {# ── Main ─────────────────────────────────────────────────── #}
+        <div class="layout-listing__main">
+
+          {# Desktop search #}
+          <div class="ug-search ug-search--desktop">
+            <svg class="ug-search__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input class="ug-search__input" type="search" placeholder="Search courses…" aria-label="Search courses">
+          </div>
+
+          {# Course list #}
+          <ol class="ug-course-list">
+            {% for course in courses %}
+              <li class="ug-course-row">
+                <a class="ug-course-row__link" href="{{ course.href }}">
+                  <div class="ug-course-row__left">
+                    <span class="ug-course-row__title">{{ course.title }}</span>
+                    {% if course.badge %}
+                      <span class="ug-course-row__badge ug-course-row__badge--{{ course.badge == 'Foundation' ? 'violet' : 'green' }}">{{ course.badge }}</span>
+                    {% endif %}
+                  </div>
+                  <span class="ug-course-row__qual">{{ course.qualification }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── Mobile filter drawer ─────────────────────────────────────────── #}
+  <div class="ug-drawer-backdrop" id="ug-backdrop" aria-hidden="true"></div>
+  <div class="ug-drawer" id="ug-drawer" role="dialog" aria-modal="true" aria-label="Filter courses" hidden>
+    <div class="ug-drawer__header">
+      <span class="ug-drawer__title">Filters</span>
+      <button class="ug-drawer__close" aria-label="Close filters">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="ug-drawer__body">
+      {% include "@templates/undergraduate-courses/partials/_filters.twig" with { filters: filters, mobile: true } %}
+    </div>
+    <div class="ug-drawer__footer">
+      <button class="ug-drawer__apply">Apply Filters</button>
+      <button class="ug-drawer__reset">Reset</button>
+    </div>
+  </div>
+
+  {# ── Journey cards ────────────────────────────────────────────────── #}
+  <section class="ug-journey">
+    <div class="layout-container">
+      <div class="ug-journey__header">
+        <span class="ug-eyebrow">{{ journey.overline }}</span>
+        <h2 class="ug-journey__heading">{{ journey.heading }}</h2>
+      </div>
+      <div class="ug-journey__grid">
+        {% for card in journey.cards %}
+          <article class="ug-journey-card ug-journey-card--{{ card.color }}">
+            <div class="ug-journey-card__image">
+              <img src="{{ card.image.src }}" alt="{{ card.image.alt }}" loading="lazy">
+            </div>
+            <div class="ug-journey-card__body">
+              <h3 class="ug-journey-card__heading">{{ card.heading }}</h3>
+              <p class="ug-journey-card__text">{{ card.body }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {# ── Newsletter ───────────────────────────────────────────────────── #}
+  <section class="ug-newsletter">
+    <div class="layout-container">
+      <div class="ug-newsletter__inner">
+        <div class="ug-newsletter__copy">
+          <span class="ug-eyebrow">{{ newsletter.eyebrow }}</span>
+          <h2 class="ug-newsletter__heading">{{ newsletter.heading }}</h2>
+          <p class="ug-newsletter__body">{{ newsletter.body }}</p>
+        </div>
+        <form class="ug-newsletter__form" action="#" method="post">
+          <input class="ug-newsletter__input" type="email" placeholder="{{ newsletter.placeholder }}" aria-label="{{ newsletter.placeholder }}" required>
+          <button class="ug-newsletter__submit" type="submit">{{ newsletter.submit }}</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {# ── Footer ───────────────────────────────────────────────────────── #}
+  {% include "@components/footer/footer.twig" with { brand: footer.brand, columns: footer.columns, social: footer.social, legal: footer.legal, copyright: footer.copyright } %}
+
+</div>
