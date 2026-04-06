@@ -27,9 +27,10 @@
         id="panel-{{ item.id }}"
         role="region"
         aria-labelledby="trigger-{{ item.id }}"
-        {% if not item.open %}hidden{% endif %}
       >
-        <p class="accordion__answer">{{ item.answer }}</p>
+        <div class="accordion__panel-inner">
+          <p class="accordion__answer">{{ item.answer }}</p>
+        </div>
       </div>
     </div>
   {% endfor %}

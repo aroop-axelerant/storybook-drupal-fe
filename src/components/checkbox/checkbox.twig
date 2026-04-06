@@ -20,5 +20,6 @@
     {% if checked %}checked{% endif %}
     {% if disabled %}disabled{% endif %}
     {% if error %}aria-invalid="true"{% endif %}>
+  <span class="check-box" aria-hidden="true"></span>
   <span class="check-label{% if disabled %} check-label--disabled{% endif %}">{{ label }}</span>
 </label>

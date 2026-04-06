@@ -115,11 +115,18 @@ const styles = `
 
   /* ── Panel ───────────────────────────────────────────────────────────────── */
   .accordion__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration) var(--ease-out);
+  }
+
+  /* Inner wrapper is required for the grid height trick */
+  .accordion__panel-inner {
     overflow: hidden;
   }
 
-  .accordion__panel[hidden] {
-    display: none;
+  .accordion__trigger[aria-expanded="true"] + .accordion__panel {
+    grid-template-rows: 1fr;
   }
 
   .accordion__answer {
@@ -129,11 +136,6 @@ const styles = `
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-charcoal-60);
-  }
-
-  /* ── Interactive toggle (Storybook demo) ─────────────────────────────────── */
-  .accordion__trigger[aria-expanded="true"] + .accordion__panel {
-    display: block;
   }
 </style>`;
 
@@ -163,9 +165,10 @@ function item({ id, question, answer, open = false, disabled = false }) {
         id="panel-${id}"
         role="region"
         aria-labelledby="trigger-${id}"
-        ${open ? "" : "hidden"}
       >
-        <p class="accordion__answer">${answer}</p>
+        <div class="accordion__panel-inner">
+          <p class="accordion__answer">${answer}</p>
+        </div>
       </div>
     </div>`;
 }
@@ -257,7 +260,7 @@ export const Default = () => `
                   <span class="accordion__question">${q3.question}</span>
                   <span class="accordion__icon" aria-hidden="true"></span>
                 </button>
-                <div class="accordion__panel" id="s-hover-panel" role="region" hidden></div>
+                <div class="accordion__panel" id="s-hover-panel" role="region"></div>
               </div>
             </div>
           </div>
@@ -271,7 +274,7 @@ export const Default = () => `
                   <span class="accordion__question">${q2.question}</span>
                   <span class="accordion__icon" aria-hidden="true"></span>
                 </button>
-                <div class="accordion__panel" id="s-focus-panel" role="region" hidden></div>
+                <div class="accordion__panel" id="s-focus-panel" role="region"></div>
               </div>
             </div>
           </div>

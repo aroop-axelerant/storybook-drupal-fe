@@ -13,15 +13,17 @@ const formStyles = `<style>
   .form-error-msg{font-size:var(--text-caption);color:var(--color-error);display:flex;align-items:center;gap:var(--sp-4)}
   .check-list{display:flex;flex-direction:column;gap:var(--sp-12)}
   .check-group{display:flex;align-items:flex-start;gap:var(--sp-12);cursor:pointer}
-  .check-input{width:20px;height:20px;min-width:20px;border:2px solid var(--color-charcoal-40);border-radius:var(--radius-xs);background:var(--color-white);appearance:none;-webkit-appearance:none;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out);position:relative;flex-shrink:0;margin-top:2px;outline:none}
-  .check-input:hover{border-color:var(--color-charcoal-60)}
-  .check-input:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:4px}
-  .check-input:checked{background:var(--color-action-primary);border-color:var(--color-action-primary)}
-  .check-input:checked::after{content:'';position:absolute;top:3px;left:6px;width:5px;height:9px;border:2px solid white;border-top:0;border-left:0;transform:rotate(45deg)}
-  .check-input:disabled{background:var(--color-charcoal-10);border-color:var(--color-charcoal-20);cursor:not-allowed}
-  .check-input:disabled:checked{background:var(--color-charcoal-30);border-color:var(--color-charcoal-30)}
-  .check-input--error{border-color:var(--color-error)!important}
-  .check-input--error:checked{background:var(--color-error)!important;border-color:var(--color-error)!important}
+  .check-input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  .check-box{position:relative;display:inline-block;flex-shrink:0;width:20px;height:20px;margin-top:2px;border:2px solid var(--color-charcoal-40);border-radius:var(--radius-xs);background:var(--color-white);transition:background var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+  .check-group:hover .check-box{border-color:var(--color-charcoal-60)}
+  .check-input:focus-visible + .check-box{outline:2px solid var(--color-powdered-blue);outline-offset:4px}
+  .check-input:checked + .check-box{background:var(--color-action-primary);border-color:var(--color-action-primary)}
+  .check-input:checked + .check-box::after{content:'';position:absolute;top:50%;left:50%;width:5px;height:9px;border:2px solid white;border-top:0;border-left:0;transform:translate(-50%,-60%) rotate(45deg)}
+  .check-input:disabled + .check-box{background:var(--color-charcoal-10);border-color:var(--color-charcoal-20);cursor:not-allowed}
+  .check-group:has(.check-input:disabled){cursor:not-allowed}
+  .check-input:disabled:checked + .check-box{background:var(--color-charcoal-30);border-color:var(--color-charcoal-30)}
+  .check-input--error + .check-box{border-color:var(--color-error)!important}
+  .check-input--error:checked + .check-box{background:var(--color-error)!important;border-color:var(--color-error)!important}
   .check-label{font-size:var(--text-body);color:var(--color-charcoal);line-height:1.5}
   .check-label--disabled{color:var(--color-charcoal-40)}
 </style>`;
@@ -58,14 +60,17 @@ ${formStyles}
       <div class="check-list">
         <label class="check-group">
           <input class="check-input" type="checkbox" checked>
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Business &amp; Management</span>
         </label>
         <label class="check-group">
           <input class="check-input" type="checkbox">
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Arts &amp; Humanities</span>
         </label>
         <label class="check-group">
           <input class="check-input" type="checkbox">
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Law &amp; Politics</span>
         </label>
       </div>
@@ -75,10 +80,12 @@ ${formStyles}
       <div class="check-list">
         <label class="check-group">
           <input class="check-input" type="checkbox" checked disabled>
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label check-label--disabled">Student loan (pre-selected)</span>
         </label>
         <label class="check-group">
           <input class="check-input" type="checkbox" disabled>
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label check-label--disabled">Scholarship (not available)</span>
         </label>
       </div>
@@ -89,7 +96,7 @@ ${formStyles}
     ['Unchecked',         'var(--color-white)',         '--color-white',          'border: 2px solid charcoal-40 · bg: white · 20×20px · radius: xs'],
     ['Hover',             'var(--color-white)',         '--color-white',          'border-color: charcoal-60 · transition: var(--duration-fast) var(--ease-out)'],
     ['Focus',             'var(--color-powdered-blue)', '--color-powdered-blue',   'outline: 2px solid --color-powdered-blue · outline-offset: 4px (focus-visible only)'],
-    ['Checked',           'var(--color-action-primary)','--color-action-primary', 'bg: forest-green · border: forest-green · white tick via ::after'],
+    ['Checked',           'var(--color-action-primary)','--color-action-primary', 'bg: forest-green · border: forest-green · white tick via ::after on .check-box'],
     ['Checked Hover',     'var(--color-action-primary)','--color-action-primary', 'bg: forest-green · opacity: var(--opacity-hover, 0.8)'],
     ['Disabled Unchecked','var(--color-charcoal-10)',   '--color-charcoal-10',    'bg: charcoal-10 · border: charcoal-20 · cursor: not-allowed'],
     ['Disabled Checked',  'var(--color-charcoal-30)',   '--color-charcoal-30',    'bg: charcoal-30 · border: charcoal-30 · cursor: not-allowed'],
@@ -110,14 +117,17 @@ ${formStyles}
       <div class="check-list" style="margin-block-end:var(--sp-8)">
         <label class="check-group">
           <input class="check-input check-input--error" type="checkbox" aria-invalid="true" aria-describedby="sb-chk-err">
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Business &amp; Management</span>
         </label>
         <label class="check-group">
           <input class="check-input check-input--error" type="checkbox" aria-invalid="true">
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Arts &amp; Humanities</span>
         </label>
         <label class="check-group">
           <input class="check-input check-input--error" type="checkbox" aria-invalid="true">
+          <span class="check-box" aria-hidden="true"></span>
           <span class="check-label">Law &amp; Politics</span>
         </label>
       </div>
