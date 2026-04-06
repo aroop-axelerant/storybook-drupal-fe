@@ -1,0 +1,20 @@
+{#
+ * Home page — Regent's University London
+ * Extends the Home template with real content.
+ #}
+{% include "@templates/home/home.twig" with {
+  header:          header,
+  hero:            hero,
+  content_tiles:   content_tiles,
+  who_we_are:      who_we_are,
+  study_pathways:  study_pathways,
+  alumni:          alumni,
+  new_courses:     new_courses,
+  open_days:       open_days,
+  insights:        insights,
+  accreditations:  accreditations,
+  vice_chancellor: vice_chancellor,
+  apply_journey:   apply_journey,
+  cta_banner:      cta_banner,
+  footer:          footer
+} %}

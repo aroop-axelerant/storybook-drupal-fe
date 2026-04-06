@@ -1,0 +1,331 @@
+{
+  "default": {
+    "header": {
+      "variant": "light",
+      "logo": { "src": "/graphics/brand/logo-emblem.svg", "alt": "Regent's University London" },
+      "nav": [
+        { "label": "Study",    "href": "/study",    "has_dropdown": true },
+        { "label": "Research", "href": "/research", "has_dropdown": false },
+        { "label": "About",    "href": "/about",    "has_dropdown": true }
+      ],
+      "cta": { "label": "Apply Now", "href": "/apply" }
+    },
+    "hero": {
+      "overline":  "Regent's University London",
+      "title":     "Study in the heart of London's most iconic park.",
+      "subtitle":  "Join over 4,000 students from 140 nationalities at a campus surrounded by Regent's Park — and a community that inspires you to think bigger.",
+      "image_src": "/images/Regent's University London (14).jpg",
+      "image_alt": "Regent's University London campus",
+      "youtube_id": "LKWowQ_d6Ic",
+      "actions": {
+        "type": "search",
+        "search_placeholder": "Search courses, subjects, topics…",
+        "search_button_label": "Submit search"
+      }
+    },
+    "content_tiles": {
+      "overline": "Why Regent's",
+      "heading": "A Different Kind of University Experience",
+      "body": "For over a century, Regent's has brought together students from around the world in an environment defined by proximity, perspective and possibility.",
+      "tiles": [
+        {
+          "icon": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z'/><circle cx='12' cy='9' r='2.5'/></svg>",
+          "heading": "Learn in the Heart of London",
+          "body": "Study in Regent's Park, one of London's most beautiful campuses, surrounded by global culture, business and creative industries."
+        },
+        {
+          "icon": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><path d='M23 21v-2a4 4 0 0 0-3-3.87'/><path d='M16 3.13a4 4 0 0 1 0 7.75'/></svg>",
+          "heading": "Small Classes. Global Minds.",
+          "body": "Our intimate seminars bring together students from over 140 nationalities, creating discussions that go far beyond the classroom."
+        },
+        {
+          "icon": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'/><line x1='2' y1='20' x2='22' y2='20'/></svg>",
+          "heading": "Career-Ready from Day One",
+          "body": "Industry projects, internships and global partnerships ensure your degree leads directly to opportunity from the moment you arrive."
+        }
+      ]
+    },
+    "who_we_are": {
+      "overline": "Who We Are",
+      "heading": "Become a Leader and Innovator in Global Luxury",
+      "cta": { "label": "Our story", "href": "/about/story" },
+      "video": {
+        "poster": "/images/Regent's University London (14).jpg",
+        "youtube_id": "LKWowQ_d6Ic",
+        "title": "Life at Regent's University London",
+        "attribution": "A unique university in the heart of London's Royal Regent's Park"
+      },
+      "highlights": {
+        "body": [
+          "Regent's University London is an independent, private university in the heart of Regent's Park. For over a century, we have brought together students from around the world in an environment defined by proximity, perspective and possibility.",
+          "Our personalised approach ensures every student receives the individual attention, industry connections, and international perspective they need to build a meaningful career."
+        ],
+        "items": [
+          { "stat": "140+",   "description": "Nationalities on campus" },
+          { "stat": "92%",    "description": "Graduates employed or studying" },
+          { "stat": "5,000+", "description": "Students from 140 countries" },
+          { "stat": "60+",    "description": "Undergraduate programmes" }
+        ]
+      }
+    },
+    "study_pathways": {
+      "heading": "Choose Your Path",
+      "overline": "Study at Regent's",
+      "cards": [
+        {
+          "heading": "Undergraduate",
+          "summary": "Three-year degrees designed around the individual with direct access to faculty and a truly international classroom.",
+          "image": { "src": "/images/Library.jpg", "alt": "Regent's University undergraduate students in the library" },
+          "cta": { "label": "Explore programmes", "href": "/study/undergraduate" }
+        },
+        {
+          "heading": "Postgraduate",
+          "summary": "Masters programmes that combine specialist knowledge with the professional networks to accelerate your career.",
+          "image": { "src": "/images/Tennis court.jpg", "alt": "Postgraduate students at Regent's University" },
+          "cta": { "label": "Explore programmes", "href": "/study/postgraduate" }
+        },
+        {
+          "heading": "Foundation",
+          "summary": "A tailored pathway preparing students for undergraduate study, developing academic skills and English language proficiency.",
+          "image": { "src": "/images/Fashion studio.jpg", "alt": "Foundation students in a Regent's studio" },
+          "cta": { "label": "Explore programmes", "href": "/study/foundation" }
+        },
+        {
+          "heading": "School of English",
+          "summary": "Intensive English language programmes for professionals and students in the heart of one of the world's great cities.",
+          "image": { "src": "/images/Marylebone.jpg", "alt": "School of English students at Regent's University" },
+          "cta": { "label": "Explore programmes", "href": "/study/school-of-english" }
+        }
+      ]
+    },
+    "alumni": {
+      "heading": "Hear from Our Community",
+      "overline": "Alumni Stories",
+      "cards": [
+        {
+          "tag": "Alumni",
+          "name": "Jason Drew",
+          "quote": "Studying with classmates from around the world prepared me for every challenge of a global career.",
+          "video": { "src": "/images/Library.jpg", "poster": "/images/Regent's University London (1)(1).jpg" }
+        },
+        {
+          "tag": "Student Life",
+          "name": "Priya Sharma",
+          "quote": "The campus in Regent's Park is unlike anywhere else — it genuinely feels like home.",
+          "video": { "src": "/images/Tennis court.jpg", "poster": "/images/Regent's University London (2)(1).jpg" }
+        },
+        {
+          "tag": "Research",
+          "name": "Dr Emma Carlisle",
+          "quote": "Being surrounded by creative industries every day pushes my research in ways I never expected.",
+          "video": { "src": "/images/Fashion studio.jpg", "poster": "/images/Regent's University London (3).jpg" }
+        },
+        {
+          "tag": "Alumni",
+          "name": "Marcus Webb",
+          "quote": "My international network from Regent's has been invaluable — doors open because of who you meet here.",
+          "video": { "src": "/images/Marylebone.jpg", "poster": "/images/Regent's University London (10).jpg" }
+        },
+        {
+          "tag": "Student Life",
+          "name": "Sofia Reyes",
+          "quote": "The support from tutors was unlike anything I expected — they genuinely invest in your success.",
+          "video": { "src": "/images/Regent's University London (11).jpg", "poster": "/images/Regent's University London (6).jpg" }
+        }
+      ]
+    },
+    "new_courses": {
+      "heading": "New Courses 2025–2026",
+      "overline": "Discover",
+      "cards": [
+        {
+          "qualification": "BA Hons",
+          "heading": "Business and Psychology",
+          "description": "Use psychological insights to analyse behaviour and drive innovation in modern organisations.",
+          "highlights": [
+            { "label": "UCAS",     "value": "A078" },
+            { "label": "Intake",   "value": "Sep 2026" },
+            { "label": "Duration", "value": "3 years full-time" }
+          ],
+          "cta": { "label": "View course details", "href": "#" }
+        },
+        {
+          "qualification": "BA Hons",
+          "heading": "Luxury Hospitality Management",
+          "description": "Learn to serve, lead and innovate in the luxury hospitality sector at the heart of global tourism.",
+          "highlights": [
+            { "label": "UCAS",     "value": "N222" },
+            { "label": "Intake",   "value": "Sep 2026" },
+            { "label": "Duration", "value": "3 years full-time" }
+          ],
+          "cta": { "label": "View course details", "href": "#" }
+        },
+        {
+          "qualification": "MSc",
+          "heading": "Global Art Markets",
+          "description": "Explore the drivers, dynamics and future of today's global art markets across London and beyond.",
+          "highlights": [
+            { "label": "Intake",   "value": "Sep 2026" },
+            { "label": "Duration", "value": "16 months" }
+          ],
+          "cta": { "label": "View course details", "href": "#" }
+        }
+      ]
+    },
+    "open_days": {
+      "variant": "boxed",
+      "eyebrow": "Visit Us",
+      "heading": "Experience Regent's for Yourself",
+      "body": "The best way to discover if Regent's is the right place for you is to visit our campus. Meet academics, explore our facilities and talk to current students at one of our open days.",
+      "cta_primary":   { "label": "Book an Open Day", "href": "/open-day" },
+      "cta_secondary": { "label": "Virtual Tour",     "href": "/virtual-tour" }
+    },
+    "insights": {
+      "heading": "Ideas Shaping Tomorrow",
+      "overline": "Insights & Stories",
+      "description": "Insights, achievements and perspectives from the Regent's Community.",
+      "cards": [
+        {
+          "tags": ["University News", "Film Production"],
+          "heading": "Film and Screen Production students and staff at Aesthetica Short Film Festival 2025",
+          "image": { "src": "/images/Fashion studio.jpg", "alt": "Film students at Aesthetica" },
+          "cta": { "label": "Read more", "href": "#" }
+        },
+        {
+          "tags": ["Industry Connections", "Psychotherapy"],
+          "heading": "'We often end up splitting ourselves into two parts': Dwight Turner explores A Phenomenology of Racism",
+          "image": { "src": "/images/Regent's University London (10).jpg", "alt": "Dwight Turner at a podium" },
+          "cta": { "label": "Read more", "href": "#" }
+        },
+        {
+          "tags": ["University News", "Law"],
+          "heading": "Regent's University London partners with The College of Legal Practice for new LLB (Hons) Law course",
+          "image": { "src": "/images/Library.jpg", "alt": "Regent's University building" },
+          "cta": { "label": "Read more", "href": "#" }
+        },
+        {
+          "tags": ["Student Life", "Campus"],
+          "heading": "Five reasons why studying in Regent's Park is unlike anywhere else in London",
+          "image": { "src": "/images/Marylebone.jpg", "alt": "Regent's Park campus" },
+          "cta": { "label": "Read more", "href": "#" }
+        }
+      ]
+    },
+    "accreditations": {
+      "overline": "Accreditations",
+      "heading": "Global Recognition",
+      "description": "Recognised by leading academic bodies and professional organisations worldwide.",
+      "items": [
+        { "name": "AACSB Business Education Alliance" },
+        { "name": "Abbey Road Studios" },
+        { "name": "ABS" },
+        { "name": "AmplifyMe" },
+        { "name": "APM Corporate Partner" },
+        { "name": "B Corp" },
+        { "name": "BGA Member" },
+        { "name": "BPS" },
+        { "name": "CMI Accredited" },
+        { "name": "CQFI" },
+        { "name": "Epidemic Sound" },
+        { "name": "Huckletree" },
+        { "name": "London Screenwriters Festival" },
+        { "name": "McKee Seminars" },
+        { "name": "The Savoy" },
+        { "name": "TEF 2023 Silver" },
+        { "name": "UK Council for Psychotherapy" },
+        { "name": "Walpole" }
+      ]
+    },
+    "vice_chancellor": {
+      "heading": "Message from our Vice-Chancellor",
+      "video": {
+        "poster": "/images/TV%20studio.jpg",
+        "youtube_id": "DOp8mIYrgw8",
+        "title": "A message from our Vice-Chancellor"
+      },
+      "col_heading": "A message from our Vice-Chancellor",
+      "col_body": "Vice-Chancellor Geoff Smith shares his vision for Regent's and how the university prepares students to succeed in a global world."
+    },
+    "apply_journey": {
+      "heading": "Your Journey Starts Here",
+      "overline": "How to Apply",
+      "body": "Applying to Regent's is straightforward. Follow these three steps to begin your journey with us.",
+      "cards": [
+        {
+          "step": "Step 1",
+          "heading": "Find Your Course",
+          "summary": "Browse over 60 undergraduate and postgraduate programmes across business, arts, law, and social sciences.",
+          "image": { "src": "/images/Library.jpg", "alt": "Regent's University library" },
+          "cta": { "label": "Explore courses", "href": "/study" },
+          "bodyBg": "zingy-light"
+        },
+        {
+          "step": "Step 2",
+          "heading": "Prepare Your Application",
+          "summary": "Gather your personal statement, academic references and supporting documents — we'll guide you through every requirement.",
+          "image": { "src": "/images/Regent's University London (6).jpg", "alt": "Student preparing their application" },
+          "cta": { "label": "Application guide", "href": "/apply/guide" },
+          "bodyBg": "violet"
+        },
+        {
+          "step": "Step 3",
+          "heading": "Visit Us at an Open Day",
+          "summary": "Meet academics, explore the campus and get a real feel for life at Regent's before you make your decision.",
+          "image": { "src": "/images/Regent's University London (11).jpg", "alt": "Students at a Regent's open day" },
+          "cta": { "label": "Book your place", "href": "/open-day" },
+          "bodyBg": "peach"
+        }
+      ]
+    },
+    "cta_banner": {
+      "eyebrow": "Stay Connected",
+      "heading": "Get the Latest from Regent's",
+      "body": "Receive news, event invitations and the latest updates from Regent's University London directly to your inbox.",
+      "input_placeholder": "Enter your email address",
+      "submit_label": "Subscribe"
+    },
+    "footer": {
+      "brand": {
+        "logo": { "src": "/graphics/brand/logo-emblem-white.svg", "alt": "Regent's University London" },
+        "tagline": "A unique university in the heart of London's Royal Regent's Park."
+      },
+      "columns": [
+        {
+          "heading": "Study",
+          "links": [
+            { "label": "Undergraduate", "href": "/study/undergraduate" },
+            { "label": "Postgraduate",  "href": "/study/postgraduate" },
+            { "label": "Short Courses", "href": "/study/short-courses" }
+          ]
+        },
+        {
+          "heading": "Research",
+          "links": [
+            { "label": "Research Centres", "href": "/research/centres" },
+            { "label": "PhD Programmes",   "href": "/research/phd" }
+          ]
+        },
+        {
+          "heading": "About",
+          "links": [
+            { "label": "Our Story",  "href": "/about/story" },
+            { "label": "Leadership", "href": "/about/leadership" },
+            { "label": "Campus",     "href": "/about/campus" }
+          ]
+        }
+      ],
+      "social": [
+        { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
+        { "platform": "linkedin",  "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" },
+        { "platform": "youtube",   "href": "https://youtube.com/regentsuniversitylondon", "label": "YouTube" }
+      ],
+      "legal": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Cookie Policy",  "href": "/cookies" },
+        { "label": "Accessibility",  "href": "/accessibility" },
+        { "label": "Terms of Use",   "href": "/terms" }
+      ],
+      "copyright": "© 2025 Regent's University London. All rights reserved."
+    }
+  }
+}
