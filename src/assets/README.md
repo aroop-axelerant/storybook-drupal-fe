@@ -22,14 +22,14 @@ Font files should be provided in multiple formats for browser compatibility:
 - `.woff2` — Modern, compressed format (recommended)
 - `.woff` — Fallback for older browsers
 
-Fonts are declared in `scss/foundation/tokens/_fonts.scss` using `@font-face` rules.
+Fonts are declared in `src/foundation/tokens/_fonts.scss` using `@font-face` rules.
 
 ### Adding Fonts
 
 1. Place font files in the `fonts/` directory
 2. Name files as: `{fontname}-{weight}.{extension}`
    - Example: `avenir-next-bold.woff2`, `magnole-serif-regular.woff`
-3. Add corresponding `@font-face` declarations to `scss/foundation/tokens/_fonts.scss`
+3. Add corresponding `@font-face` declarations to `src/foundation/tokens/_fonts.scss`
 
 ## Images (`images/`)
 

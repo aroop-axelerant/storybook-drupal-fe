@@ -41,7 +41,7 @@ Both formats are necessary for broad browser support.
 
 1. Place font files in this directory
 2. Ensure filename format: `{fontname}-{weight}.{extension}`
-3. Update `scss/foundation/tokens/_fonts.scss` with new `@font-face` declarations
+3. Update `src/foundation/tokens/_fonts.scss` with new `@font-face` declarations
 4. Test in multiple browsers to ensure proper loading
 
 ## Performance Notes
