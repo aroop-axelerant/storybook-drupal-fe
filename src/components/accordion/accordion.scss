@@ -123,14 +123,3 @@
   .accordion__trigger[aria-expanded="true"] + .accordion__panel {
     display: block;
   }
-                <button class="accordion__trigger s-hover-trigger" aria-expanded="false" aria-controls="s-hover-panel">
-                  <span class="accordion__question">${q3.question}</span>
-                  <span class="accordion__icon" aria-hidden="true"></span>
-                </button>
-                <div class="accordion__panel" id="s-hover-panel" role="region" hidden></div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Focus</p>
