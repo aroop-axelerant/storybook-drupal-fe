@@ -13,6 +13,7 @@ const logoSvg = `<svg width="33" height="31" viewBox="0 0 33 31" fill="none" xml
 
 export default {
   title: "Components/Header",
+  excludeStories: ["headerStyles", "buildHeader", "buildMegaMenu", "headerScript"],
 };
 
 // =============================================================================
