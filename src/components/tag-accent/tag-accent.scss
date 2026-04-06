@@ -1,0 +1,21 @@
+  *,*::before,*::after{box-sizing:border-box}
+  .tag{display:inline-flex;align-items:center;gap:var(--sp-4);font-family:var(--font-sans);font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:var(--sp-4) var(--sp-12);border-radius:var(--radius-l);border:1px solid transparent;white-space:nowrap;line-height:1;text-decoration:none;cursor:default;transition:background var(--duration-fast) var(--ease-out),opacity var(--duration-fast) var(--ease-out),transform var(--duration-fast) var(--ease-out)}
+  .tag--interactive{cursor:pointer;outline:none}
+  .tag--interactive:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:3px}
+  .tag--interactive:active{transform:scale(0.98)}
+  /* Zingy Yellow */
+  .tag--yellow{background:var(--color-zingy-yellow);color:var(--color-charcoal-90)}
+  .tag--yellow.tag--interactive:hover{background:var(--color-zingy-yellow-50)}
+  /* Violet */
+  .tag--violet{background:var(--color-violet);color:var(--color-charcoal-90)}
+  .tag--violet.tag--interactive:hover{background:#e8daf7}
+  /* Peach */
+  .tag--peach{background:var(--color-soft-peach-50);color:var(--color-charcoal-90)}
+  .tag--peach.tag--interactive:hover{background:#ffc8b3}
+  /* Disabled */
+  .tag--disabled{opacity:var(--opacity-disabled,0.4);cursor:not-allowed;pointer-events:none}
+  /* Dismissible */
+  .tag--dismissible{padding-inline-end:var(--sp-8)}
+  .tag__dismiss{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,0.1);border:none;padding:0;cursor:pointer;color:inherit;transition:background var(--duration-fast) var(--ease-out);flex-shrink:0}
+  .tag__dismiss:hover{background:rgba(0,0,0,0.2)}
+  .tag__dismiss:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:2px}

@@ -1,0 +1,140 @@
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Container ─────────────────────────────────────────────────────────── */
+  .accordion {
+    width: 100%;
+    border-top: 1px solid var(--color-charcoal-20);
+  }
+
+  /* ── Item ───────────────────────────────────────────────────────────────── */
+  .accordion__item {
+    border-bottom: 1px solid var(--color-charcoal-20);
+  }
+
+  /* ── Trigger ─────────────────────────────────────────────────────────────── */
+  .accordion__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-16);
+    width: 100%;
+    padding: var(--sp-24) 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-m-size, 1rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-charcoal);
+    transition:
+      color          var(--duration-fast) var(--ease-out),
+      background     var(--duration-fast) var(--ease-out);
+    outline: none;
+  }
+
+  /* Hover */
+  .accordion__trigger:hover:not(:disabled) {
+    color: var(--color-charcoal-60);
+  }
+
+  /* Focus */
+  .accordion__trigger:focus-visible {
+    outline: 2px solid var(--color-powdered-blue);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Disabled */
+  .accordion__item--disabled .accordion__trigger,
+  .accordion__trigger:disabled {
+    color: var(--color-charcoal-30);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ── Icon ─────────────────────────────────────────────────────────────────── */
+  /* Rendered as an SVG-like cross/plus via pseudo-elements — no img dependency */
+  .accordion__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Horizontal bar (always visible) */
+  .accordion__icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: translateY(-50%);
+    transition: transform var(--duration-fast) var(--ease-out),
+                opacity   var(--duration-fast) var(--ease-out);
+  }
+
+  /* Vertical bar (rotates away when open) */
+  .accordion__icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: currentColor;
+    transform: translateX(-50%);
+    transition: transform var(--duration-fast) var(--ease-out),
+                opacity   var(--duration-fast) var(--ease-out);
+  }
+
+  /* Open state — both bars rotate to form × */
+  .accordion__trigger[aria-expanded="true"] .accordion__icon::before {
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .accordion__trigger[aria-expanded="true"] .accordion__icon::after {
+    transform: translateX(-50%) rotate(45deg);
+    opacity: 1;
+  }
+
+  /* ── Panel ───────────────────────────────────────────────────────────────── */
+  .accordion__panel {
+    overflow: hidden;
+  }
+
+  .accordion__panel[hidden] {
+    display: none;
+  }
+
+  .accordion__answer {
+    padding-bottom: var(--sp-24);
+    font-family: var(--font-sans);
+    font-size: var(--text-body-m-size, 1rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-charcoal-60);
+  }
+
+  /* ── Interactive toggle (Storybook demo) ─────────────────────────────────── */
+  .accordion__trigger[aria-expanded="true"] + .accordion__panel {
+    display: block;
+  }
+</style>`;
+            <style>.s-hover-trigger { color: var(--color-charcoal-60) !important; }</style>
+            <div class="accordion">
+              <div class="accordion__item">
+                <button class="accordion__trigger s-hover-trigger" aria-expanded="false" aria-controls="s-hover-panel">
+                  <span class="accordion__question">${q3.question}</span>
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+                <div class="accordion__panel" id="s-hover-panel" role="region" hidden></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Focus</p>

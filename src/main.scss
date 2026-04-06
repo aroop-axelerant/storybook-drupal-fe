@@ -7,12 +7,33 @@
 @use "foundation/tokens/index" as *;
 
 // 2. Components (alphabetical)
+@use "components/accordion/accordion";
+@use "components/breadcrumb/breadcrumb";
 @use "components/button/button";
 @use "components/card/card";
+@use "components/checkbox/checkbox";
+@use "components/content-tiles/content-tiles";
+@use "components/cta-banner/cta-banner";
+@use "components/featured-content/featured-content";
 @use "components/footer/footer";
 @use "components/header/header";
 @use "components/hero/hero";
+@use "components/inline-link/inline-link";
+@use "components/input-field/input-field";
+@use "components/radio-button/radio-button";
+@use "components/search/search";
+@use "components/select-box/select-box";
+@use "components/standout-link/standout-link";
+@use "components/submit/submit";
+@use "components/tab/tab";
+@use "components/table/table";
+@use "components/tag-accent/tag-accent";
 @use "components/tag-primary/tag-primary";
+@use "components/text-area/text-area";
+@use "components/tile/tile";
+@use "components/toggle/toggle";
+@use "components/video/video";
+@use "components/video-carousel/video-carousel";
 
 // 3. Layouts (alphabetical)
 @use "layouts/container/container";
