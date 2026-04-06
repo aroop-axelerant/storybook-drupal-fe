@@ -8,23 +8,25 @@ Project-level rules for Claude Code. These apply to every session automatically.
 
 Every new item lives in its own named subdirectory. Directory name and all file names share the same kebab-case slug. Never create loose files at the layer root.
 
-### Components — 4 files required
+### Components — 5 files required
 
 ```
 src/components/[name]/
 ├── [name].js          ← Named export initName(el) + any helpers
 ├── [name].json        ← "default" props + "variants" keyed object
+├── [name].scss        ← Component styles (registered in src/main.scss)
 ├── [name].stories.js  ← Storybook stories
 └── [name].twig        ← Drupal Twig template with prop block at top
 ```
 
-SCSS import path in `[name].stories.js`: `../../../scss/main.scss`
+SCSS import path in `[name].stories.js`: `../../main.scss`
 
-### Layouts — 3 files required (no .js)
+### Layouts — 4 files required (no .js)
 
 ```
 src/layouts/[name]/
 ├── [name].json
+├── [name].scss        ← Layout styles (registered in src/main.scss)
 ├── [name].stories.js
 └── [name].twig
 ```
@@ -76,20 +78,21 @@ Before creating any new foundation element, component, layout, template, or page
 - Define all applicable states: default, hover, focus, active/pressed, disabled, and any error or loading states.
 - Consider WCAG 2.1 AA compliance, ARIA roles, and keyboard interaction patterns before writing any code.
 - Only use design system tokens (CSS custom properties) — never raw hex values, hard-coded px spacing, or arbitrary colours.
-- Never use hardcoded padding values. Always use spacing tokens (`--sp-4` through `--sp-96`) from `scss/foundation/tokens/_spacing.scss`. If a value falls between two tokens, use the closest one.
+- Never use hardcoded padding values. Always use spacing tokens (`--sp-4` through `--sp-96`) from `src/foundation/tokens/_spacing.scss`. If a value falls between two tokens, use the closest one.
 - Ensure visual consistency with existing components: same border-radius scale, same motion tokens, same focus ring treatment.
 
 ---
 
 ## Design System
 
-- SCSS tokens live in `scss/foundation/tokens/`. Add new tokens to the relevant partial, then `@forward` from `_index.scss`.
-- Component SCSS lives in `scss/components/[name]/`. Register new partials in `scss/main.scss`.
+- SCSS tokens live in `src/foundation/tokens/`. Add new tokens to the relevant partial, then `@forward` from `_index.scss`.
+- Component SCSS lives co-located at `src/components/[name]/[name].scss`. Register new files in `src/main.scss`.
+- Layout SCSS lives co-located at `src/layouts/[name]/[name].scss`. Register new files in `src/main.scss`.
 - All interactive states use design system motion tokens: `--duration-fast` / `--ease-out` for hover/press, `--duration` for larger transitions.
 - Press feedback: `transform: scale(0.98)` — matches the live design system at `http://localhost:3000`.
 - Focus ring: `outline: 2px solid var(--color-powdered-blue)` with `outline-offset: 4px` on **all** interactive elements (buttons, links, form controls). Error state focus uses `--color-deep-red` as outline colour.
 - WCAG 2.1 AA compliance required on all components. Disabled states use full-opacity muted colours rather than opacity reduction on text.
-- **Token-first rule:** Whenever creating anything new in the design system or Storybook, check `scss/foundation/tokens/` for an available token matching the property before applying any hardcoded value. This applies to every CSS property — colour, spacing, typography, radius, shadow, motion, opacity, and z-index. Only use a hardcoded value when no token exists and the value cannot reasonably be expressed as a combination of existing tokens.
+- **Token-first rule:** Whenever creating anything new in the design system or Storybook, check `src/foundation/tokens/` for an available token matching the property before applying any hardcoded value. This applies to every CSS property — colour, spacing, typography, radius, shadow, motion, opacity, and z-index. Only use a hardcoded value when no token exists and the value cannot reasonably be expressed as a combination of existing tokens.
 
 ---
 
@@ -97,19 +100,20 @@ Before creating any new foundation element, component, layout, template, or page
 
 When components are placed inside templates or pages, **always verify and optimize the import paths** for SCSS and assets to ensure they render correctly both in Storybook and production:
 
-- **SCSS imports in component stories** (`src/components/[name]/[name].stories.js`): Always import from the design system foundation:
+- **SCSS imports in component and layout stories**: Always import the design system entry point:
   ```js
-  import "../../../scss/main.scss";  // Resolves from src/components/[name]/ → src/scss/
+  import "../../main.scss";  // src/components/[name]/ or src/layouts/[name]/ → src/main.scss
+  ```
+
+- **SCSS imports in template, page, and foundation stories**:
+  ```js
+  import "../../main.scss";  // src/templates/[name]/ or src/pages/[name]/ → src/main.scss
+  import "../main.scss";     // src/foundation/ → src/main.scss
   ```
 
 - **Image assets in component data** (`.json` files and template props): Use asset paths relative to the static server root:
   ```json
   { "src": "/images/example.jpg" }   // staticDirs: ["../src/assets"] in .storybook/main.js
-  ```
-
-- **Template & page stories** (`src/templates/[name]/[name].stories.js`, `src/pages/[name]/[name].stories.js`): Import SCSS the same way:
-  ```js
-  import "../../../scss/main.scss";  // Resolves correctly from the template/page depth
   ```
 
 - **Twig templates** (`src/templates/[name]/[name].twig`, `src/pages/[name]/[name].twig`): Twig does not directly import SCSS — SCSS is handled by the Storybook stories or build process. Twig only includes other Twig components via Drupal's `@components` namespace alias.

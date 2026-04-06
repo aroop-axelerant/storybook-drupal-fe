@@ -1,4 +1,4 @@
-import "../../../scss/main.scss";
+import "../../main.scss";
 import data from "./home.json";
 import { headerStyles, buildHeader, buildMegaMenu, headerScript } from "../../components/header/header.stories.js";
 import { videoCarouselStyles, buildVideoCarousel } from "../../components/video-carousel/video-carousel.stories.js";

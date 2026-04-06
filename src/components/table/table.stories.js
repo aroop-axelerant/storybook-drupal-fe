@@ -1,4 +1,4 @@
-import "../../../scss/main.scss";
+import "../../main.scss";
 import data from "./table.json";
 
 export default {

@@ -9,12 +9,10 @@
 // 2. Components (alphabetical)
 @use "components/button/button";
 @use "components/card/card";
-@use "components/chip/chip";
-@use "components/tag/tag";
 @use "components/footer/footer";
 @use "components/header/header";
 @use "components/hero/hero";
-@use "components/newsletter/newsletter";
+@use "components/tag-primary/tag-primary";
 
 // 3. Layouts (alphabetical)
 @use "layouts/container/container";

@@ -1,6 +1,6 @@
 // Foundation token documentation for Storybook
-// Imports the compiled CSS (Storybook build pipeline compiles scss/main.scss)
-import "../../scss/main.scss";
+// Imports the compiled CSS (Storybook build pipeline compiles src/main.scss)
+import "../main.scss";
 
 export default {
   title: "Foundation/Design Tokens",

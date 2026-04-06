@@ -1,5 +1,5 @@
 // Radio Button component documentation
-import "../../../scss/main.scss";
+import "../../main.scss";
 
 export default {
   title: "Components/Form/Radio Button",

@@ -1,5 +1,5 @@
 // Load the compiled design system CSS globally
-import "../scss/main.scss";
+import "../src/main.scss";
 
 export const parameters = {
   layout: "fullscreen",

@@ -1,4 +1,4 @@
-import "../../../scss/main.scss";
+import "../../main.scss";
 import data from "./tile.json";
 
 const ICON_BG_CYCLE = [

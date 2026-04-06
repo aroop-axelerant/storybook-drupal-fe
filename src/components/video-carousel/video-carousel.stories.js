@@ -1,4 +1,4 @@
-import "../../../scss/main.scss";
+import "../../main.scss";
 import data from "./video-carousel.json";
 import { buildVideoCard } from "../card/card.stories.js";
 
