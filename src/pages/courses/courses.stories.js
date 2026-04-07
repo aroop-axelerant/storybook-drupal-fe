@@ -1,5 +1,5 @@
-import data from "./undergraduate-courses.json";
-import ugMeta from "../../templates/undergraduate-courses/undergraduate-courses.stories.js";
+import data from "./courses.json";
+import ugMeta from "../../templates/courses/courses.stories.js";
 
 export default {
   title: "Pages/Undergraduate Courses",

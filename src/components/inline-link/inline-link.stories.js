@@ -6,7 +6,7 @@ export default {
 };
 
 // ── Default Variant ────────────────────────────────────────────────────────────
-const focusStyle = `<style>a:focus-visible{outline:2px solid var(--color-powdered-blue)!important;outline-offset:4px!important}</style>`;
+const focusStyle = '';
 
 export const Default = () => `
 ${focusStyle}

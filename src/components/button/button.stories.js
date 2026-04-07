@@ -11,7 +11,7 @@ const iconArrow  = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" 
 const iconPlus   = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`;
 
 // Base button style pieces
-const focusStyle = `<style>button:focus-visible{outline:2px solid var(--color-powdered-blue)!important;outline-offset:4px!important}</style>`;
+const focusStyle = '';
 const base = `display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-8);font-family:var(--font-sans);font-size:var(--text-body);font-weight:600;line-height:1;padding:var(--sp-12) var(--sp-24);border-radius:var(--radius-l);border:2px solid transparent;cursor:pointer;text-decoration:none;transition:background 200ms ease-out,color 200ms ease-out,border-color 200ms ease-out,opacity 200ms ease-out,transform var(--duration-fast) var(--ease-out);white-space:nowrap`;
 const iconBase = `display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans);border:2px solid transparent;cursor:pointer;border-radius:var(--radius-l);padding:var(--sp-12);transition:background 200ms ease-out,color 200ms ease-out,border-color 200ms ease-out,opacity 200ms ease-out,transform var(--duration-fast) var(--ease-out)`;
 

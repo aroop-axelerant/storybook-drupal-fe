@@ -9,335 +9,7 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = `
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  ul { list-style: none; }
-
-  /* ── Hero section ─────────────────────────────────────────────────────── */
-  .hero {
-    position: relative;
-    width: 100%;
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  /* ── Background ───────────────────────────────────────────────────────── */
-  .hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: var(--gradient-hero-dark); /* fallback gradient */
-  }
-
-  .hero__img,
-  .hero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: blur(3px);
-    /* Scale up slightly to hide blur edge bleed */
-    transform: scale(1.04);
-  }
-
-  /* Dark overlay — matches video component scrim for consistent legibility */
-  .hero__bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(11, 25, 26, 0.90) 0%,
-      rgba(11, 25, 26, 0.60) 30%,
-      rgba(11, 25, 26, 0.0)  65%
-    );
-    pointer-events: none;
-  }
-
-  /* ── YouTube iframe background ──────────────────────────────────────── */
-  .hero__yt-wrap {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  @keyframes hero-yt-fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  /* Keep the 16:9 iframe always larger than the container so it covers */
-  .hero__yt-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max(100%, calc(100vh * 16 / 9));
-    height: max(100%, calc(100vw * 9 / 16));
-    transform: translate(-50%, -50%);
-    border: 0;
-    opacity: 0;
-    /* Do NOT set pointer-events:none on the iframe itself — blocks init */
-  }
-
-  .hero__yt-frame.is-ready {
-    animation: hero-yt-fadein 1200ms var(--ease-out) forwards;
-  }
-
-  /* Reduced-motion: freeze video as static poster */
-  @media (prefers-reduced-motion: reduce) {
-    .hero__video  { animation: none; }
-    .hero__yt-wrap { display: none; }
-  }
-
-  /* ── Content wrapper ─────────────────────────────────────────────────── */
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: var(--grid-max, 1312px);
-    margin-inline: auto;
-    padding: var(--sp-96) var(--sp-64) var(--sp-64);
-  }
-
-  /* ── Text content — max 7 of 12 cols (~58%) for readability ─────────── */
-  .hero__content {
-    max-width: 720px;
-  }
-
-  /* ── Overline ─────────────────────────────────────────────────────────── */
-  .hero__overline {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: var(--text-overline);
-    font-weight: var(--fw-semibold);
-    letter-spacing: var(--ls-widest);
-    text-transform: uppercase;
-    color: var(--color-white);
-    margin-bottom: var(--sp-16);
-  }
-
-  /* ── Title ────────────────────────────────────────────────────────────── */
-  .hero__title {
-    font-family: var(--font-serif);
-    font-size: var(--text-display-m);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-display-m);
-    letter-spacing: var(--ls-display-m);
-    color: var(--color-white);
-    margin-bottom: var(--sp-24);
-  }
-
-  /* ── Subtitle ─────────────────────────────────────────────────────────── */
-  .hero__subtitle {
-    font-family: var(--font-sans);
-    font-size: var(--text-body-lg);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-body-lg);
-    color: rgba(255, 255, 255, 0.80);
-    margin-bottom: var(--sp-40, var(--sp-32));
-    max-width: 600px;
-  }
-
-  /* ── Button actions ───────────────────────────────────────────────────── */
-  .hero__actions {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-12);
-    flex-wrap: wrap;
-  }
-
-  .hero__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--sp-8);
-    padding: var(--sp-12) var(--sp-24);
-    font-family: var(--font-sans);
-    font-size: var(--text-body);
-    font-weight: var(--fw-semibold);
-    line-height: 1;
-    border-radius: var(--radius-l);
-    border: 2px solid transparent;
-    text-decoration: none;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out),
-                color var(--duration-fast) var(--ease-out),
-                transform var(--duration-fast) var(--ease-out);
-    outline: none;
-  }
-
-  .hero__btn:active { transform: scale(0.98); }
-
-  .hero__btn:focus-visible {
-    outline: 2px solid var(--color-powdered-blue);
-    outline-offset: 4px;
-  }
-
-  /* Primary Inverse — zingy yellow bg, charcoal text */
-  .hero__btn--primary {
-    background: var(--color-zingy-yellow);
-    color: var(--color-charcoal);
-  }
-
-  .hero__btn--primary:hover {
-    opacity: 0.85;
-  }
-
-  /* Secondary Inverse — transparent, white border */
-  .hero__btn--secondary {
-    background: transparent;
-    color: var(--color-white);
-    border-color: var(--color-white);
-  }
-
-  .hero__btn--secondary:hover {
-    background: var(--color-white);
-    color: var(--color-charcoal);
-  }
-
-  /* ── Search component (verbatim from search.stories.js) ─────────────── */
-  .sr-only {
-    position: absolute;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .search {
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .search__field {
-    display: flex;
-    align-items: center;
-    background: var(--color-white);
-    border: 2px solid var(--color-charcoal-20);
-    border-radius: var(--radius-l);
-    padding: 0 var(--sp-8) 0 var(--sp-16);
-    gap: var(--sp-8);
-    transition: border-color var(--duration-fast) var(--ease-out),
-                box-shadow var(--duration-fast) var(--ease-out);
-  }
-
-  .search__field:hover:not(.search__field--disabled) {
-    border-color: var(--color-charcoal-40);
-  }
-
-  .search__field.is-focused {
-    border-color: var(--color-action-primary);
-    outline: 2px solid var(--color-powdered-blue);
-    outline-offset: 2px;
-  }
-
-  .search__icon {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    color: var(--color-charcoal-40);
-  }
-
-  .search__field.is-focused .search__icon {
-    color: var(--color-action-primary);
-  }
-
-  .search__input {
-    flex: 1;
-    min-width: 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-body);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-body);
-    color: var(--color-charcoal);
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: var(--sp-12) 0;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  .search__input::-webkit-search-cancel-button,
-  .search__input::-webkit-search-decoration { display: none; }
-
-  .search__input::placeholder { color: var(--color-charcoal-40); }
-
-  .search__submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    background: var(--color-zingy-yellow);
-    color: var(--color-charcoal);
-    border: none;
-    border-radius: var(--radius-l);
-    cursor: pointer;
-    transition: background var(--duration-fast) var(--ease-out),
-                transform var(--duration-fast) var(--ease-out);
-    outline: none;
-  }
-
-  .search__submit:hover { background: var(--color-zingy-yellow-50); }
-  .search__submit:active { transform: scale(0.96); }
-
-  .search__submit:focus-visible {
-    outline: 2px solid var(--color-powdered-blue);
-    outline-offset: 2px;
-  }
-
-  /* ── Responsive: Tablet ──────────────────────────────────────────────── */
-  @media (max-width: 1023px) {
-    .hero__inner {
-      padding: var(--sp-96) var(--sp-32) var(--sp-48);
-    }
-
-    .hero__content {
-      max-width: 100%;
-    }
-  }
-
-  /* ── Responsive: Mobile ──────────────────────────────────────────────── */
-  @media (max-width: 767px) {
-    .hero {
-      min-height: 100svh;
-      align-items: flex-end;
-    }
-
-    .hero__inner {
-      padding: var(--sp-64) var(--sp-16) var(--sp-48);
-    }
-
-    .hero__title {
-      font-size: var(--text-display-s);
-      line-height: var(--lh-display-s);
-    }
-
-    .hero__subtitle {
-      font-size: var(--text-body);
-      line-height: var(--lh-body);
-    }
-
-    .hero__actions {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .hero__search {
-      max-width: 100%;
-    }
-  }
-</style>`;
+const styles = '';
 
 // Split View variant — additional styles
 const splitStyles = `
@@ -578,73 +250,6 @@ const courseStyles = `
   }
 </style>`;
 
-// Landing Page variant — additional styles
-const landingStyles = `
-<style>
-  /* ── Landing hero — shorter, centred, no actions ─────────────────────── */
-  .hero--landing {
-    min-height: 420px;
-    align-items: center;
-  }
-
-  /* No blur on the branded background — it is already a designed asset */
-  .hero--landing .hero__img {
-    filter: none;
-    transform: none;
-  }
-
-  /* No overlay — the background image provides sufficient contrast itself */
-  .hero--landing .hero__bg::after {
-    display: none;
-  }
-
-  .hero--landing .hero__inner {
-    padding: var(--sp-64) var(--sp-64);
-    display: flex;
-    align-items: center;
-  }
-
-  .hero--landing .hero__content {
-    max-width: 640px;
-  }
-
-  .hero--landing .hero__title {
-    font-size: var(--text-display-s);
-    line-height: var(--lh-display-s);
-    letter-spacing: var(--ls-display-s);
-    color: var(--color-charcoal);
-    margin-bottom: var(--sp-16);
-  }
-
-  .hero--landing .hero__summary {
-    font-family: var(--font-sans);
-    font-size: var(--text-body-lg);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-body-lg);
-    color: var(--color-charcoal-80);
-    margin: 0;
-  }
-
-  @media (max-width: 1023px) {
-    .hero--landing .hero__inner { padding: var(--sp-48) var(--sp-32); }
-  }
-
-  @media (max-width: 767px) {
-    .hero--landing {
-      min-height: 320px;
-      align-items: flex-end;
-    }
-    .hero--landing .hero__inner { padding: var(--sp-48) var(--sp-16) var(--sp-40, var(--sp-32)); }
-    .hero--landing .hero__title {
-      font-size: var(--text-h1);
-      line-height: var(--lh-h1);
-    }
-    .hero--landing .hero__summary {
-      font-size: var(--text-body);
-      line-height: var(--lh-body);
-    }
-  }
-</style>`;
 
 // =============================================================================
 // HTML builders
@@ -698,11 +303,11 @@ function buildActions(actions) {
 
   if (actions.type === 'buttons') {
     const secondary = actions.secondary_label
-      ? `<a href="${actions.secondary_href}" class="hero__btn hero__btn--secondary">${actions.secondary_label}</a>`
+      ? `<a href="${actions.secondary_href}" class="btn btn--secondary-inverted">${actions.secondary_label}</a>`
       : '';
     return `
       <div class="hero__actions">
-        <a href="${actions.primary_href}" class="hero__btn hero__btn--primary">
+        <a href="${actions.primary_href}" class="btn btn--primary-inverted">
           ${actions.primary_label}
           ${arrowIcon}
         </a>
@@ -886,7 +491,6 @@ Home.storyName = 'Home Search';
  */
 export const LandingPage = () => `
   ${styles}
-  ${landingStyles}
   <section class="hero hero--landing" aria-label="${v.landing.title}">
     <div class="hero__bg" aria-hidden="true">
       <img src="${v.landing.image_src}" alt="" class="hero__img">
@@ -909,7 +513,7 @@ LandingPage.storyName = 'Landing Page';
 export const SplitView = () => {
   const s = v.split;
   const secondaryBtn = s.actions.secondary_label
-    ? `<a href="${s.actions.secondary_href}" class="hero__btn hero__btn--secondary">${s.actions.secondary_label}</a>`
+    ? `<a href="${s.actions.secondary_href}" class="btn btn--secondary-inverted">${s.actions.secondary_label}</a>`
     : '';
   return `
     ${styles}
@@ -923,14 +527,9 @@ export const SplitView = () => {
           <h1 class="hero__title">${s.title}</h1>
           <p class="hero__subtitle">${s.subtitle}</p>
           <div class="hero__actions">
-            <a href="${s.actions.primary_href}" class="hero__btn hero__btn--primary">
+            <a href="${s.actions.primary_href}" class="btn btn--primary-inverted">
               ${s.actions.primary_label}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2"
-                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
+              ${arrowIcon}
             </a>
             ${secondaryBtn}
           </div>

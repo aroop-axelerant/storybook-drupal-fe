@@ -5,24 +5,7 @@ export default {
   title: "Components/Form/Toggle",
 };
 
-const formStyles = `<style>
-  *,*::before,*::after{box-sizing:border-box}
-  .form-group{display:flex;flex-direction:column;gap:var(--sp-8)}
-  .form-label{font-size:var(--text-small);font-weight:600;color:var(--color-charcoal-80);letter-spacing:0.02em}
-  .form-hint{font-size:var(--text-caption);color:var(--color-charcoal-60)}
-  .form-error-msg{font-size:var(--text-caption);color:var(--color-error);display:flex;align-items:center;gap:var(--sp-4)}
-  .toggle-group{display:flex;align-items:center;gap:var(--sp-12);cursor:pointer}
-  .toggle{position:relative;width:44px;height:24px;border-radius:var(--radius-l);background:var(--color-charcoal-20);border:2px solid transparent;cursor:pointer;padding:0;transition:background var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out);flex-shrink:0;outline:none}
-  .toggle:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:4px}
-  .toggle[aria-checked="true"]{background:var(--color-action-primary)}
-  .toggle--error{border-color:var(--color-error)!important}
-  .toggle[disabled]{opacity:var(--opacity-disabled,0.4);cursor:not-allowed}
-  .toggle__thumb{position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--color-white);box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:transform var(--duration-fast) var(--ease-out)}
-  .toggle[aria-checked="true"] .toggle__thumb{transform:translateX(20px)}
-  .toggle-label{font-size:var(--text-body);color:var(--color-charcoal);line-height:1.5;user-select:none}
-  .toggle-label--disabled{color:var(--color-charcoal-40)}
-  .toggle-list{display:flex;flex-direction:column;gap:var(--sp-16)}
-</style>`;
+const formStyles = '';
 
 const statesTable = (rows) => `
   <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">

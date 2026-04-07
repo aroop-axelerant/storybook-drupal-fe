@@ -52,18 +52,21 @@ export function initHeader(el) {
   }
 
   // ── Mobile detection ───────────────────────────────────────────────────────
-  function isMobile() { return window.innerWidth <= 768; }
+  function isMobile() { return window.innerWidth <= 1279; }
 
   // ── Inline panel management (mobile accordion) ─────────────────────────────
   function restoreInlinePanel() {
     const ip = menu.querySelector('.mega-menu__inline-panel');
     if (!ip) return;
-    const moved = ip.querySelector('.mega-menu__panel');
-    if (moved) {
-      moved.classList.remove('is-active');
-      if (panelsContainer) panelsContainer.appendChild(moved);
-    }
-    ip.remove();
+    ip.classList.add('is-closing');
+    ip.addEventListener('animationend', function () {
+      const moved = ip.querySelector('.mega-menu__panel');
+      if (moved) {
+        moved.classList.remove('is-active');
+        if (panelsContainer) panelsContainer.appendChild(moved);
+      }
+      ip.remove();
+    }, { once: true });
   }
 
   // ── Open / close ───────────────────────────────────────────────────────────
@@ -166,6 +169,8 @@ export function initHeader(el) {
   if (backBtn) {
     backBtn.addEventListener('click', () => {
       menu.classList.remove('mega-menu--detail-view');
+      subLinks.forEach(l => l.classList.remove('is-active'));
+      details.forEach(d => d.classList.remove('is-active'));
     });
   }
 

@@ -35,13 +35,18 @@
 @use "components/video/video";
 @use "components/video-carousel/video-carousel";
 
-// 3. Layouts (alphabetical)
+// 3. Templates (alphabetical)
+@use "templates/course-details/course-details";
+@use "templates/courses/courses";
+@use "templates/home/home";
+
+// 4. Layouts (alphabetical)
 @use "layouts/container/container";
 @use "layouts/listing/listing";
 @use "layouts/three-col/three-col";
 @use "layouts/two-col/two-col";
 
-// 4. Base reset (must come after all @use rules)
+// 5. Base reset (must come after all @use rules)
 *,
 *::before,
 *::after { box-sizing: border-box; }

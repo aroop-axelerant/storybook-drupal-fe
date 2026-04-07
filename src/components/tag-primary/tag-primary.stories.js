@@ -5,28 +5,7 @@ export default {
   title: "Components/Tag/Primary",
 };
 
-const tagStyles = `<style>
-  *,*::before,*::after{box-sizing:border-box}
-  .tag{display:inline-flex;align-items:center;gap:var(--sp-4);font-family:var(--font-sans);font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:var(--sp-4) var(--sp-12);border-radius:var(--radius-l);border:1px solid transparent;white-space:nowrap;line-height:1;text-decoration:none;cursor:default;transition:background var(--duration-fast) var(--ease-out),opacity var(--duration-fast) var(--ease-out),transform var(--duration-fast) var(--ease-out)}
-  .tag--interactive{cursor:pointer;outline:none}
-  .tag--interactive:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:3px}
-  .tag--interactive:active{transform:scale(0.98)}
-  /* Default variant */
-  .tag--default{background:var(--color-off-white);color:var(--color-charcoal-90);border-color:transparent}
-  .tag--default.tag--interactive:hover{background:var(--color-charcoal-10)}
-  /* Brand variant */
-  .tag--brand{background:var(--color-forest-green);color:var(--color-white);border-color:transparent}
-  .tag--brand.tag--interactive:hover{background:var(--color-action-primary-hover)}
-  /* Disabled */
-  .tag--disabled{opacity:var(--opacity-disabled,0.4);cursor:not-allowed;pointer-events:none}
-  /* Dismissible */
-  .tag--dismissible{padding-inline-end:var(--sp-8)}
-  .tag__dismiss{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,0.12);border:none;padding:0;cursor:pointer;color:inherit;transition:background var(--duration-fast) var(--ease-out);flex-shrink:0;line-height:1}
-  .tag__dismiss:hover{background:rgba(0,0,0,0.24)}
-  .tag__dismiss:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:2px}
-  .tag--brand .tag__dismiss{background:rgba(255,255,255,0.2)}
-  .tag--brand .tag__dismiss:hover{background:rgba(255,255,255,0.35)}
-</style>`;
+const tagStyles = '';
 
 const statesTable = (rows) => `
   <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">

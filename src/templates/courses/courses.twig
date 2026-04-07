@@ -7,7 +7,7 @@
     breadcrumb   — Array of { label, href } (href null = current page)
     filters      — { year_options[], field_options[] }
     courses      — Array of { title, qualification, badge, href }
-    journey      — { heading, overline, cards[] { color, image, heading, body } }
+    apply_journey — { heading, overline, body, cards[] { step, heading, summary, image, cta, bodyBg } }
     newsletter   — { eyebrow, heading, body, placeholder, submit }
     footer       — Site footer
 #}
@@ -26,22 +26,9 @@
   </section>
 
   {# ── Breadcrumb ───────────────────────────────────────────────────── #}
-  <nav class="ug-breadcrumb" aria-label="Breadcrumb">
-    <div class="layout-container">
-      <ol class="ug-breadcrumb__list">
-        {% for crumb in breadcrumb %}
-          <li class="ug-breadcrumb__item">
-            {% if crumb.href %}
-              <a class="ug-breadcrumb__link" href="{{ crumb.href }}">{{ crumb.label }}</a>
-              <span class="ug-breadcrumb__sep" aria-hidden="true">/</span>
-            {% else %}
-              <span class="ug-breadcrumb__current" aria-current="page">{{ crumb.label }}</span>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
-  </nav>
+  <div class="courses-breadcrumb">
+    {% include "@components/breadcrumb/breadcrumb.twig" with { items: breadcrumb } %}
+  </div>
 
   {# ── Listing section ──────────────────────────────────────────────── #}
   <section class="ug-listing">
@@ -63,7 +50,36 @@
 
         {# ── Sidebar ──────────────────────────────────────────────── #}
         <aside class="layout-listing__sidebar">
-          {% include "@templates/undergraduate-courses/partials/_filters.twig" with { filters: filters } %}
+          <div class="ug-filters">
+            <div class="ug-filters__header">
+              <span class="ug-filters__title">Filters</span>
+              <button class="ug-filters__reset" type="button">Reset Filters</button>
+            </div>
+            <div role="group" aria-labelledby="legend-year">
+              <p id="legend-year" class="ug-filter-group__legend">Academic Year Start</p>
+              <div class="check-list">
+                {% for opt in filters.year_options %}
+                  <label class="check-group">
+                    <input class="check-input" type="checkbox" name="start" value="{{ opt.value }}"{% if opt.checked %} checked{% endif %}>
+                    <span class="check-box" aria-hidden="true"></span>
+                    <span class="check-label">{{ opt.label }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+            <div role="group" aria-labelledby="legend-field">
+              <p id="legend-field" class="ug-filter-group__legend">Subject Area</p>
+              <div class="check-list">
+                {% for opt in filters.field_options %}
+                  <label class="check-group">
+                    <input class="check-input" type="checkbox" name="field" value="{{ opt.value }}"{% if opt.checked %} checked{% endif %}>
+                    <span class="check-box" aria-hidden="true"></span>
+                    <span class="check-label">{{ opt.label }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         </aside>
 
         {# ── Main ─────────────────────────────────────────────────── #}
@@ -107,7 +123,32 @@
       </button>
     </div>
     <div class="ug-drawer__body">
-      {% include "@templates/undergraduate-courses/partials/_filters.twig" with { filters: filters, mobile: true } %}
+      <div class="ug-filters">
+        <div role="group" aria-labelledby="legend-year-m">
+          <p id="legend-year-m" class="ug-filter-group__legend">Academic Year Start</p>
+          <div class="check-list">
+            {% for opt in filters.year_options %}
+              <label class="check-group">
+                <input class="check-input" type="checkbox" name="start-m" value="{{ opt.value }}"{% if opt.checked %} checked{% endif %}>
+                <span class="check-box" aria-hidden="true"></span>
+                <span class="check-label">{{ opt.label }}</span>
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div role="group" aria-labelledby="legend-field-m">
+          <p id="legend-field-m" class="ug-filter-group__legend">Subject Area</p>
+          <div class="check-list">
+            {% for opt in filters.field_options %}
+              <label class="check-group">
+                <input class="check-input" type="checkbox" name="field-m" value="{{ opt.value }}"{% if opt.checked %} checked{% endif %}>
+                <span class="check-box" aria-hidden="true"></span>
+                <span class="check-label">{{ opt.label }}</span>
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="ug-drawer__footer">
       <button class="ug-drawer__apply">Apply Filters</button>
@@ -116,21 +157,29 @@
   </div>
 
   {# ── Journey cards ────────────────────────────────────────────────── #}
-  <section class="ug-journey">
-    <div class="layout-container">
-      <div class="ug-journey__header">
-        <span class="ug-eyebrow">{{ journey.overline }}</span>
-        <h2 class="ug-journey__heading">{{ journey.heading }}</h2>
+  {# ── How to Apply ─────────────────────────────────────────────────── #}
+  <section class="t-section" aria-label="{{ apply_journey.heading }}">
+    <div class="t-section__inner">
+      <div class="section-header">
+        {% if apply_journey.overline %}<span class="section-header__overline">{{ apply_journey.overline }}</span>{% endif %}
+        <h2 class="section-header__heading">{{ apply_journey.heading }}</h2>
+        {% if apply_journey.body %}<p class="section-header__body">{{ apply_journey.body }}</p>{% endif %}
       </div>
-      <div class="ug-journey__grid">
-        {% for card in journey.cards %}
-          <article class="ug-journey-card ug-journey-card--{{ card.color }}">
-            <div class="ug-journey-card__image">
+      <div class="cards-grid">
+        {% for card in apply_journey.cards %}
+          <article class="card card--step-count">
+            <div class="card__step-image">
               <img src="{{ card.image.src }}" alt="{{ card.image.alt }}" loading="lazy">
             </div>
-            <div class="ug-journey-card__body">
-              <h3 class="ug-journey-card__heading">{{ card.heading }}</h3>
-              <p class="ug-journey-card__text">{{ card.body }}</p>
+            <div class="card__body card__body--{{ card.bodyBg }}">
+              <span class="card__step-label">{{ card.step }}</span>
+              <h3 class="card__heading">
+                <a href="{{ card.cta.href }}" class="card__heading-link">{{ card.heading }}</a>
+              </h3>
+              <p class="card__excerpt">{{ card.summary }}</p>
+              <a href="{{ card.cta.href }}" class="card__step-cta" tabindex="-1" aria-hidden="true">
+                {{ card.cta.label }}
+              </a>
             </div>
           </article>
         {% endfor %}

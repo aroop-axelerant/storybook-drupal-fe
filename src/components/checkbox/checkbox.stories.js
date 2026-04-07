@@ -5,28 +5,7 @@ export default {
   title: "Components/Form/Checkbox",
 };
 
-const formStyles = `<style>
-  *,*::before,*::after{box-sizing:border-box}
-  .form-group{display:flex;flex-direction:column;gap:var(--sp-8)}
-  .form-label{font-size:var(--text-small);font-weight:600;color:var(--color-charcoal-80);letter-spacing:0.02em}
-  .form-hint{font-size:var(--text-caption);color:var(--color-charcoal-60)}
-  .form-error-msg{font-size:var(--text-caption);color:var(--color-error);display:flex;align-items:center;gap:var(--sp-4)}
-  .check-list{display:flex;flex-direction:column;gap:var(--sp-12)}
-  .check-group{display:flex;align-items:flex-start;gap:var(--sp-12);cursor:pointer}
-  .check-input{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  .check-box{position:relative;display:inline-block;flex-shrink:0;width:20px;height:20px;margin-top:2px;border:2px solid var(--color-charcoal-40);border-radius:var(--radius-xs);background:var(--color-white);transition:background var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
-  .check-group:hover .check-box{border-color:var(--color-charcoal-60)}
-  .check-input:focus-visible + .check-box{outline:2px solid var(--color-powdered-blue);outline-offset:4px}
-  .check-input:checked + .check-box{background:var(--color-action-primary);border-color:var(--color-action-primary)}
-  .check-input:checked + .check-box::after{content:'';position:absolute;top:50%;left:50%;width:5px;height:9px;border:2px solid white;border-top:0;border-left:0;transform:translate(-50%,-60%) rotate(45deg)}
-  .check-input:disabled + .check-box{background:var(--color-charcoal-10);border-color:var(--color-charcoal-20);cursor:not-allowed}
-  .check-group:has(.check-input:disabled){cursor:not-allowed}
-  .check-input:disabled:checked + .check-box{background:var(--color-charcoal-30);border-color:var(--color-charcoal-30)}
-  .check-input--error + .check-box{border-color:var(--color-error)!important}
-  .check-input--error:checked + .check-box{background:var(--color-error)!important;border-color:var(--color-error)!important}
-  .check-label{font-size:var(--text-body);color:var(--color-charcoal);line-height:1.5}
-  .check-label--disabled{color:var(--color-charcoal-40)}
-</style>`;
+const formStyles = '';
 
 const statesTable = (rows) => `
   <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">

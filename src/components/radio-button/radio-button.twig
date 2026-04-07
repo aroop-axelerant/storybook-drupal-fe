@@ -10,9 +10,9 @@
  * - disabled: boolean  Disabled state
  * - error:    boolean  Error state
  #}
-<label class="check-group">
+<label class="radio-group">
   <input
-    class="check-input{% if error %} check-input--error{% endif %}"
+    class="radio-input{% if error %} radio-input--error{% endif %}"
     type="radio"
     id="{{ id }}"
     name="{{ name }}"
@@ -20,5 +20,6 @@
     {% if checked %}checked{% endif %}
     {% if disabled %}disabled{% endif %}
     {% if error %}aria-invalid="true"{% endif %}>
-  <span class="check-label{% if disabled %} check-label--disabled{% endif %}">{{ label }}</span>
+  <span class="radio-circle" aria-hidden="true"></span>
+  <span class="radio-label{% if disabled %} radio-label--disabled{% endif %}">{{ label }}</span>
 </label>

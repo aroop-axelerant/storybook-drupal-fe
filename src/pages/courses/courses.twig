@@ -1,0 +1,14 @@
+{#
+ * Courses page — Regent's University London
+ * Extends the Courses template with real content.
+ #}
+{% include "@templates/courses/courses.twig" with {
+  header:      header,
+  hero:        hero,
+  breadcrumb:  breadcrumb,
+  filters:     filters,
+  courses:     courses,
+  journey:     journey,
+  newsletter:  newsletter,
+  footer:      footer
+} %}

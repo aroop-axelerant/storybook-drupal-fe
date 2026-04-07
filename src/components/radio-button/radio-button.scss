@@ -3,16 +3,82 @@
   .form-label{font-size:var(--text-small);font-weight:600;color:var(--color-charcoal-80);letter-spacing:0.02em}
   .form-hint{font-size:var(--text-caption);color:var(--color-charcoal-60)}
   .form-error-msg{font-size:var(--text-caption);color:var(--color-error);display:flex;align-items:center;gap:var(--sp-4)}
-  .check-list{display:flex;flex-direction:column;gap:var(--sp-12)}
-  .check-group{display:flex;align-items:flex-start;gap:var(--sp-12);cursor:pointer}
-  .check-input{width:20px;height:20px;min-width:20px;border:2px solid var(--color-charcoal-40);border-radius:50%;background:var(--color-white);appearance:none;-webkit-appearance:none;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out);position:relative;flex-shrink:0;margin-top:2px;outline:none}
-  .check-input:hover{border-color:var(--color-charcoal-60)}
-  .check-input:focus-visible{outline:2px solid var(--color-powdered-blue);outline-offset:4px}
-  .check-input:checked{background:var(--color-action-primary);border-color:var(--color-action-primary)}
-  .check-input:checked::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:white;border-radius:50%}
-  .check-input:disabled{background:var(--color-charcoal-10);border-color:var(--color-charcoal-20);cursor:not-allowed}
-  .check-input:disabled:checked{background:var(--color-charcoal-30);border-color:var(--color-charcoal-30)}
-  .check-input--error{border-color:var(--color-error)!important}
-  .check-input--error:checked{background:var(--color-error)!important;border-color:var(--color-error)!important}
-  .check-label{font-size:var(--text-body);color:var(--color-charcoal);line-height:1.5}
-  .check-label--disabled{color:var(--color-charcoal-40)}
+  .radio-list{display:flex;flex-direction:column;gap:var(--sp-12)}
+
+  /* ── Row ──────────────────────────────────────────────────── */
+  /* gap:0 — spacing is on .radio-label via margin-inline-start,
+     avoiding any browser quirk that adds gap before the first
+     in-flow item when a preceding sibling is position:absolute  */
+  .radio-group{display:flex;align-items:flex-start;gap:0;cursor:pointer;position:relative}
+
+  /* ── Native input — visually hidden, stays in DOM for a11y ── */
+  .radio-input{
+    position:absolute;
+    width:1px;height:1px;
+    margin:0;padding:0;border:0;
+    overflow:hidden;
+    clip-path:inset(50%);
+    white-space:nowrap;
+  }
+
+  /* ── Visual circle ────────────────────────────────────────── */
+  .radio-circle{
+    position:relative;
+    display:inline-block;
+    flex-shrink:0;
+    width:20px;height:20px;
+    margin-top:2px;
+    border:2px solid var(--color-charcoal-40);
+    border-radius:50%;
+    background:var(--color-white);
+    transition:background var(--duration-fast) var(--ease-out),
+               border-color var(--duration-fast) var(--ease-out);
+  }
+
+  /* Hover */
+  .radio-group:hover .radio-circle{border-color:var(--color-charcoal-60)}
+
+  /* Focus */
+  .radio-input:focus-visible + .radio-circle{
+    outline:2px solid var(--color-powdered-blue);
+    outline-offset:4px;
+  }
+
+  /* Checked */
+  .radio-input:checked + .radio-circle{
+    background:var(--color-action-primary);
+    border-color:var(--color-action-primary);
+  }
+
+  /* Inner dot via ::after */
+  .radio-input:checked + .radio-circle::after{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    width:8px;height:8px;
+    background:var(--color-white);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  /* Disabled */
+  .radio-input:disabled + .radio-circle{
+    background:var(--color-charcoal-10);
+    border-color:var(--color-charcoal-20);
+    cursor:not-allowed;
+  }
+  .radio-group:has(.radio-input:disabled){cursor:not-allowed}
+
+  /* Disabled + checked */
+  .radio-input:disabled:checked + .radio-circle{
+    background:var(--color-charcoal-30);
+    border-color:var(--color-charcoal-30);
+  }
+
+  /* Error */
+  .radio-input--error + .radio-circle{border-color:var(--color-error)!important}
+  .radio-input--error:checked + .radio-circle{background:var(--color-error)!important;border-color:var(--color-error)!important}
+
+  /* ── Label text ───────────────────────────────────────────── */
+  .radio-label{font-size:var(--text-body);color:var(--color-charcoal);line-height:1.5;margin-inline-start:var(--sp-12)}
+  .radio-label--disabled{color:var(--color-charcoal-40)}

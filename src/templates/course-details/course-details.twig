@@ -1,0 +1,74 @@
+{#
+  Course Details template — Regent's University London
+
+  Props:
+    header       — Site header (variant, logo, nav, cta)
+    hero         — Course hero (overline, title, subtitle, fg_image_src, fg_image_alt, highlights[])
+    breadcrumb   — Array of { label, href } (href null = current page)
+    in_page_nav  — Array of { label, href } — auto-generated from section H2s
+    footer       — Site footer
+#}
+
+<div class="t-course-details">
+
+  {# ── Header ───────────────────────────────────────────────────────── #}
+  {% include "@components/header/header.twig" with { variant: header.variant, logo: header.logo, nav: header.nav, cta: header.cta } %}
+
+  {# ── Hero: Course variant ─────────────────────────────────────────── #}
+  <section class="hero hero--course" aria-label="{{ hero.title }}">
+    <div class="hero__inner">
+      <div class="hero__content">
+        {% if hero.overline %}<span class="hero__overline">{{ hero.overline }}</span>{% endif %}
+        <h1 class="hero__title">{{ hero.title }}</h1>
+        {% if hero.subtitle %}<p class="hero__subtitle">{{ hero.subtitle }}</p>{% endif %}
+        {% if hero.highlights %}
+          <div class="hero__highlights" role="list" aria-label="Course details">
+            {% for h in hero.highlights %}
+              <div class="hero__highlight" role="listitem">
+                <span class="hero__highlight-icon" aria-hidden="true">
+                  {% if h.icon == 'calendar' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  {% elseif h.icon == 'book' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                  {% elseif h.icon == 'clock' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {% elseif h.icon == 'ucas' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3m0 4h4V14h-4"/></svg>
+                  {% endif %}
+                </span>
+                <span class="hero__highlight-label">{{ h.label }}</span>
+                <span class="hero__highlight-value">{{ h.value }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="hero__fg">
+        <img src="{{ hero.fg_image_src }}" alt="{{ hero.fg_image_alt }}" class="hero__fg-img" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  {# ── Breadcrumb ───────────────────────────────────────────────────── #}
+  <div class="cd-breadcrumb">
+    {% include "@components/breadcrumb/breadcrumb.twig" with { items: breadcrumb } %}
+  </div>
+
+  {# ── In-page navigation ───────────────────────────────────────────── #}
+  <nav class="cd-inpage-nav" aria-label="On this page">
+    <div class="cd-inpage-nav__inner">
+      <div class="tab tab--underline-inverse" role="tablist">
+        {% for item in in_page_nav %}
+          <a class="tab__item{% if loop.first %} is-active{% endif %}"
+             href="{{ item.href }}"
+             role="tab"
+             aria-selected="{{ loop.first ? 'true' : 'false' }}">{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </nav>
+
+  {# ── Footer ───────────────────────────────────────────────────────── #}
+  {% include "@components/footer/footer.twig" with { brand: footer.brand, columns: footer.columns, social: footer.social, legal: footer.legal, copyright: footer.copyright } %}
+
+</div>

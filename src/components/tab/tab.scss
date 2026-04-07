@@ -18,6 +18,7 @@
       cursor: pointer;
       border: none;
       background: transparent;
+      text-decoration: none;
       font-family: inherit;
       font-size: var(--text-body-m-size, 1rem);
       font-weight: 500;
@@ -72,6 +73,41 @@
     .tab--underline .tab__item.is-disabled,
     .tab--underline .tab__item:disabled {
       color: var(--color-charcoal-30);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       UNDERLINE INVERSE VARIANT  (for use on dark backgrounds)
+    ══════════════════════════════════════════════════════════════ */
+
+    .tab--underline-inverse {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      gap: 0;
+    }
+
+    .tab--underline-inverse .tab__item {
+      padding: var(--sp-12) var(--sp-24);
+      color: rgba(255, 255, 255, 0.55);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    /* Hover */
+    .tab--underline-inverse .tab__item:hover:not(:disabled):not(.is-active) {
+      color: var(--color-white);
+    }
+
+    /* Active / selected */
+    .tab--underline-inverse .tab__item.is-active {
+      color: var(--color-white);
+      border-bottom-color: var(--color-zingy-yellow);
+    }
+
+    /* Disabled */
+    .tab--underline-inverse .tab__item.is-disabled,
+    .tab--underline-inverse .tab__item:disabled {
+      color: rgba(255, 255, 255, 0.25);
       cursor: not-allowed;
       pointer-events: none;
     }

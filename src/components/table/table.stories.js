@@ -9,76 +9,7 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = `
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* ── Story canvas ─────────────────────────────────────────────────────── */
-  .story-canvas {
-    min-height: 100vh;
-    background: var(--color-off-white);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: var(--sp-64) var(--sp-32);
-  }
-
-  /* ── Price table wrapper ──────────────────────────────────────────────── */
-  .price-table {
-    width: 100%;
-    max-width: 760px;
-    border-radius: var(--radius-m);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    background: var(--color-off-white);
-  }
-
-  /* ── Table reset ──────────────────────────────────────────────────────── */
-  .price-table__table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-  }
-
-  /* ── Header row ───────────────────────────────────────────────────────── */
-  .price-table__th {
-    background: var(--color-violet);
-    color: var(--color-charcoal);
-    font-family: var(--font-sans);
-    font-size: var(--text-body-lg);
-    font-weight: var(--fw-semibold);
-    line-height: var(--lh-body-lg);
-    text-align: left;
-    padding: var(--sp-24) var(--sp-24);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  /* Vertical divider between header cells */
-  .price-table__th + .price-table__th {
-    border-left: 1px solid var(--color-border);
-  }
-
-  /* ── Body rows ────────────────────────────────────────────────────────── */
-  .price-table__row + .price-table__row .price-table__td {
-    border-top: 1px solid var(--color-border);
-  }
-
-  .price-table__td {
-    background: var(--color-white);
-    color: var(--color-charcoal);
-    font-family: var(--font-sans);
-    font-size: var(--text-body);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-body);
-    text-align: left;
-    padding: var(--sp-12) var(--sp-24);
-  }
-
-  /* Vertical divider between body cells */
-  .price-table__td + .price-table__td {
-    border-left: 1px solid var(--color-border);
-  }
-</style>`;
+const styles = '';
 
 // =============================================================================
 // HTML builder

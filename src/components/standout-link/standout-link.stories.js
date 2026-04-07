@@ -5,7 +5,7 @@ export default {
   title: "Components/Link/Standout Link",
 };
 
-const focusStyle = `<style>a:focus-visible{outline:2px solid var(--color-powdered-blue)!important;outline-offset:4px!important}</style>`;
+const focusStyle = '';
 
 const arrowSvg = (color) => `
   <svg width="20" height="20" viewBox="0 0 24 24" style="stroke:${color};stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform 200ms ease-out,stroke 200ms ease-out">

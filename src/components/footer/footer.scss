@@ -4,25 +4,27 @@
 .site-footer {
   background: var(--color-bg-brand);
   color: var(--color-white);
-  padding-block: var(--sp-64);
+
+  // ── Main content area ────────────────────────────────────────────────────────
+
+  &__main {
+    padding-block: var(--sp-64);
+  }
 
   &__inner {
     max-width: var(--grid-max);
     margin-inline: auto;
     padding-inline: var(--grid-gutter);
-  }
-
-  // ── Top row: brand + columns ─────────────────────────────────────────────────
-
-  &__top {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: var(--sp-64);
-    margin-block-end: var(--sp-48);
+    grid-template-columns: 300px repeat(3, 1fr);
+    gap: var(--sp-32) var(--sp-48);
 
     @media (max-width: 1279px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 767px) {
       grid-template-columns: 1fr;
-      gap: var(--sp-32);
     }
   }
 
@@ -32,28 +34,37 @@
     display: flex;
     flex-direction: column;
     gap: var(--sp-16);
+
+    @media (max-width: 1279px) {
+      grid-column: 1 / -1;
+    }
   }
 
-  &__logo {
+  &__logo-link {
+    display: inline-block;
     height: 40px;
     width: auto;
-    img, svg { height: 100%; width: auto; filter: brightness(0) invert(1); }
+
+    img, svg { height: 100%; width: auto; }
   }
 
-  &__tagline {
+  &__description {
     font-size: var(--text-small);
     color: rgba(255, 255, 255, 0.7);
     line-height: var(--lh-body);
-    max-width: 260px;
+    max-width: 280px;
+    margin: 0;
   }
 
   &__social {
     display: flex;
     gap: var(--sp-8);
-    margin-block-start: var(--sp-8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  &__social-btn {
+  &__social-link {
     width: 36px;
     height: 36px;
     border-radius: var(--radius-l);
@@ -70,32 +81,27 @@
     &:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.6); }
     &:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
 
-    svg { width: 16px; height: 16px; }
+    svg { width: 20px; height: 20px; }
   }
 
-  // ── Link columns ─────────────────────────────────────────────────────────────
+  // ── Navigation columns ───────────────────────────────────────────────────────
 
-  &__cols {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--sp-32);
-
-    @media (max-width: 767px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--sp-24);
-    }
+  &__nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
   }
 
-  &__col-title {
+  &__nav-heading {
     font-size: var(--text-overline);
     font-weight: var(--fw-semibold);
     letter-spacing: var(--ls-widest);
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
-    margin-block-end: var(--sp-12);
+    margin: 0 0 var(--sp-4);
   }
 
-  &__col-links {
+  &__nav-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -104,7 +110,7 @@
     gap: var(--sp-8);
   }
 
-  &__col-link {
+  &__nav-link {
     font-size: var(--text-small);
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
@@ -114,42 +120,90 @@
     &:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
   }
 
-  // ── Divider ──────────────────────────────────────────────────────────────────
+  // ── Contact list ─────────────────────────────────────────────────────────────
 
-  &__divider {
-    border: none;
-    border-block-start: 1px solid rgba(255, 255, 255, 0.15);
-    margin-block: var(--sp-32);
+  &__contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
   }
 
-  // ── Bottom: legal ─────────────────────────────────────────────────────────────
-
-  &__bottom {
+  &__contact-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--sp-16);
-    flex-wrap: wrap;
+    gap: var(--sp-8);
   }
 
-  &__legal {
-    font-size: var(--text-caption);
+  &__contact-icon {
+    flex-shrink: 0;
     color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+  }
+
+  &__contact-link {
+    font-size: var(--text-small);
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color var(--ease-fast);
+
+    &:hover { color: var(--color-white); text-decoration: underline; }
+    &:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
+  }
+
+  // ── B Corp logo ──────────────────────────────────────────────────────────────
+
+  &__bcorp {
+    display: block;
+    width: auto;
+    max-width: 120px;
+    height: auto;
+    margin-block-start: var(--sp-16);
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
+    object-fit: contain;
+  }
+
+  // ── Legal bar ────────────────────────────────────────────────────────────────
+
+  &__legal-bar {
+    border-block-start: 1px solid rgba(255, 255, 255, 0.15);
+    padding-block: var(--sp-24);
+
+    .site-footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-16);
+      flex-wrap: wrap;
+      grid-template-columns: unset;
+    }
+  }
+
+  &__copyright {
+    font-size: var(--text-overline);
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
   }
 
   &__legal-links {
     display: flex;
-    gap: var(--sp-16);
+    flex-wrap: wrap;
+    gap: var(--sp-8) var(--sp-16);
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   &__legal-link {
-    font-size: var(--text-caption);
+    font-size: var(--text-overline);
     color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
 
     &:hover { color: var(--color-white); text-decoration: underline; }
+    &:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
   }
 }

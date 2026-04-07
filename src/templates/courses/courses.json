@@ -48,27 +48,34 @@
       { "title": "Psychology",                                 "qualification": "BSc (Hons)", "badge": null,         "href": "#" },
       { "title": "Screenwriting & Producing",                  "qualification": "BA (Hons)", "badge": null,          "href": "#" }
     ],
-    "journey": {
-      "heading":  "Your Journey Starts Here",
+    "apply_journey": {
+      "heading": "Your Journey Starts Here",
       "overline": "How to Apply",
+      "body": "Applying to Regent's is straightforward. Follow these three steps to begin your journey with us.",
       "cards": [
         {
-          "color":   "zingy-yellow",
-          "image":   { "src": "/images/Library.jpg", "alt": "Students in the library" },
+          "step": "Step 1",
           "heading": "Find Your Course",
-          "body":    "Browse over 60 undergraduate programmes across business, arts, law, and social sciences."
+          "summary": "Browse over 60 undergraduate and postgraduate programmes across business, arts, law, and social sciences.",
+          "image": { "src": "/images/Library.jpg", "alt": "Regent's University library" },
+          "cta": { "label": "Explore courses", "href": "/study" },
+          "bodyBg": "zingy-light"
         },
         {
-          "color":   "violet",
-          "image":   { "src": "/images/Regent's University London (6).jpg", "alt": "Student at a desk" },
+          "step": "Step 2",
           "heading": "Prepare Your Application",
-          "body":    "Gather your personal statement, academic references and supporting documents."
+          "summary": "Gather your personal statement, academic references and supporting documents — we'll guide you through every requirement.",
+          "image": { "src": "/images/Regent's University London (6).jpg", "alt": "Student preparing their application" },
+          "cta": { "label": "Application guide", "href": "/apply/guide" },
+          "bodyBg": "violet"
         },
         {
-          "color":   "peach",
-          "image":   { "src": "/images/Regent's University London (11).jpg", "alt": "Open day" },
-          "heading": "Visit at an Open Day",
-          "body":    "Meet academics, explore the campus and get a feel for life at Regent's."
+          "step": "Step 3",
+          "heading": "Visit Us at an Open Day",
+          "summary": "Meet academics, explore the campus and get a real feel for life at Regent's before you make your decision.",
+          "image": { "src": "/images/Regent's University London (11).jpg", "alt": "Students at a Regent's open day" },
+          "cta": { "label": "Book your place", "href": "/open-day" },
+          "bodyBg": "peach"
         }
       ]
     },

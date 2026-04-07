@@ -1,0 +1,63 @@
+{
+  "default": {
+    "header": {
+      "variant": "light",
+      "logo": { "src": "/graphics/brand/logo-emblem.svg", "alt": "Regent's University London" },
+      "nav": [
+        { "label": "Study",         "href": "/study",        "has_dropdown": true },
+        { "label": "International", "href": "/international","has_dropdown": false },
+        { "label": "Why Regent's",  "href": "/why-regents",  "has_dropdown": true }
+      ],
+      "cta": { "label": "Apply Now", "href": "/apply" }
+    },
+    "hero": {
+      "overline":     "Undergraduate",
+      "title":        "Business and Luxury Brand Management BA (Hons)",
+      "subtitle":     "Develop the strategic thinking and creative insight to lead luxury brands on the global stage — taught in London, the world's luxury capital.",
+      "fg_image_src": "/images/Fashion studio.jpg",
+      "fg_image_alt": "Students in a business workshop at Regent's University London",
+      "highlights": [
+        { "icon": "calendar", "label": "Next Start Date", "value": "Sep 2026"  },
+        { "icon": "book",     "label": "Study Mode",      "value": "Full Time" },
+        { "icon": "clock",    "label": "Duration",        "value": "3 Years"   },
+        { "icon": "ucas",     "label": "UCAS Code",       "value": "N120"      }
+      ]
+    },
+    "breadcrumb": [
+      { "label": "Home",                       "href": "/"                      },
+      { "label": "Undergraduate Courses",      "href": "/study/undergraduate"   },
+      { "label": "Business and Luxury Brand Management BA (Hons)", "href": null }
+    ],
+    "in_page_nav": [
+      { "label": "Overview",         "href": "#overview"     },
+      { "label": "What You'll Study","href": "#curriculum"   },
+      { "label": "Entry Requirements","href": "#entry"       },
+      { "label": "Fees & Funding",   "href": "#fees"         },
+      { "label": "Career Prospects", "href": "#careers"      },
+      { "label": "How to Apply",     "href": "#apply"        }
+    ],
+    "footer": {
+      "brand": {
+        "logo": { "src": "/graphics/brand/logo-emblem-white.svg", "alt": "Regent's University London" },
+        "tagline": "A unique university in the heart of London's Royal Regent's Park."
+      },
+      "columns": [
+        { "heading": "Study",    "links": [ { "label": "Undergraduate", "href": "/study/undergraduate" }, { "label": "Postgraduate", "href": "/study/postgraduate" }, { "label": "Short Courses", "href": "/study/short-courses" } ] },
+        { "heading": "Research", "links": [ { "label": "Research Centres", "href": "/research/centres" }, { "label": "PhD Programmes", "href": "/research/phd" } ] },
+        { "heading": "About",    "links": [ { "label": "Our Story", "href": "/about/story" }, { "label": "Leadership", "href": "/about/leadership" }, { "label": "Campus", "href": "/about/campus" } ] }
+      ],
+      "social": [
+        { "platform": "instagram", "href": "https://instagram.com/regentsuniversitylondon", "label": "Instagram" },
+        { "platform": "linkedin",  "href": "https://linkedin.com/school/regents-university-london", "label": "LinkedIn" },
+        { "platform": "youtube",   "href": "https://youtube.com/regentsuniversitylondon", "label": "YouTube" }
+      ],
+      "legal": [
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Cookie Policy",  "href": "/cookies" },
+        { "label": "Accessibility",  "href": "/accessibility" },
+        { "label": "Terms of Use",   "href": "/terms" }
+      ],
+      "copyright": "© 2025 Regent's University London. All rights reserved."
+    }
+  }
+}

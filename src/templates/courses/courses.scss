@@ -1,23 +1,3 @@
-import "../../main.scss";
-import data from "./undergraduate-courses.json";
-import { headerStyles, buildHeader, buildMegaMenu, headerScript } from "../../components/header/header.stories.js";
-import { footerStyles, buildFooter } from "../../components/footer/footer.stories.js";
-
-// =============================================================================
-// Icons
-// =============================================================================
-
-const iconSearch = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
-const iconFilter = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>`;
-const iconClose = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-const iconArrow = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
-
-// =============================================================================
-// Styles
-// =============================================================================
-
-const styles = `
-<style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   ul, ol { list-style: none; }
   img { display: block; width: 100%; }
@@ -26,6 +6,11 @@ const styles = `
   .t-ug-courses {
     font-family: var(--font-sans);
     background: var(--color-off-white);
+  }
+
+  /* ── Breadcrumb wrapper ─────────────────────────────────────── */
+  .courses-breadcrumb {
+    background: var(--color-charcoal-10);
   }
 
   /* ── Shared eyebrow ─────────────────────────────────────────── */
@@ -96,6 +81,7 @@ const styles = `
   ══════════════════════════════════════════════════════════════ */
   .ug-listing {
     padding: var(--sp-48) 0 var(--sp-96);
+    background: var(--color-white);
   }
 
   /* Mobile bar (filter trigger + search) */
@@ -137,11 +123,21 @@ const styles = `
 
   /* Desktop search — hidden on mobile via layout-listing__sidebar hiding */
   .ug-search--desktop {
-    margin-bottom: var(--sp-24);
+    margin-bottom: var(--sp-16);
   }
   @media (max-width: 1023px) {
     .ug-search--desktop { display: none; }
   }
+
+  /* ── Active filter tags ─────────────────────────────────────── */
+  .ug-active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+    margin-bottom: var(--sp-24);
+    min-height: 0;
+  }
+  .ug-active-filters:empty { display: none; }
 
   /* ── Mobile filter button ───────────────────────────────────── */
   .ug-filter-btn {
@@ -167,17 +163,17 @@ const styles = `
      FILTER SIDEBAR
   ══════════════════════════════════════════════════════════════ */
   .ug-filters {
-    background: var(--color-white);
-    border-radius: var(--radius-m);
-    padding: var(--sp-24);
-    border: 1px solid var(--color-charcoal-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-48);
   }
   .ug-filters__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: var(--sp-24);
+    margin-bottom: var(--sp-12);
   }
+  .ug-drawer .ug-filters__header { display: none; }
   .ug-filters__title {
     font-size: var(--text-h4);
     font-weight: 700;
@@ -196,8 +192,6 @@ const styles = `
   }
   .ug-filters__reset:hover { opacity: 0.7; }
 
-  .ug-filter-group { margin-bottom: var(--sp-24); }
-  .ug-filter-group:last-child { margin-bottom: 0; }
   .ug-filter-group__legend {
     display: block;
     font-size: 0.625rem;
@@ -205,21 +199,7 @@ const styles = `
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-charcoal-40);
-    margin-bottom: var(--sp-12);
-  }
-  .ug-filter-option {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-12);
-    padding: var(--sp-8) 0;
-    cursor: pointer;
-    border-bottom: 1px solid var(--color-charcoal-10);
-  }
-  .ug-filter-option:last-child { border-bottom: none; }
-  .ug-filter-option__label {
-    font-size: var(--text-body-sm, 0.875rem);
-    color: var(--color-charcoal);
-    line-height: 1.4;
+    margin-bottom: var(--sp-16);
   }
 
   /* ══════════════════════════════════════════════════════════════
@@ -236,7 +216,6 @@ const styles = `
     border-bottom: 1px solid var(--color-charcoal-20);
     text-decoration: none;
     transition: background var(--duration-fast) var(--ease-out);
-    border-radius: var(--radius-xs);
   }
   .ug-course-row__link:hover { background: rgba(11,25,26,0.02); }
   .ug-course-row__link:focus-visible { outline: 2px solid var(--color-powdered-blue); outline-offset: 2px; }
@@ -547,245 +526,3 @@ const styles = `
     .ug-newsletter__form { flex-direction: column; align-items: stretch; }
     .ug-newsletter__input { min-width: 0; width: 100%; }
   }
-</style>`;
-
-// =============================================================================
-// Builder helpers
-// =============================================================================
-
-function buildHero(d) {
-  return `
-  <section class="ug-hero">
-    <div class="layout-container">
-      <h1 class="ug-hero__title">${d.title}</h1>
-      <p class="ug-hero__subtitle">${d.subtitle}</p>
-    </div>
-  </section>`;
-}
-
-function buildBreadcrumb(items) {
-  return `
-  <nav class="ug-breadcrumb" aria-label="Breadcrumb">
-    <div class="layout-container">
-      <ol class="ug-breadcrumb__list">
-        ${items.map(crumb => `
-          <li class="ug-breadcrumb__item">
-            ${crumb.href
-              ? `<a class="ug-breadcrumb__link" href="${crumb.href}">${crumb.label}</a><span class="ug-breadcrumb__sep" aria-hidden="true">/</span>`
-              : `<span class="ug-breadcrumb__current" aria-current="page">${crumb.label}</span>`
-            }
-          </li>`).join("")}
-      </ol>
-    </div>
-  </nav>`;
-}
-
-function buildFilters(filters, idSuffix = "") {
-  return `
-  <div class="ug-filters">
-    <div class="ug-filters__header">
-      <span class="ug-filters__title">Filters</span>
-      <button class="ug-filters__reset" type="button">Reset Filters</button>
-    </div>
-
-    <fieldset style="border:none;padding:0;margin:0">
-      <legend class="ug-filter-group__legend">Academic Year Start</legend>
-      <div class="ug-filter-group">
-        ${filters.year_options.map(opt => `
-          <label class="ug-filter-option check-group">
-            <input class="check-input" type="radio" name="start${idSuffix}" value="${opt.value}" ${opt.checked ? "checked" : ""}>
-            <span class="check-box" aria-hidden="true"></span>
-            <span class="ug-filter-option__label check-label">${opt.label}</span>
-          </label>`).join("")}
-      </div>
-    </fieldset>
-
-    <fieldset style="border:none;padding:0;margin:0">
-      <legend class="ug-filter-group__legend">Subject Area</legend>
-      <div class="ug-filter-group">
-        ${filters.field_options.map(opt => `
-          <label class="ug-filter-option check-group">
-            <input class="check-input" type="checkbox" name="field${idSuffix}" value="${opt.value}" ${opt.checked ? "checked" : ""}>
-            <span class="check-box" aria-hidden="true"></span>
-            <span class="ug-filter-option__label check-label">${opt.label}</span>
-          </label>`).join("")}
-      </div>
-    </fieldset>
-  </div>`;
-}
-
-function buildCourseList(courses) {
-  return `
-  <ol class="ug-course-list">
-    ${courses.map(course => `
-      <li class="ug-course-row">
-        <a class="ug-course-row__link" href="${course.href}">
-          <div class="ug-course-row__left">
-            <span class="ug-course-row__title">${course.title}</span>
-            ${course.badge ? `<span class="ug-course-row__badge ug-course-row__badge--${course.badge === 'Foundation' ? 'violet' : 'green'}">${course.badge}</span>` : ""}
-          </div>
-          <span class="ug-course-row__qual">${course.qualification}</span>
-        </a>
-      </li>`).join("")}
-  </ol>`;
-}
-
-function buildJourneyCards(d) {
-  return `
-  <section class="ug-journey">
-    <div class="layout-container">
-      <div class="ug-journey__header">
-        <span class="ug-eyebrow">${d.overline}</span>
-        <h2 class="ug-journey__heading">${d.heading}</h2>
-      </div>
-      <div class="ug-journey__grid">
-        ${d.cards.map(card => `
-          <article class="ug-journey-card ug-journey-card--${card.color}">
-            <div class="ug-journey-card__image">
-              <img src="${card.image.src}" alt="${card.image.alt}" loading="lazy">
-            </div>
-            <div class="ug-journey-card__body">
-              <h3 class="ug-journey-card__heading">${card.heading}</h3>
-              <p class="ug-journey-card__text">${card.body}</p>
-            </div>
-          </article>`).join("")}
-      </div>
-    </div>
-  </section>`;
-}
-
-function buildNewsletter(d) {
-  return `
-  <section class="ug-newsletter">
-    <div class="layout-container">
-      <div class="ug-newsletter__inner">
-        <div class="ug-newsletter__copy">
-          <span class="ug-eyebrow">${d.eyebrow}</span>
-          <h2 class="ug-newsletter__heading">${d.heading}</h2>
-          <p class="ug-newsletter__body">${d.body}</p>
-        </div>
-        <form class="ug-newsletter__form" action="#" method="post">
-          <input class="ug-newsletter__input" type="email" placeholder="${d.placeholder}" aria-label="${d.placeholder}" required>
-          <button class="ug-newsletter__submit" type="submit">${d.submit}</button>
-        </form>
-      </div>
-    </div>
-  </section>`;
-}
-
-// =============================================================================
-// Drawer script
-// =============================================================================
-
-const drawerScript = `
-<script>
-(function() {
-  var btn     = document.querySelector('.ug-filter-btn');
-  var drawer  = document.getElementById('ug-drawer');
-  var backdrop = document.getElementById('ug-backdrop');
-  var closeBtn = drawer && drawer.querySelector('.ug-drawer__close');
-  var applyBtn = drawer && drawer.querySelector('.ug-drawer__apply');
-
-  function openDrawer() {
-    if (!drawer) return;
-    drawer.removeAttribute('hidden');
-    requestAnimationFrame(function() {
-      drawer.classList.add('is-open');
-      backdrop.classList.add('is-open');
-    });
-    document.body.style.overflow = 'hidden';
-    if (btn) btn.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeDrawer() {
-    if (!drawer) return;
-    drawer.classList.remove('is-open');
-    backdrop.classList.remove('is-open');
-    document.body.style.overflow = '';
-    if (btn) btn.setAttribute('aria-expanded', 'false');
-    setTimeout(function() { drawer.setAttribute('hidden', ''); }, 380);
-  }
-
-  if (btn)      btn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (applyBtn) applyBtn.addEventListener('click', closeDrawer);
-  if (backdrop) backdrop.addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
-})();
-</script>`;
-
-// =============================================================================
-// Render
-// =============================================================================
-
-const render = (d) => `
-${styles}
-${headerStyles}
-${footerStyles}
-<div class="t-ug-courses">
-  ${buildHeader()}
-  ${buildMegaMenu()}
-  ${buildHero(d.hero)}
-  ${buildBreadcrumb(d.breadcrumb)}
-
-  <section class="ug-listing">
-    <div class="layout-container">
-
-      <div class="ug-listing__mobile-bar">
-        <div class="ug-search">
-          ${iconSearch}
-          <input class="ug-search__input" type="search" placeholder="Search courses…" aria-label="Search courses">
-        </div>
-        <button class="ug-filter-btn" aria-controls="ug-drawer" aria-expanded="false">
-          ${iconFilter} Filters
-        </button>
-      </div>
-
-      <div class="layout-listing">
-        <aside class="layout-listing__sidebar">
-          ${buildFilters(d.filters)}
-        </aside>
-        <div class="layout-listing__main">
-          <div class="ug-search ug-search--desktop">
-            ${iconSearch}
-            <input class="ug-search__input" type="search" placeholder="Search courses…" aria-label="Search courses">
-          </div>
-          ${buildCourseList(d.courses)}
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="ug-drawer-backdrop" id="ug-backdrop" aria-hidden="true"></div>
-  <div class="ug-drawer" id="ug-drawer" role="dialog" aria-modal="true" aria-label="Filter courses" hidden>
-    <div class="ug-drawer__header">
-      <span class="ug-drawer__title">Filters</span>
-      <button class="ug-drawer__close" aria-label="Close filters">${iconClose}</button>
-    </div>
-    <div class="ug-drawer__body">
-      ${buildFilters(d.filters, "-m")}
-    </div>
-    <div class="ug-drawer__footer">
-      <button class="ug-drawer__apply">Apply Filters</button>
-      <button class="ug-drawer__reset">Reset</button>
-    </div>
-  </div>
-
-  ${buildJourneyCards(d.journey)}
-  ${buildNewsletter(d.newsletter)}
-  ${buildFooter()}
-</div>
-${headerScript}
-${drawerScript}`;
-
-// =============================================================================
-// Story
-// =============================================================================
-
-export default {
-  title: "Templates/Undergraduate Courses",
-  render,
-};
-
-export const Default = { args: data.default };
