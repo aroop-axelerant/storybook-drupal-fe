@@ -9,8 +9,6 @@ export default {
 // Styles
 // =============================================================================
 
-export { styles as videoStyles, buildCompactVideo };
-
 // Builder — used by templates that embed a compact video
 function buildCompactVideo({ id, poster, title, youtubeId }) {
   const embedSrc = `https://www.youtube.com/embed/${youtubeId}`;
@@ -73,8 +71,6 @@ function buildCompactVideo({ id, poster, title, youtubeId }) {
   </script>`;
 }
 
-const styles = '';
-
 // =============================================================================
 // Helpers
 // =============================================================================
@@ -84,25 +80,25 @@ const EMBED_SRC  = `https://www.youtube.com/embed/${YOUTUBE_ID}`;
 
 function statesTable(rows) {
   return `
-    <table style="width:100%; border-collapse:collapse; background:var(--color-white); border-radius:var(--radius-s); overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+    <table class="sb-table-el">
       <thead>
-        <tr style="background:var(--color-charcoal-10);">
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">State</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Token</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Properties</th>
+        <tr>
+          <th>State</th>
+          <th>Token</th>
+          <th>Properties</th>
         </tr>
       </thead>
       <tbody>
         ${rows.map(([state, colorVar, token, props]) => `
           <tr>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.875rem; font-weight:600; color:var(--color-charcoal-90); border-bottom:1px solid var(--color-charcoal-10);">${state}</td>
-            <td style="padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-charcoal-10);">
-              <span style="display:inline-flex; align-items:center; gap:var(--sp-8);">
-                <span style="display:inline-block; width:14px; height:14px; border-radius:3px; background:${colorVar}; border:1px solid rgba(0,0,0,0.1); flex-shrink:0;"></span>
-                <code style="font-size:0.75rem; color:var(--color-charcoal-60);">${token}</code>
+            <td>${state}</td>
+            <td>
+              <span class="sb-table-el__swatch-cell">
+                <span class="sb-table-el__swatch" style="background:${colorVar}"></span>
+                <code class="sb-table-el__token">${token}</code>
               </span>
             </td>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60); border-bottom:1px solid var(--color-charcoal-10); line-height:1.5;">${props}</td>
+            <td>${props}</td>
           </tr>`).join('')}
       </tbody>
     </table>`;
@@ -110,8 +106,8 @@ function statesTable(rows) {
 
 function section(title, content) {
   return `
-    <div style="margin-bottom:var(--sp-48);">
-      <h3 style="font-family:var(--font-sans); font-size:0.6875rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-charcoal-40); margin-bottom:var(--sp-16);">${title}</h3>
+    <div class="sb-section">
+      <h3 class="sb-section-title">${title}</h3>
       ${content}
     </div>`;
 }
@@ -120,11 +116,12 @@ function section(title, content) {
 // STORY
 // =============================================================================
 
-export const Default = () => `
-  ${styles}
+export const videoStyles = '';
+export { buildCompactVideo };
 
-  <div style="padding:var(--sp-32); background:var(--color-off-white); min-height:100vh;">
-    <div style="max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-48);">
+export const Default = () => `
+  <div class="sb-canvas">
+    <div class="sb-canvas__inner" style="max-width:960px;">
 
       ${section('Live example — click play to open video', `
         <div class="video" id="video-demo">
@@ -218,50 +215,50 @@ export const Default = () => `
       `)}
 
       ${section('Play button states', `
-        <div style="display:flex; align-items:center; gap:var(--sp-32); flex-wrap:wrap;">
+        <div class="sb-states-row">
 
-          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--sp-12);">
-            <div style="width:80px; height:80px; background:var(--color-charcoal-90); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center;">
+          <div class="sb-state-item">
+            <div class="sb-preview-swatch">
               <button class="video__play" type="button" aria-label="Play (default state)" style="pointer-events:none;">
                 <span class="video__play-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
                 </span>
               </button>
             </div>
-            <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60);">Default</span>
+            <span class="sb-state-caption">Default</span>
           </div>
 
-          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--sp-12);">
-            <div style="width:80px; height:80px; background:var(--color-charcoal-90); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center;">
+          <div class="sb-state-item">
+            <div class="sb-preview-swatch">
               <button class="video__play" type="button" aria-label="Play (hover state)" style="pointer-events:none; transform:scale(1.08); box-shadow:0 var(--sp-8) var(--sp-32) rgba(0,0,0,0.5);">
                 <span class="video__play-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
                 </span>
               </button>
             </div>
-            <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60);">Hover</span>
+            <span class="sb-state-caption">Hover</span>
           </div>
 
-          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--sp-12);">
-            <div style="width:80px; height:80px; background:var(--color-charcoal-90); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center;">
+          <div class="sb-state-item">
+            <div class="sb-preview-swatch">
               <button class="video__play" type="button" aria-label="Play (focus state)" style="pointer-events:none; outline:2px solid var(--color-powdered-blue); outline-offset:4px;">
                 <span class="video__play-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
                 </span>
               </button>
             </div>
-            <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60);">Focus</span>
+            <span class="sb-state-caption">Focus</span>
           </div>
 
-          <div style="display:flex; flex-direction:column; align-items:center; gap:var(--sp-12);">
-            <div style="width:80px; height:80px; background:var(--color-charcoal-90); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center;">
+          <div class="sb-state-item">
+            <div class="sb-preview-swatch">
               <button class="video__play" type="button" aria-label="Play (pressed state)" style="pointer-events:none; transform:scale(0.98);">
                 <span class="video__play-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
                 </span>
               </button>
             </div>
-            <span style="font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60);">Pressed</span>
+            <span class="sb-state-caption">Pressed</span>
           </div>
 
         </div>
@@ -288,10 +285,8 @@ export const Default = () => `
 `;
 
 export const Compact = () => `
-  ${styles}
-
-  <div style="padding:var(--sp-32); background:var(--color-off-white); min-height:100vh;">
-    <div style="max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-48);">
+  <div class="sb-canvas">
+    <div class="sb-canvas__inner" style="max-width:960px;">
 
       ${section('Live example — compact variant (fixed 350px, no caption)', `
         <div class="video video--compact" id="video-compact">

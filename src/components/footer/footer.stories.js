@@ -53,7 +53,6 @@ function icon(name, size = 20) {
 // Styles
 // =============================================================================
 
-const styles = '';
 
 // =============================================================================
 // Logo SVG
@@ -190,9 +189,9 @@ function buildFooter() {
 // STORY
 // =============================================================================
 
-export { styles as footerStyles, buildFooter };
+export const footerStyles = '';
+export { buildFooter };
 
 export const Default = () => `
-  ${styles}
   ${buildFooter()}
 `;

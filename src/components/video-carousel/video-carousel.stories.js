@@ -13,7 +13,6 @@ const iconNext = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" st
 // Styles
 // =============================================================================
 
-const styles = '';
 
 // =============================================================================
 // Builder
@@ -192,8 +191,7 @@ function buildVideoCarousel(cards, id) {
 // =============================================================================
 
 const render = ({ id, cards }) => `
-${styles}
-<div style="padding: var(--sp-64) 0; background: var(--color-off-white); font-family: var(--font-sans);">
+<div class="sb-canvas" style="padding-block: var(--sp-64); padding-inline: 0;">
   <div style="max-width: var(--grid-max); margin-inline: auto; padding-inline: var(--grid-gutter);">
     ${buildVideoCarousel(cards, id)}
   </div>
@@ -211,4 +209,5 @@ export default {
 
 export const Rotator = { args: data.default };
 
-export { styles as videoCarouselStyles, buildVideoCarousel };
+export const videoCarouselStyles = '';
+export { buildVideoCarousel };

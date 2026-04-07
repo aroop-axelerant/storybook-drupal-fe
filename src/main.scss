@@ -6,6 +6,9 @@
 // 1. Foundation tokens
 @use "foundation/tokens/index" as *;
 
+// 1b. Storybook canvas utilities (documentation only — not production CSS)
+@use "foundation/story-canvas/story-canvas";
+
 // 2. Components (alphabetical)
 @use "components/accordion/accordion";
 @use "components/breadcrumb/breadcrumb";

@@ -1,5 +1,46 @@
-// Inline Link — focus ring only (all other styles are inline on the <a> element)
-a:focus-visible {
-  outline: 2px solid var(--color-powdered-blue);
-  outline-offset: 4px;
+// Inline Link component — Regent's University London
+// Default (light): forest-green text, visible underline that fades on hover
+// Inverse (dark bg): zingy-yellow text, same underline behaviour
+
+.inline-link {
+  color: var(--color-forest-green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-forest-green);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+  border-radius: var(--radius-s);
+  transition:
+    text-decoration-color 200ms ease-out,
+    opacity              200ms ease-out,
+    transform            var(--duration-fast) var(--ease-out);
+
+  &:hover {
+    text-decoration-color: transparent;
+    opacity: var(--opacity-hover, 0.8);
+  }
+
+  &:active { transform: scale(0.98); }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-powdered-blue);
+    outline-offset: 4px;
+  }
+
+  // Inverse variant — zingy yellow on dark backgrounds
+  &--inverse {
+    color: var(--color-zingy-yellow);
+    text-decoration-color: var(--color-zingy-yellow);
+
+    &:hover { text-decoration-color: transparent; }
+  }
+
+  // Disabled
+  &--disabled {
+    color: var(--color-charcoal-50);
+    text-decoration-color: var(--color-charcoal-50);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

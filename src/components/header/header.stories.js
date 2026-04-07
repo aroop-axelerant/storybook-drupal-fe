@@ -29,7 +29,6 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = '';
 
 // =============================================================================
 // HTML builders
@@ -471,7 +470,8 @@ const script = `
 // Named exports — consumed by templates/pages that embed this component
 // =============================================================================
 
-export { styles as headerStyles, buildHeader, buildMegaMenu, script as headerScript };
+export const headerStyles = '';
+export { buildHeader, buildMegaMenu, script as headerScript };
 
 // =============================================================================
 // STORIES
@@ -482,19 +482,18 @@ export { styles as headerStyles, buildHeader, buildMegaMenu, script as headerScr
  * Dark background simulates how the header appears floating over page content.
  */
 export const Default = () => `
-  ${styles}
-  <div class="story-canvas">
+  <div class="sb-canvas--header">
     ${buildHeader()}
     ${buildMegaMenu()}
-    <div class="story-canvas__content">
-      <h1 class="story-canvas__heading">
+    <div class="sb-canvas__hero-text">
+      <h1 class="sb-canvas__hero-heading">
         Pursue your<br>passion in London.
       </h1>
-      <p class="story-canvas__body">
+      <p class="sb-canvas__hero-body">
         The header floats above page content with a frosted-glass pill design.
-        Click the hamburger <strong style="color:white">☰</strong> to open the
-        mega menu, or hover the primary nav links to explore the panel behaviour.
-        Resize the viewport below 768 px to see the mobile layout.
+        Click the hamburger ☰ to open the mega menu, or hover the primary nav
+        links to explore the panel behaviour. Resize the viewport below 768 px
+        to see the mobile layout.
       </p>
     </div>
   </div>
@@ -505,7 +504,6 @@ export const Default = () => `
  * Mega Menu Open — pre-opened state with Study panel active for documentation
  */
 export const MegaMenuOpen = () => `
-  ${styles}
   <style>
     /* Pre-open the menu and Study panel for documentation */
     .mega-menu { opacity: 1 !important; visibility: visible !important; }
@@ -521,7 +519,7 @@ export const MegaMenuOpen = () => `
       border-left-color: var(--color-zingy-yellow) !important;
     }
   </style>
-  <div class="story-canvas">
+  <div class="sb-canvas--header">
     ${buildHeader()}
     ${buildMegaMenu()}
   </div>

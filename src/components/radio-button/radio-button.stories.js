@@ -6,30 +6,30 @@ export default {
 };
 
 const statesTable = (rows) => `
-  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">
-    <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:var(--sp-12) var(--sp-32);background:var(--color-charcoal-10);border-bottom:1px solid var(--color-border)">
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">State</p>
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Fill</p>
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Properties</p>
+  <div class="sb-table">
+    <div class="sb-table__head sb-table__head--wide">
+      <p class="sb-table__head-cell">State</p>
+      <p class="sb-table__head-cell">Fill</p>
+      <p class="sb-table__head-cell">Properties</p>
     </div>
     ${rows.map(([state, swatch, token, props]) => `
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:var(--sp-12) var(--sp-32);border-bottom:1px solid var(--color-border);align-items:center">
-        <p style="font-size:var(--text-label-s);font-weight:600;color:var(--color-text-secondary);margin:0">${state}</p>
-        <div style="display:flex;align-items:center;gap:var(--sp-8)">
-          <div style="width:14px;height:14px;border-radius:50%;background:${swatch};flex-shrink:0;border:1px solid rgba(0,0,0,0.1)"></div>
-          <code style="font-size:11px;color:var(--color-text-secondary)">${token}</code>
+      <div class="sb-table__row sb-table__row--wide">
+        <p class="sb-table__state">${state}</p>
+        <div class="sb-table__swatch-cell">
+          <div class="sb-table__swatch sb-table__swatch--circle" style="background:${swatch}"></div>
+          <code class="sb-table__token">${token}</code>
         </div>
-        <p style="font-size:11px;color:var(--color-text-tertiary);margin:0;line-height:1.5">${props}</p>
+        <p class="sb-table__props">${props}</p>
       </div>`).join('')}
   </div>`;
 
 // ── Default Variant ────────────────────────────────────────────────────────────
 export const Default = () => `
-<div style="padding:var(--sp-48);font-family:var(--font-sans);background:var(--color-off-white);min-height:100vh">
-  <h1 style="font-size:var(--text-h3);margin-block-end:var(--sp-8)">Radio Button — Default</h1>
-  <p style="color:var(--color-text-secondary);margin-block-end:var(--sp-48)">Use for mutually exclusive single-select options. All radios in a group share the same <code>name</code> attribute. Checked state fills with <code>--color-action-primary</code> and a centred white dot via <code>::after</code> on <code>.radio-circle</code>.</p>
+<div class="sb-canvas">
+  <h1 class="sb-canvas__title">Radio Button — Default</h1>
+  <p class="sb-canvas__desc">Use for mutually exclusive single-select options. All radios in a group share the same <code>name</code> attribute. Checked state fills with <code>--color-action-primary</code> and a centred white dot via <code>::after</code> on <code>.radio-circle</code>.</p>
 
-  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);padding:var(--sp-32);margin-block-end:var(--sp-48);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-32)">
+  <div class="sb-card sb-card--grid-2">
     <div class="form-group">
       <p class="form-label">Entry year</p>
       <div class="radio-list">
@@ -79,11 +79,11 @@ export const Default = () => `
 
 // ── Error Variant ──────────────────────────────────────────────────────────────
 export const Error = () => `
-<div style="padding:var(--sp-48);font-family:var(--font-sans);background:var(--color-off-white);min-height:100vh">
-  <h1 style="font-size:var(--text-h3);margin-block-end:var(--sp-8)">Radio Button — Error</h1>
-  <p style="color:var(--color-text-secondary);margin-block-end:var(--sp-48)">Error state when a required radio group has no selection. Apply <code>--error</code> modifier to all inputs in the group and render the error message beneath the group.</p>
+<div class="sb-canvas">
+  <h1 class="sb-canvas__title">Radio Button — Error</h1>
+  <p class="sb-canvas__desc">Error state when a required radio group has no selection. Apply <code>--error</code> modifier to all inputs in the group and render the error message beneath the group.</p>
 
-  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);padding:var(--sp-32);margin-block-end:var(--sp-48);max-width:400px">
+  <div class="sb-card sb-card--narrow">
     <div class="form-group">
       <p class="form-label">Entry year <span style="color:var(--color-error)">*</span></p>
       <div class="radio-list" style="margin-block-end:var(--sp-8)">

@@ -41,13 +41,13 @@
 
   // Primary: forest-green background, white text
   &--primary {
-    background: var(--color-action);
-    color: var(--color-action-text);
-    border-color: var(--color-action);
+    background: var(--color-action-primary);
+    color: var(--color-white);
+    border-color: var(--color-action-primary);
 
     &:hover:not(:disabled) {
-      background: var(--color-action-hover);
-      border-color: var(--color-action-hover);
+      background: var(--color-action-primary-hover);
+      border-color: var(--color-action-primary-hover);
     }
   }
 
@@ -99,23 +99,34 @@
   // Outline Green: forest-green border (kept for backwards compatibility)
   &--outline-green {
     background: transparent;
-    color: var(--color-action);
-    border-color: var(--color-action);
+    color: var(--color-action-primary);
+    border-color: var(--color-action-primary);
 
     &:hover:not(:disabled) {
-      background: var(--color-action);
+      background: var(--color-action-primary);
       color: var(--color-white);
     }
   }
 
-  // Ghost: no border, text-only interactive
+  // Ghost: no border, text-only interactive (light backgrounds)
   &--ghost {
     background: transparent;
-    color: var(--color-action);
+    color: var(--color-action-primary);
     border-color: transparent;
 
     &:hover:not(:disabled) {
       background: var(--color-charcoal-10);
+    }
+  }
+
+  // Ghost Inverse: no border, zingy-yellow text (dark backgrounds)
+  &--ghost-inverse {
+    background: transparent;
+    color: var(--color-zingy-yellow);
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: rgba(224, 249, 76, 0.12);
     }
   }
 

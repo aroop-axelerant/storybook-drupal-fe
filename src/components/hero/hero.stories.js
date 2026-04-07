@@ -9,246 +9,7 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = '';
-
-// Split View variant — additional styles
-const splitStyles = `
-<style>
-  /* ── Split View hero ──────────────────────────────────────────────────── */
-  .hero--split {
-    background: var(--color-forest-green);
-    min-height: 620px;
-    align-items: stretch;
-    overflow: hidden;
-  }
-
-  /* No background image / overlay needed — solid brand colour */
-  .hero--split .hero__bg { display: none; }
-
-  .hero--split .hero__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    padding: 0;
-    max-width: var(--grid-max, 1312px);
-    width: 100%;
-  }
-
-  /* ── Left: text ───────────────────────────────────────────────────────── */
-  .hero--split .hero__content {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--sp-96) var(--sp-64) var(--sp-64) var(--sp-64);
-    gap: 0;
-  }
-
-  /* Overline, title, subtitle inherit white from base hero styles */
-
-  /* ── Right: foreground image ──────────────────────────────────────────── */
-  .hero__fg {
-    position: relative;
-    align-self: stretch;
-    display: flex;
-    align-items: flex-end;
-    padding: var(--sp-48) var(--sp-48) 0 var(--sp-24);
-  }
-
-  .hero__fg-img {
-    width: 100%;
-    height: 100%;
-    max-height: 560px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    /* Top fully round, bottom flush to hero edge */
-    border-radius: var(--radius-l) var(--radius-l) 0 0;
-    /* No blur — this is a featured foreground image */
-    filter: none;
-    transform: none;
-  }
-
-  /* ── Responsive: Tablet ──────────────────────────────────────────────── */
-  @media (max-width: 1023px) {
-    .hero--split { min-height: 500px; }
-
-    .hero--split .hero__content {
-      padding: var(--sp-64) var(--sp-32) var(--sp-48) var(--sp-32);
-    }
-
-    .hero__fg {
-      padding: var(--sp-32) var(--sp-32) 0 var(--sp-16);
-    }
-  }
-
-  /* ── Responsive: Mobile — stack vertically ───────────────────────────── */
-  @media (max-width: 767px) {
-    .hero--split .hero__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .hero--split .hero__content {
-      padding: var(--sp-64) var(--sp-16) var(--sp-32);
-    }
-
-    .hero__fg {
-      padding: 0 var(--sp-16) 0;
-      height: 280px;
-    }
-
-    .hero__fg-img {
-      max-height: 280px;
-    }
-  }
-</style>`;
-
-// Course variant — additional styles
-const courseStyles = `
-<style>
-  /* ── Course hero ──────────────────────────────────────────────────────── */
-  .hero--course {
-    background: var(--color-off-white);
-    min-height: 620px;
-    align-items: stretch;
-    overflow: hidden;
-  }
-
-  .hero--course .hero__bg { display: none; }
-
-  .hero--course .hero__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    padding: 0;
-    max-width: var(--grid-max, 1312px);
-    width: 100%;
-  }
-
-  /* ── Left: text + highlights ─────────────────────────────────────────── */
-  .hero--course .hero__content {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--sp-96) var(--sp-64) var(--sp-64) var(--sp-64);
-  }
-
-  .hero--course .hero__overline {
-    color: var(--color-forest-green);
-  }
-
-  .hero--course .hero__title {
-    color: var(--color-charcoal);
-    margin-bottom: var(--sp-16);
-  }
-
-  .hero--course .hero__subtitle {
-    color: var(--color-charcoal-60);
-    margin-bottom: var(--sp-40, var(--sp-32));
-  }
-
-  /* ── Course highlights strip ─────────────────────────────────────────── */
-  .hero__highlights {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--sp-24);
-    padding-top: var(--sp-32);
-  }
-
-  .hero__highlight {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
-  }
-
-  .hero__highlight-icon {
-    display: flex;
-    align-items: center;
-    color: var(--color-charcoal);
-    width: 28px;
-    height: 28px;
-  }
-
-  .hero__highlight-icon svg {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-  }
-
-  .hero__highlight-label {
-    font-family: var(--font-sans);
-    font-size: var(--text-body-sm);
-    font-weight: var(--fw-regular);
-    color: var(--color-charcoal-60);
-    line-height: var(--lh-body-sm);
-  }
-
-  .hero__highlight-value {
-    font-family: var(--font-sans);
-    font-size: var(--text-h5);
-    font-weight: var(--fw-bold);
-    color: var(--color-charcoal);
-    line-height: var(--lh-h5);
-  }
-
-  /* ── Right: foreground image ──────────────────────────────────────────── */
-  .hero--course .hero__fg {
-    position: relative;
-    align-self: stretch;
-    display: flex;
-    align-items: flex-end;
-    padding: var(--sp-48) var(--sp-48) 0 var(--sp-24);
-  }
-
-  .hero--course .hero__fg-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    border-radius: var(--radius-l) var(--radius-l) 0 0;
-    filter: none;
-    transform: none;
-    /* Stretch to fill the full fg column height so it touches the hero bottom */
-    align-self: stretch;
-    min-height: 0;
-  }
-
-  /* ── Responsive: Tablet ──────────────────────────────────────────────── */
-  @media (max-width: 1023px) {
-    .hero--course { min-height: 500px; }
-
-    .hero--course .hero__content {
-      padding: var(--sp-64) var(--sp-32) var(--sp-48) var(--sp-32);
-    }
-
-    .hero--course .hero__fg {
-      padding: var(--sp-32) var(--sp-32) 0 var(--sp-16);
-    }
-  }
-
-  /* ── Responsive: Mobile ──────────────────────────────────────────────── */
-  @media (max-width: 767px) {
-    .hero--course .hero__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .hero--course .hero__content {
-      padding: var(--sp-48) var(--sp-16) var(--sp-32);
-    }
-
-    .hero--course .hero__fg {
-      padding: 0 var(--sp-16) 0;
-      height: 280px;
-    }
-
-    .hero__highlights {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--sp-16);
-    }
-  }
-</style>`;
+// Split View and Course variant styles live in hero.scss.
 
 
 // =============================================================================
@@ -420,7 +181,6 @@ const v = data.variants;
  * Default — image background with primary + secondary buttons
  */
 export const Default = () => `
-  ${styles}
   ${buildHero(d)}
   ${script}
 `;
@@ -444,7 +204,6 @@ export const Default = () => `
  * ─────────────────────────────────────────────────────────────────────────────
  */
 export const Home = () => `
-  ${styles}
   ${buildHero(v.home)}
   ${script}
 `;
@@ -490,7 +249,6 @@ Home.storyName = 'Home Search';
  * ─────────────────────────────────────────────────────────────────────────────
  */
 export const LandingPage = () => `
-  ${styles}
   <section class="hero hero--landing" aria-label="${v.landing.title}">
     <div class="hero__bg" aria-hidden="true">
       <img src="${v.landing.image_src}" alt="" class="hero__img">
@@ -516,8 +274,6 @@ export const SplitView = () => {
     ? `<a href="${s.actions.secondary_href}" class="btn btn--secondary-inverted">${s.actions.secondary_label}</a>`
     : '';
   return `
-    ${styles}
-    ${splitStyles}
     <section class="hero hero--split" aria-label="${s.overline}">
       <div class="hero__inner">
 
@@ -574,8 +330,6 @@ export const Course = () => {
     </div>`).join('');
 
   return `
-    ${styles}
-    ${courseStyles}
     <section class="hero hero--course" aria-label="${c.title}">
       <div class="hero__inner">
 

@@ -1,5 +1,49 @@
-// Standout Link — focus ring only (all other styles are inline on the <a> element)
-a:focus-visible {
-  outline: 2px solid var(--color-powdered-blue);
-  outline-offset: 4px;
+// Standout Link component — Regent's University London
+// Text link with right-pointing arrow icon that animates on hover.
+// Default (light): forest-green text + arrow
+// Inverse (dark bg): zingy-yellow text + arrow
+
+.standout-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  color: var(--color-forest-green);
+  font-weight: 600;
+  font-size: var(--text-body);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-s);
+  transition:
+    opacity   200ms ease-out,
+    transform var(--duration-fast) var(--ease-out);
+
+  svg {
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+    transition: transform 200ms ease-out;
+  }
+
+  &:hover {
+    opacity: var(--opacity-hover, 0.8);
+
+    svg { transform: translateX(6px); }
+  }
+
+  &:active { transform: scale(0.98); }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-powdered-blue);
+    outline-offset: 4px;
+  }
+
+  // Inverse variant — zingy yellow on dark backgrounds
+  &--inverse { color: var(--color-zingy-yellow); }
+
+  // Disabled
+  &--disabled {
+    color: var(--color-charcoal-50);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

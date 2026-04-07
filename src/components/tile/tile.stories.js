@@ -8,7 +8,6 @@ const ICON_BG_CYCLE = [
   "var(--color-charcoal-20)",
 ];
 
-const styles = '';
 
 const renderTile = ({ variant, icon, heading, body, index = 0 }) => {
   const isInverse = variant === "inverse";
@@ -28,13 +27,10 @@ const render = ({ variant = "default", items = [] }) => {
     .map((item, index) => renderTile({ variant, ...item, index }))
     .join("\n");
 
-  const bg = variant === "inverse"
-    ? `background: var(--color-charcoal);`
-    : `background: var(--color-off-white);`;
+  const dark = variant === "inverse" ? " sb-canvas--dark" : "";
 
   return `
-${styles}
-<div style="${bg} padding: var(--sp-64) var(--sp-32); font-family: var(--font-sans);">
+<div class="sb-canvas${dark}" style="padding: var(--sp-64) var(--sp-32);">
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0; max-width: var(--grid-max); margin-inline: auto; overflow: hidden;">
     ${tiles}
   </div>

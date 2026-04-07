@@ -5,7 +5,6 @@ import data from "./content-tiles.json";
 // Styles
 // =============================================================================
 
-const styles = '';
 
 // =============================================================================
 // Tile builder
@@ -34,7 +33,6 @@ function buildTile({ icon, heading, body }, index) {
 // =============================================================================
 
 const render = ({ variant = "default", overline, heading, body, tiles = [] }) => `
-${styles}
 <section class="content-tiles">
   <div class="content-tiles__inner">
     <div class="content-tiles__header">

@@ -5,8 +5,6 @@ import data from "./featured-content.json";
 // Styles
 // =============================================================================
 
-const styles = '';
-
 // =============================================================================
 // HTML builder
 // =============================================================================
@@ -21,7 +19,6 @@ const render = ({ variant = "default", heading, body, highlights }) => {
     </li>`).join("");
 
   return `
-${styles}
 <section class="featured-content${mod}">
   <div class="featured-content__inner">
     <div class="featured-content__lead">

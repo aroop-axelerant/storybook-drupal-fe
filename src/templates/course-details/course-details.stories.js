@@ -3,6 +3,7 @@ import data from "./course-details.json";
 import { headerStyles, buildHeader, buildMegaMenu, headerScript } from "../../components/header/header.stories.js";
 import { footerStyles, buildFooter } from "../../components/footer/footer.stories.js";
 import { buildBreadcrumb } from "../../components/breadcrumb/breadcrumb.stories.js";
+import { buildCompactVideo } from "../../components/video/video.stories.js";
 
 // =============================================================================
 // Icons
@@ -174,31 +175,31 @@ const courseHeroStyles = `
 // Placeholder body sections (so in-page nav links resolve to real anchors)
 // =============================================================================
 
+const overviewVideo = buildCompactVideo({
+  id: 'overview-video',
+  poster: '/images/TV%20studio.jpg',
+  title: 'Course Overview',
+  youtubeId: 'DOp8mIYrgw8',
+});
+
 const sectionContent = {
   overview: `
-    <h2 style="font-family:var(--font-serif);font-size:var(--text-h2);color:var(--color-charcoal);margin-bottom:var(--sp-24)">Overview</h2>
+    <h2 class="cd-section-title">Overview</h2>
     <p style="font-family:var(--font-serif);font-size:var(--text-h3);font-weight:400;color:var(--color-charcoal);line-height:1.35;margin-bottom:var(--sp-24);max-width:720px">Become a leader and innovator in global luxury.</p>
-    <p style="font-size:var(--text-body);color:var(--color-charcoal-60);max-width:640px;line-height:var(--lh-body)">Step into one of the most prestigious industries and get to grips with what makes luxury so distinct. This CMI-accredited course blends core business principles with specialist insight into luxury brand strategy, marketing and management – giving you the understanding, creativity and connections to excel in the luxury world.</p>`,
+    <p style="font-size:var(--text-body);color:var(--color-charcoal-60);max-width:640px;line-height:var(--lh-body);margin-bottom:var(--sp-48)">Step into one of the most prestigious industries and get to grips with what makes luxury so distinct. This CMI-accredited course blends core business principles with specialist insight into luxury brand strategy, marketing and management – giving you the understanding, creativity and connections to excel in the luxury world.</p>
+    ${overviewVideo}`,
 };
 
 function buildPlaceholderSections(navItems) {
-  const colours = [
-    'var(--color-white)',
-    'var(--color-off-white)',
-    'var(--color-white)',
-    'var(--color-off-white)',
-    'var(--color-white)',
-    'var(--color-off-white)',
-  ];
   return navItems.map((item, i) => {
     const id = item.href.replace('#', '');
     const body = sectionContent[id] || `
-    <h2 style="font-family:var(--font-serif);font-size:var(--text-h2);color:var(--color-charcoal);margin-bottom:var(--sp-24)">${item.label}</h2>
+    <h2 class="cd-section-title">${item.label}</h2>
     <p style="font-size:var(--text-body);color:var(--color-charcoal-60);max-width:640px;line-height:var(--lh-body)">
       This section will contain the ${item.label.toLowerCase()} content for the course. Placeholder content — replace with real Drupal field output.
     </p>`;
     return `
-  <section id="${id}" style="background:${colours[i] || 'var(--color-white)'};padding:var(--sp-96) var(--grid-gutter);max-width:var(--grid-max);margin-inline:auto;min-height:400px">
+  <section id="${id}" style="padding:var(--sp-96) var(--grid-gutter);max-width:var(--grid-max);margin-inline:auto;min-height:400px">
     ${body}
   </section>`;
   }).join('');

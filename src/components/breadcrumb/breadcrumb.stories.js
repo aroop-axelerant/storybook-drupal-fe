@@ -10,8 +10,6 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = '';
-
 // =============================================================================
 // HTML builder
 // =============================================================================
@@ -104,8 +102,7 @@ const v = data.variants;
  * Default — light background, charcoal text
  */
 export const Default = () => `
-  ${styles}
-  <div style="background: var(--color-charcoal-10); font-family: var(--font-sans);">
+  <div style="background:var(--color-charcoal-10);font-family:var(--font-sans)">
     ${buildBreadcrumb(d.items)}
   </div>
 `;
@@ -114,8 +111,7 @@ export const Default = () => `
  * Inverse — white text for use on dark or coloured backgrounds
  */
 export const Inverse = () => `
-  ${styles}
-  <div style="background: var(--color-charcoal-80); font-family: var(--font-sans);">
+  <div style="background:var(--color-charcoal-80);font-family:var(--font-sans)">
     ${buildBreadcrumb(v.inverse.items, true)}
   </div>
 `;

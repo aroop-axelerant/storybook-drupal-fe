@@ -5,12 +5,6 @@ export default {
 };
 
 // =============================================================================
-// Styles
-// =============================================================================
-
-const styles = '';
-
-// =============================================================================
 // Helpers
 // =============================================================================
 
@@ -46,25 +40,25 @@ function item({ id, question, answer, open = false, disabled = false }) {
 
 function statesTable(rows) {
   return `
-    <table style="width:100%; border-collapse:collapse; background:var(--color-white); border-radius:var(--radius-s); overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+    <table class="sb-table-el">
       <thead>
-        <tr style="background:var(--color-charcoal-10);">
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">State</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Token</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Properties</th>
+        <tr>
+          <th>State</th>
+          <th>Token</th>
+          <th>Properties</th>
         </tr>
       </thead>
       <tbody>
         ${rows.map(([state, colorVar, token, props]) => `
           <tr>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.875rem; font-weight:600; color:var(--color-charcoal-90); border-bottom:1px solid var(--color-charcoal-10);">${state}</td>
-            <td style="padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-charcoal-10);">
-              <span style="display:inline-flex; align-items:center; gap:var(--sp-8);">
-                <span style="display:inline-block; width:14px; height:14px; border-radius:3px; background:${colorVar}; border:1px solid rgba(0,0,0,0.1); flex-shrink:0;"></span>
-                <code style="font-size:0.75rem; color:var(--color-charcoal-60);">${token}</code>
+            <td>${state}</td>
+            <td>
+              <span class="sb-table-el__swatch-cell">
+                <span class="sb-table-el__swatch" style="background:${colorVar}"></span>
+                <code class="sb-table-el__token">${token}</code>
               </span>
             </td>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60); border-bottom:1px solid var(--color-charcoal-10); line-height:1.5;">${props}</td>
+            <td>${props}</td>
           </tr>`).join("")}
       </tbody>
     </table>`;
@@ -72,8 +66,8 @@ function statesTable(rows) {
 
 function section(title, content) {
   return `
-    <div style="margin-bottom:var(--sp-48);">
-      <h3 style="font-family:var(--font-sans); font-size:0.6875rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-charcoal-40); margin-bottom:var(--sp-16);">${title}</h3>
+    <div class="sb-section">
+      <h3 class="sb-section-title">${title}</h3>
       ${content}
     </div>`;
 }
@@ -91,12 +85,11 @@ const q3 = { id: "acc-3", question: "Can I visit the campus before applying?", a
 // =============================================================================
 
 export const Default = () => `
-  ${styles}
-  <div style="padding:var(--sp-32); background:var(--color-off-white); min-height:100vh;">
-    <div style="max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:var(--sp-48);">
+  <div class="sb-canvas" style="padding:var(--sp-32)">
+    <div class="sb-canvas__inner">
 
       ${section("Live example", `
-        <div style="background:var(--color-white); border-radius:var(--radius-m); padding:var(--sp-32);">
+        <div class="sb-card sb-card--padded">
           <div class="accordion">
             ${item({ ...q1, open: true })}
             ${item(q2)}
@@ -106,24 +99,20 @@ export const Default = () => `
       `)}
 
       ${section("States", `
-        <div style="background:var(--color-white); border-radius:var(--radius-m); padding:var(--sp-32); display:flex; flex-direction:column; gap:var(--sp-32);">
+        <div class="sb-card sb-card--padded" style="display:flex;flex-direction:column;gap:var(--sp-32)">
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Closed (default)</p>
-            <div class="accordion">
-              ${item({ ...q2, id: "s-closed" })}
-            </div>
+            <p class="sb-state-label">Closed (default)</p>
+            <div class="accordion">${item({ ...q2, id: "s-closed" })}</div>
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Open / Expanded</p>
-            <div class="accordion">
-              ${item({ ...q1, id: "s-open", open: true })}
-            </div>
+            <p class="sb-state-label">Open / Expanded</p>
+            <div class="accordion">${item({ ...q1, id: "s-open", open: true })}</div>
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Hover</p>
+            <p class="sb-state-label">Hover</p>
             <style>.s-hover-trigger { color: var(--color-charcoal-60) !important; }</style>
             <div class="accordion">
               <div class="accordion__item">
@@ -137,7 +126,7 @@ export const Default = () => `
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Focus</p>
+            <p class="sb-state-label">Focus</p>
             <style>.s-focus-trigger { outline: 2px solid var(--color-powdered-blue) !important; outline-offset: 4px !important; border-radius: 2px; }</style>
             <div class="accordion">
               <div class="accordion__item">
@@ -151,10 +140,8 @@ export const Default = () => `
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Disabled</p>
-            <div class="accordion">
-              ${item({ ...q3, id: "s-disabled", disabled: true })}
-            </div>
+            <p class="sb-state-label">Disabled</p>
+            <div class="accordion">${item({ ...q3, id: "s-disabled", disabled: true })}</div>
           </div>
 
         </div>

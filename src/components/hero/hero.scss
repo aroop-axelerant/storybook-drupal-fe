@@ -201,4 +201,168 @@
       }
     }
   }
+
+  // ── Shared foreground image (split + course) ─────────────────────────────────
+  &__fg {
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--sp-48) var(--sp-48) 0 var(--sp-24);
+  }
+
+  &__fg-img {
+    width: 100%;
+    height: 100%;
+    max-height: 560px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: var(--radius-l) var(--radius-l) 0 0;
+    filter: none;
+    transform: none;
+  }
+
+  // ── Course highlights ─────────────────────────────────────────────────────────
+  &__highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-24);
+    padding-top: var(--sp-32);
+  }
+
+  &__highlight {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      color: var(--color-charcoal);
+      width: 28px;
+      height: 28px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+    }
+
+    &-label {
+      font-family: var(--font-sans);
+      font-size: var(--text-body-sm);
+      font-weight: var(--fw-regular);
+      color: var(--color-charcoal-60);
+      line-height: var(--lh-body-sm);
+    }
+
+    &-value {
+      font-family: var(--font-sans);
+      font-size: var(--text-h5);
+      font-weight: var(--fw-bold);
+      color: var(--color-charcoal);
+      line-height: var(--lh-h5);
+    }
+  }
+
+  // ── Variant: Split View ──────────────────────────────────────────────────────
+  &--split {
+    background: var(--color-forest-green);
+    min-height: 620px;
+    align-items: stretch;
+    overflow: hidden;
+
+    .hero__bg { display: none; }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding: 0;
+      max-width: var(--grid-max, 1312px);
+      width: 100%;
+    }
+
+    .hero__content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--sp-96) var(--sp-64) var(--sp-64) var(--sp-64);
+      gap: 0;
+    }
+
+    @media (max-width: 1023px) {
+      min-height: 500px;
+
+      .hero__content { padding: var(--sp-64) var(--sp-32) var(--sp-48) var(--sp-32); }
+      .hero__fg      { padding: var(--sp-32) var(--sp-32) 0 var(--sp-16); }
+    }
+
+    @media (max-width: 767px) {
+      .hero__inner   { grid-template-columns: 1fr; }
+      .hero__content { padding: var(--sp-64) var(--sp-16) var(--sp-32); }
+      .hero__fg      { padding: 0 var(--sp-16) 0; height: 280px; }
+      .hero__fg-img  { max-height: 280px; }
+    }
+  }
+
+  // ── Variant: Course ──────────────────────────────────────────────────────────
+  &--course {
+    background: var(--color-off-white);
+    min-height: 620px;
+    align-items: stretch;
+    overflow: hidden;
+
+    .hero__bg { display: none; }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding: 0;
+      max-width: var(--grid-max, 1312px);
+      width: 100%;
+    }
+
+    .hero__content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--sp-96) var(--sp-64) var(--sp-64) var(--sp-64);
+    }
+
+    .hero__overline { color: var(--color-forest-green); }
+    .hero__title    { color: var(--color-charcoal); margin-bottom: var(--sp-16); }
+    .hero__subtitle { color: var(--color-charcoal-60); margin-bottom: var(--sp-32); }
+
+    .hero__fg {
+      padding: var(--sp-48) var(--sp-48) 0 var(--sp-24);
+
+      &-img {
+        align-self: stretch;
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      min-height: 500px;
+
+      .hero__content { padding: var(--sp-64) var(--sp-32) var(--sp-48) var(--sp-32); }
+      .hero__fg      { padding: var(--sp-32) var(--sp-32) 0 var(--sp-16); }
+    }
+
+    @media (max-width: 767px) {
+      .hero__inner    { grid-template-columns: 1fr; }
+      .hero__content  { padding: var(--sp-48) var(--sp-16) var(--sp-32); }
+      .hero__fg       { padding: 0 var(--sp-16) 0; height: 280px; }
+      .hero__highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-16);
+      }
+    }
+  }
 }

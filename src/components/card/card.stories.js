@@ -10,7 +10,6 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = '';
 
 // =============================================================================
 // Icons
@@ -287,9 +286,10 @@ const v = data.variants;
  * independently. Name uses card heading scale; quote uses excerpt scale.
  */
 export const Video = () => `
-  ${styles}
-  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,360px));gap:var(--sp-32);padding:var(--sp-64);background:var(--color-off-white);font-family:var(--font-sans);">
-    ${v.video.map((card, i) => buildVideoCard(card, i)).join('')}
+  <div class="sb-canvas">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,360px));gap:var(--sp-32);">
+      ${v.video.map((card, i) => buildVideoCard(card, i)).join('')}
+    </div>
   </div>
 `;
 
@@ -298,7 +298,6 @@ export const Video = () => `
  * visible; summary and Standout Link are revealed on hover.
  */
 export const Overlay = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.overlay.map(buildOverlayCard).join('')}
   </div>
@@ -308,7 +307,6 @@ export const Overlay = () => `
  * Simple — featured content cards with image, overline, heading, excerpt and CTA.
  */
 export const Simple = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.simple.map(buildSimpleCard).join('')}
   </div>
@@ -319,7 +317,6 @@ export const Simple = () => `
  * highlights list separated by dividers, and CTA button.
  */
 export const Course = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.course.map(buildCourseCard).join('')}
   </div>
@@ -329,7 +326,6 @@ export const Course = () => `
  * Profile — staff/people card with portrait image, name, role, department and email.
  */
 export const Profile = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.profile.map(buildProfileCard).join('')}
   </div>
@@ -340,7 +336,6 @@ export const Profile = () => `
  * Third card demonstrates the image-optional state.
  */
 export const Article = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.article.map(buildArticleCard).join('')}
   </div>
@@ -351,7 +346,6 @@ export const Article = () => `
  * Overline shows the step number, followed by heading, summary and standout link.
  */
 export const StepCount = () => `
-  ${styles}
   <div class="cards-grid">
     ${v['step-count'].map(buildStepCountCard).join('')}
   </div>
@@ -363,7 +357,6 @@ export const StepCount = () => `
  * Second card demonstrates the image-optional state.
  */
 export const Event = () => `
-  ${styles}
   <div class="cards-grid">
     ${v.event.map(buildEventCard).join('')}
   </div>

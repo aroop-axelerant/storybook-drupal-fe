@@ -1,0 +1,407 @@
+// =============================================================================
+// Story Canvas — Storybook documentation utility classes
+// Not part of the production design system.
+// Used exclusively within *.stories.js files to create consistent
+// canvas scaffolding: wrappers, preview cards, and states tables.
+// =============================================================================
+
+// ── Canvas wrapper ────────────────────────────────────────────────────────────
+.sb-canvas {
+  padding: var(--sp-48);
+  font-family: var(--font-sans);
+  background: var(--color-off-white);
+  min-height: 100vh;
+}
+
+.sb-canvas--dark { background: var(--color-charcoal); }
+
+// ── Canvas inner (narrow centred layout — accordion style) ────────────────────
+.sb-canvas__inner {
+  max-width: 900px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-48);
+}
+
+// ── Canvas title ──────────────────────────────────────────────────────────────
+.sb-canvas__title {
+  font-size: var(--text-h3);
+  margin-block-end: var(--sp-8);
+}
+
+.sb-canvas--dark .sb-canvas__title { color: var(--color-white); }
+
+// ── Canvas description ────────────────────────────────────────────────────────
+.sb-canvas__desc {
+  color: var(--color-text-secondary);
+  margin-block-end: var(--sp-48);
+}
+
+.sb-canvas--dark .sb-canvas__desc { color: var(--color-charcoal-30); }
+
+// ── Live component preview card ───────────────────────────────────────────────
+.sb-card {
+  background: var(--color-white);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
+  padding: var(--sp-24);
+  margin-block-end: var(--sp-48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.sb-card--dark {
+  background: var(--color-charcoal-90);
+  border-color: var(--color-charcoal-80);
+}
+
+// Padded block card — for form components and multi-item previews
+.sb-card--padded {
+  padding: var(--sp-32);
+  display: block;
+  min-height: 0;
+}
+
+// Row card — for button row previews with a gap and wrapping
+.sb-card--row {
+  gap: var(--sp-24);
+  min-height: 100px;
+  flex-wrap: wrap;
+  padding: var(--sp-32);
+}
+
+// Two-column grid card — for side-by-side form group previews
+.sb-card--grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-32);
+  padding: var(--sp-32);
+  min-height: 0;
+}
+
+// ── Section label (inside .sb-card) ──────────────────────────────────────────
+.sb-label {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--sp-16);
+}
+
+// ── Flex chip / tag group ─────────────────────────────────────────────────────
+.sb-group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  flex-wrap: wrap;
+  margin-block-end: var(--sp-32);
+}
+
+.sb-group--last { margin-block-end: 0; }
+
+// Dark-background inline preview swatch within a card
+.sb-dark-swatch {
+  background: var(--color-charcoal);
+  border-radius: var(--radius-m);
+  padding: var(--sp-24);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  flex-wrap: wrap;
+}
+
+// ── Section header (accordion / narrow layout) ────────────────────────────────
+.sb-section {
+  margin-block-end: var(--sp-48);
+}
+
+.sb-section-title {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal-40);
+  margin-bottom: var(--sp-16);
+}
+
+// State sub-label (e.g. "Closed (default)", "Hover") inside state display card
+.sb-state-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal-40);
+  margin-bottom: var(--sp-12);
+}
+
+// ── States table (div/grid version — most stories) ────────────────────────────
+.sb-table {
+  background: var(--color-white);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.sb-table--dark {
+  background: var(--color-charcoal-90);
+  border-color: var(--color-charcoal-80);
+}
+
+.sb-table__head {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  padding: var(--sp-12) var(--sp-32);
+  background: var(--color-charcoal-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sb-table--dark .sb-table__head {
+  background: var(--color-charcoal-80);
+  border-bottom-color: var(--color-charcoal-70);
+}
+
+// Wide first-column variant (160px) — used by form, tag, and toggle stories
+.sb-table__head--wide { grid-template-columns: 160px 1fr 1fr; }
+
+.sb-table__head-cell {
+  font-size: var(--text-label-s);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.sb-table--dark .sb-table__head-cell { color: var(--color-charcoal-30); }
+
+.sb-table__row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  padding: var(--sp-12) var(--sp-32);
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.sb-table__row--wide { grid-template-columns: 160px 1fr 1fr; }
+
+.sb-table--dark .sb-table__row { border-bottom-color: var(--color-charcoal-80); }
+
+.sb-table__state {
+  font-size: var(--text-label-s);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.sb-table--dark .sb-table__state { color: var(--color-charcoal-30); }
+
+.sb-table__swatch-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.sb-table__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-s);
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sb-table--dark .sb-table__swatch { border-color: rgba(255, 255, 255, 0.1); }
+
+// Shape overrides for swatch
+.sb-table__swatch--circle { border-radius: 50%; }
+.sb-table__swatch--pill   { border-radius: var(--radius-l); }
+.sb-table__swatch--square { border-radius: var(--radius-xs); }
+
+.sb-table__token {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.sb-table--dark .sb-table__token { color: var(--color-charcoal-40); }
+
+.sb-table__props {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sb-table--dark .sb-table__props { color: var(--color-charcoal-50); }
+
+// ── States table (HTML <table> version — accordion story) ─────────────────────
+.sb-table-el {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  thead { background: var(--color-charcoal-10); }
+
+  th {
+    padding: var(--sp-8) var(--sp-16);
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-charcoal-60);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  td {
+    padding: var(--sp-12) var(--sp-16);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-charcoal-90);
+    border-bottom: 1px solid var(--color-charcoal-10);
+    line-height: 1.5;
+
+    &:first-child  { font-weight: 600; }
+    &:nth-child(3) { font-size: 0.75rem; color: var(--color-charcoal-60); }
+  }
+}
+
+.sb-table-el__swatch-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.sb-table-el__swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.sb-table-el__token {
+  font-size: 0.75rem;
+  color: var(--color-charcoal-60);
+}
+
+// ── Contextual preview pad (tag on dark / light bg demos) ────────────────────
+.sb-context-pad {
+  border-radius: var(--radius-m);
+  padding: var(--sp-24);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  flex-wrap: wrap;
+  margin-block-end: var(--sp-32);
+}
+
+.sb-context-pad--last { margin-block-end: 0; }
+
+// ── Narrow card — single-field error examples ─────────────────────────────────
+.sb-card--narrow {
+  max-width: 480px;
+  display: block;
+  padding: var(--sp-32);
+  min-height: 0;
+}
+
+// ── Inline state row (tab / accordion state display) ─────────────────────────
+.sb-state-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-24);
+}
+
+.sb-state-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.sb-state-name {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-charcoal-60);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.sb-state-name--dark { color: rgba(255, 255, 255, 0.55); }
+
+// ── State preview row — for button/submit state display ───────────────────────
+.sb-states-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  flex-wrap: wrap;
+}
+
+.sb-state-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.sb-state-caption {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+// ── story-canvas class alias (table.stories.js legacy) ────────────────────────
+.story-canvas {
+  padding: var(--sp-48);
+  font-family: var(--font-sans);
+  background: var(--color-off-white);
+  min-height: 100vh;
+}
+
+// ── Header story canvas — dark page simulation for the fixed header ────────────
+.sb-canvas--header {
+  background: var(--color-forest-green);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  padding: 0;
+}
+
+.sb-canvas__hero-text {
+  padding: var(--sp-96) var(--grid-gutter) var(--sp-64);
+  max-width: var(--grid-max);
+  margin-inline: auto;
+}
+
+.sb-canvas__hero-heading {
+  font-family: var(--font-serif);
+  font-size: var(--text-display-m);
+  font-weight: var(--fw-regular);
+  color: var(--color-white);
+  line-height: var(--lh-display-m);
+  margin: 0 0 var(--sp-16);
+}
+
+.sb-canvas__hero-body {
+  font-size: var(--text-body);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 540px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ── Flush canvas — no padding; used when content must be full-width ───────────
+.sb-canvas--flush { padding: 0; }
+
+// ── Preview swatch — small dark box for documenting button/icon states ────────
+.sb-preview-swatch {
+  width: 80px;
+  height: 80px;
+  background: var(--color-charcoal-90);
+  border-radius: var(--radius-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -9,8 +9,6 @@ export default {
 // Styles
 // =============================================================================
 
-const styles = '';
-
 // =============================================================================
 // HTML builder
 // =============================================================================
@@ -78,24 +76,21 @@ const d = data.default;
 const v = data.variants;
 
 export const Default = () => `
-  ${styles}
-  <div class="story-canvas">
+  <div class="sb-canvas">
     ${buildSearch(d)}
   </div>
   ${script}
 `;
 
 export const Filled = () => `
-  ${styles}
-  <div class="story-canvas">
+  <div class="sb-canvas">
     ${buildSearch(v.filled)}
   </div>
   ${script}
 `;
 
 export const Disabled = () => `
-  ${styles}
-  <div class="story-canvas">
+  <div class="sb-canvas">
     ${buildSearch(v.disabled)}
   </div>
 `;

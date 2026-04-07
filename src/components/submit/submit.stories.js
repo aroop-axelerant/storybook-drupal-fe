@@ -5,23 +5,21 @@ export default {
   title: "Components/Form/Submit",
 };
 
-const formStyles = '';
-
 const statesTable = (rows) => `
-  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);overflow:hidden">
-    <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:var(--sp-12) var(--sp-32);background:var(--color-charcoal-10);border-bottom:1px solid var(--color-border)">
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">State</p>
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Background</p>
-      <p style="font-size:var(--text-label-s);font-weight:700;color:var(--color-text-secondary);margin:0">Properties</p>
+  <div class="sb-table">
+    <div class="sb-table__head sb-table__head--wide">
+      <p class="sb-table__head-cell">State</p>
+      <p class="sb-table__head-cell">Background</p>
+      <p class="sb-table__head-cell">Properties</p>
     </div>
     ${rows.map(([state, swatch, token, props]) => `
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:var(--sp-12) var(--sp-32);border-bottom:1px solid var(--color-border);align-items:center">
-        <p style="font-size:var(--text-label-s);font-weight:600;color:var(--color-text-secondary);margin:0">${state}</p>
-        <div style="display:flex;align-items:center;gap:var(--sp-8)">
-          <div style="width:14px;height:14px;border-radius:var(--radius-l);background:${swatch};flex-shrink:0;border:1px solid rgba(0,0,0,0.1)"></div>
-          <code style="font-size:11px;color:var(--color-text-secondary)">${token}</code>
+      <div class="sb-table__row sb-table__row--wide">
+        <p class="sb-table__state">${state}</p>
+        <div class="sb-table__swatch-cell">
+          <div class="sb-table__swatch sb-table__swatch--pill" style="background:${swatch}"></div>
+          <code class="sb-table__token">${token}</code>
         </div>
-        <p style="font-size:11px;color:var(--color-text-tertiary);margin:0;line-height:1.5">${props}</p>
+        <p class="sb-table__props">${props}</p>
       </div>`).join('')}
   </div>`;
 
@@ -29,55 +27,40 @@ const iconCheck = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" s
 
 // ── Default Variant ────────────────────────────────────────────────────────────
 export const Default = () => `
-${formStyles}
-<div style="padding:var(--sp-48);font-family:var(--font-sans);background:var(--color-off-white);min-height:100vh">
-  <h1 style="font-size:var(--text-h3);margin-block-end:var(--sp-8)">Submit</h1>
-  <p style="color:var(--color-text-secondary);margin-block-end:var(--sp-48)">Form submission button. Uses Primary button styling — <code>--color-action-primary</code> fill. A form should have exactly one submit action. Use a loading state to prevent duplicate submissions. Always use <code>type="submit"</code> inside a <code>&lt;form&gt;</code>.</p>
+<div class="sb-canvas">
+  <h1 class="sb-canvas__title">Submit</h1>
+  <p class="sb-canvas__desc">Form submission button. Uses Primary button styling — <code>--color-action-primary</code> fill. A form should have exactly one submit action. Use a loading state to prevent duplicate submissions. Always use <code>type="submit"</code> inside a <code>&lt;form&gt;</code>.</p>
 
   <!-- Live components — all interactive states -->
-  <div style="background:var(--color-white);border-radius:var(--radius-m);border:1px solid var(--color-border);padding:var(--sp-32);margin-block-end:var(--sp-48)">
-    <p style="font-size:var(--text-small);font-weight:600;color:var(--color-text-secondary);margin:0 0 var(--sp-24)">Interactive states</p>
-    <div style="display:flex;align-items:center;gap:var(--sp-16);flex-wrap:wrap">
+  <div class="sb-card sb-card--padded">
+    <p class="sb-label">Interactive states</p>
+    <div class="sb-states-row">
 
       <!-- Default -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-8)">
-        <button type="submit" class="submit-btn"
-          onmouseover="this.style.background='var(--color-action-primary-hover)'"
-          onmouseout="this.style.background='var(--color-action-primary)';this.style.transform=''"
-          onmousedown="this.style.transform='scale(0.98)'"
-          onmouseup="this.style.transform=''">
-          Submit Application
-        </button>
-        <span style="font-size:11px;color:var(--color-text-tertiary)">Default</span>
+      <div class="sb-state-item">
+        <button type="submit" class="submit-btn">Submit Application</button>
+        <span class="sb-state-caption">Default</span>
       </div>
 
       <!-- With icon -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-8)">
-        <button type="submit" class="submit-btn"
-          onmouseover="this.style.background='var(--color-action-primary-hover)'"
-          onmouseout="this.style.background='var(--color-action-primary)';this.style.transform=''"
-          onmousedown="this.style.transform='scale(0.98)'"
-          onmouseup="this.style.transform=''">
-          Submit Application ${iconCheck}
-        </button>
-        <span style="font-size:11px;color:var(--color-text-tertiary)">With icon</span>
+      <div class="sb-state-item">
+        <button type="submit" class="submit-btn">Submit Application ${iconCheck}</button>
+        <span class="sb-state-caption">With icon</span>
       </div>
 
       <!-- Loading -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-8)">
+      <div class="sb-state-item">
         <button type="submit" class="submit-btn submit-btn--loading" disabled aria-busy="true" aria-label="Submitting application…">
           <span class="spinner"></span>
           Submitting…
         </button>
-        <span style="font-size:11px;color:var(--color-text-tertiary)">Loading</span>
+        <span class="sb-state-caption">Loading</span>
       </div>
 
       <!-- Disabled -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--sp-8)">
-        <button type="submit" class="submit-btn" disabled>
-          Submit Application
-        </button>
-        <span style="font-size:11px;color:var(--color-text-tertiary)">Disabled</span>
+      <div class="sb-state-item">
+        <button type="submit" class="submit-btn" disabled>Submit Application</button>
+        <span class="sb-state-caption">Disabled</span>
       </div>
 
     </div>

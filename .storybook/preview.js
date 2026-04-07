@@ -24,4 +24,13 @@ export const parameters = {
       { name: "forest-green", value: "#005b4b" },
     ],
   },
+  viewport: {
+    viewports: {
+      mobile:  { name: "Mobile",  styles: { width: "375px",  height: "812px" } },
+      tablet:  { name: "Tablet",  styles: { width: "1024px", height: "768px" } },
+      desktop: { name: "Desktop", styles: { width: "1440px", height: "900px" } },
+      wide:    { name: "Wide",    styles: { width: "1920px", height: "1080px" } },
+    },
+    defaultViewport: "desktop",
+  },
 };

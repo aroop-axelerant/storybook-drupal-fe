@@ -6,12 +6,6 @@ export default {
 };
 
 // =============================================================================
-// Shared styles
-// =============================================================================
-
-const styles = '';
-
-// =============================================================================
 // Helpers
 // =============================================================================
 
@@ -67,25 +61,25 @@ function banner({ variant, inputState = "default" }) {
 
 function statesTable(rows) {
   return `
-    <table style="width:100%; border-collapse:collapse; background:var(--color-white); border-radius:var(--radius-s); overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+    <table class="sb-table-el">
       <thead>
-        <tr style="background:var(--color-charcoal-10);">
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">State</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Token</th>
-          <th style="padding:var(--sp-8) var(--sp-16); text-align:left; font-family:var(--font-sans); font-size:0.75rem; font-weight:600; color:var(--color-charcoal-60); text-transform:uppercase; letter-spacing:0.06em;">Properties</th>
+        <tr>
+          <th>State</th>
+          <th>Token</th>
+          <th>Properties</th>
         </tr>
       </thead>
       <tbody>
         ${rows.map(([state, colorVar, token, props]) => `
           <tr>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.875rem; font-weight:600; color:var(--color-charcoal-90); border-bottom:1px solid var(--color-charcoal-10);">${state}</td>
-            <td style="padding:var(--sp-12) var(--sp-16); border-bottom:1px solid var(--color-charcoal-10);">
-              <span style="display:inline-flex; align-items:center; gap:var(--sp-8);">
-                <span style="display:inline-block; width:14px; height:14px; border-radius:3px; background:${colorVar}; border:1px solid rgba(0,0,0,0.1); flex-shrink:0;"></span>
-                <code style="font-size:0.75rem; color:var(--color-charcoal-60);">${token}</code>
+            <td>${state}</td>
+            <td>
+              <span class="sb-table-el__swatch-cell">
+                <span class="sb-table-el__swatch" style="background:${colorVar}"></span>
+                <code class="sb-table-el__token">${token}</code>
               </span>
             </td>
-            <td style="padding:var(--sp-12) var(--sp-16); font-family:var(--font-sans); font-size:0.75rem; color:var(--color-charcoal-60); border-bottom:1px solid var(--color-charcoal-10); line-height:1.5;">${props}</td>
+            <td>${props}</td>
           </tr>`).join("")}
       </tbody>
     </table>`;
@@ -93,13 +87,14 @@ function statesTable(rows) {
 
 function section(title, content) {
   return `
-    <div style="margin-bottom:var(--sp-48);">
-      <h3 style="font-family:var(--font-sans); font-size:0.6875rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-charcoal-40); margin-bottom:var(--sp-16);">${title}</h3>
+    <div class="sb-section">
+      <h3 class="sb-section-title">${title}</h3>
       ${content}
     </div>`;
 }
 
-export { styles as ctaBannerStyles, buildCtaBanner };
+export const ctaBannerStyles = '';
+export { buildCtaBanner };
 
 function buildCtaBanner() {
   return banner({ variant: "full-bleed" });
@@ -110,38 +105,37 @@ function buildCtaBanner() {
 // =============================================================================
 
 export const FullBleed = () => `
-  ${styles}
-  <div style="font-family:var(--font-sans); min-height:100vh; background:var(--color-off-white);">
+  <div class="sb-canvas sb-canvas--flush">
 
     ${section("Live example — Full Bleed", banner({ variant: "full-bleed" }))}
 
-    <div style="padding:0 var(--sp-32) var(--sp-48);">
+    <div style="padding:0 var(--sp-32);">
 
       ${section("Input states", `
         <div style="display:flex; flex-direction:column; gap:var(--sp-24);">
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Default</p>
+            <p class="sb-state-label">Default</p>
             ${banner({ variant: "full-bleed" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Input Focus</p>
+            <p class="sb-state-label">Input Focus</p>
             ${banner({ variant: "full-bleed", inputState: "focus" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Input Filled</p>
+            <p class="sb-state-label">Input Filled</p>
             ${banner({ variant: "full-bleed", inputState: "filled" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Error — Invalid email</p>
+            <p class="sb-state-label">Error — Invalid email</p>
             ${banner({ variant: "full-bleed", inputState: "error" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Success — Subscribed</p>
+            <p class="sb-state-label">Success — Subscribed</p>
             ${banner({ variant: "full-bleed", inputState: "success" })}
           </div>
 
@@ -174,38 +168,37 @@ export const FullBleed = () => `
 // =============================================================================
 
 export const Boxed = () => `
-  ${styles}
-  <div style="font-family:var(--font-sans); min-height:100vh; background:var(--color-off-white);">
+  <div class="sb-canvas sb-canvas--flush">
 
     ${section("Live example — Boxed", banner({ variant: "boxed" }))}
 
-    <div style="padding:0 var(--sp-32) var(--sp-48);">
+    <div style="padding:0 var(--sp-32);">
 
       ${section("Input states", `
         <div style="display:flex; flex-direction:column; gap:var(--sp-24);">
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Default</p>
+            <p class="sb-state-label">Default</p>
             ${banner({ variant: "boxed" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Input Focus</p>
+            <p class="sb-state-label">Input Focus</p>
             ${banner({ variant: "boxed", inputState: "focus" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Input Filled</p>
+            <p class="sb-state-label">Input Filled</p>
             ${banner({ variant: "boxed", inputState: "filled" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Error — Invalid email</p>
+            <p class="sb-state-label">Error — Invalid email</p>
             ${banner({ variant: "boxed", inputState: "error" })}
           </div>
 
           <div>
-            <p style="font-family:var(--font-sans); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-charcoal-40); margin-bottom:var(--sp-12);">Success — Subscribed</p>
+            <p class="sb-state-label">Success — Subscribed</p>
             ${banner({ variant: "boxed", inputState: "success" })}
           </div>
 
